@@ -14,7 +14,7 @@ class CategoryViewModel extends BaseViewModel {
     locator<NavigationService>().navigateWithTransition(
       const SeeAllView(),
       opaque: true,
-      duration: const Duration(milliseconds: 1500),
+      duration: const Duration(milliseconds: 500),
       transitionStyle: Transition.downToUp,
       curve: Curves.slowMiddle,
     );

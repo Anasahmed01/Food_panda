@@ -117,22 +117,103 @@ Widget categoryFound(CategoryViewModel viewModel) {
             maxFontSize: 18,
           ),
         ),
-        // Flexible(
-        //   flex: 2,
-        //   child: ListView.builder(
-        //     scrollDirection: Axis.vertical,
-        //     itemCount: viewModel.popularResImg.length,
-        //     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        //     physics: const NeverScrollableScrollPhysics(),
-        //     shrinkWrap: true,
-        //     itemBuilder: (context, index) {
-        //       return Padding(
-        //         padding: const EdgeInsets.only(bottom: 10),
-        //         child: deliveryContainer(context, viewModel, index),
-        //       );
-        //     },
-        //   ),
-        // ),
+        TabBar(
+            splashFactory: NoSplash.splashFactory,
+            labelPadding: const EdgeInsets.only(left: 10),
+            unselectedLabelColor: Colors.black,
+            indicator: const MagnifierDecoration(),
+            tabAlignment: TabAlignment.start,
+            indicatorSize: TabBarIndicatorSize.tab,
+            labelColor: AppColors.primaryColor,
+            isScrollable: true,
+            tabs: [
+              Tab(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 10),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.greyColor),
+                      borderRadius: BorderRadius.circular(20)),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  child: const Icon(
+                    Icons.multitrack_audio_rounded,
+                  ),
+                ),
+              ),
+              Tab(
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.greyColor),
+                      borderRadius: BorderRadius.circular(20)),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  child: const Row(
+                    children: [
+                      Text('Sort'),
+                      Icon(Icons.keyboard_arrow_down),
+                    ],
+                  ),
+                ),
+              ),
+              Tab(
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.greyColor),
+                      borderRadius: BorderRadius.circular(20)),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  child: const Row(
+                    children: [
+                      Text('Cuisines'),
+                      Icon(Icons.keyboard_arrow_down),
+                    ],
+                  ),
+                ),
+              ),
+              Tab(
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.greyColor),
+                      borderRadius: BorderRadius.circular(20)),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  child: const Row(
+                    children: [
+                      Text('offers'),
+                      Icon(Icons.keyboard_arrow_down),
+                    ],
+                  ),
+                ),
+              ),
+              Tab(
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.greyColor),
+                      borderRadius: BorderRadius.circular(20)),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  child: const Row(
+                    children: [
+                      Text('Rating 4.0+'),
+                      Icon(Icons.keyboard_arrow_down),
+                    ],
+                  ),
+                ),
+              ),
+            ]),
+        ListView.builder(
+          scrollDirection: Axis.vertical,
+          itemCount: viewModel.popularResImg.length,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: deliveryContainer(context, viewModel, index),
+            );
+          },
+        ),
       ],
     ),
   );

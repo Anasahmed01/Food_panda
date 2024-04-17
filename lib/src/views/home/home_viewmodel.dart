@@ -3,6 +3,7 @@ import 'package:foodpanda/src/del_custom_model/cat_del_model.dart';
 import 'package:foodpanda/src/models/category_data.dart';
 import 'package:foodpanda/src/utils/images/images.dart';
 import 'package:foodpanda/src/views/category/category.dart';
+import 'package:foodpanda/src/views/porduct_detail/product_detail.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../app/app.locator.dart';
@@ -16,9 +17,31 @@ class HomeViewModel extends BaseViewModel {
         categoryName: categoryName,
       ),
       opaque: true,
-      duration: const Duration(milliseconds: 1500),
-      transitionStyle: Transition.zoom,
-      curve: Curves.bounceOut,
+      duration: const Duration(milliseconds: 300),
+      transitionStyle: Transition.leftToRight,
+      curve: Curves.ease,
+    );
+  }
+
+  navigateToProductDetailView({
+    required String deliveryType,
+    required String deliveryPrice,
+    required String productName,
+    required String deliveryTime,
+    required String discountText,
+  }) {
+    locator<NavigationService>().navigateWithTransition(
+      ProductDetailView(
+        discountText: discountText,
+        deliveryType: deliveryType,
+        deliveryPrice: deliveryPrice,
+        productName: productName,
+        deliveryTime: deliveryTime,
+      ),
+      opaque: true,
+      duration: const Duration(milliseconds: 100),
+      transitionStyle: Transition.leftToRight,
+      curve: Curves.ease,
     );
   }
 
@@ -87,9 +110,9 @@ class HomeViewModel extends BaseViewModel {
   ];
 
   List popularResDiscountText = [
-    '10% off',
-    '30% off',
-    '40% off',
+    '10%  off',
+    '30%  off',
+    '40%  off',
   ];
 
   List popularResItemNames = [
@@ -99,15 +122,15 @@ class HomeViewModel extends BaseViewModel {
   ];
 
   List popularResItemPrices = [
-    '249',
-    '259',
-    '500',
+    '249 minimum',
+    '259 minimum',
+    '500 minimum',
   ];
 
   List popularResDeliveryTimes = [
-    '25-40',
-    '22-35',
-    '30-45',
+    '25-40 min',
+    '22-35 min',
+    '30-45 min',
   ];
 
   List popularResItemType = [

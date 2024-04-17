@@ -201,7 +201,7 @@ Widget popularRestaurants(
               padding: const EdgeInsets.symmetric(vertical: 3.0),
               child: CustomText.customSizedText(
                 text:
-                    "\$\$\$  -  PKR ${viewModel.popularResItemPrices[index]} minimum  -  ${viewModel.popularResItemType[index]}",
+                    "\$\$\$  -  PKR ${viewModel.popularResItemPrices[index]}  -  ${viewModel.popularResItemType[index]}",
                 color: AppColors.greyColor,
                 size: 12,
                 maxFontSize: 12,
@@ -218,8 +218,7 @@ Widget popularRestaurants(
                       size: 18,
                     ),
                     CustomText.customSizedText(
-                      text:
-                          ' ${viewModel.popularResDeliveryTimes[index]} min  -  ',
+                      text: ' ${viewModel.popularResDeliveryTimes[index]}  -  ',
                       fontWeight: FontWeight.w800,
                       color: AppColors.greyColor,
                       size: 12,

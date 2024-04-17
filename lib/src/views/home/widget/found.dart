@@ -5,13 +5,14 @@ import '../../../utils/colors/app_colors.dart';
 import '../home_viewmodel.dart';
 import 'card.dart';
 
-ListView homeFound(
+Widget homeFound(
     BuildContext context, HomeViewModel viewModel, CategoryData model) {
   return ListView(
     children: [
       Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-        height: MediaQuery.sizeOf(context).height * 0.6,
+        height: 505,
+        //height: MediaQuery.sizeOf(context).height * 0.6,
         color: AppColors.lightGreyColor,
         child: GridView.builder(
             shrinkWrap: true,
@@ -187,7 +188,16 @@ ListView homeFound(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            return popularRestaurants(viewModel, index, context);
+            return GestureDetector(
+                onTap: () {
+                  viewModel.navigateToProductDetailView(
+                      discountText: viewModel.popularResDiscountText[index],
+                      deliveryTime: viewModel.popularResDeliveryTimes[index],
+                      deliveryPrice: viewModel.popularResItemPrices[index],
+                      deliveryType: viewModel.popularResText[index],
+                      productName: viewModel.popularResItemNames[index]);
+                },
+                child: popularRestaurants(viewModel, index, context));
           },
         ),
       ),
