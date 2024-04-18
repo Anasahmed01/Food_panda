@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodpanda/src/reuseable_widget/text/custom_text.dart';
 import 'package:foodpanda/src/reuseable_widget/textfield/app_textfield.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
+import 'package:foodpanda/src/views/drawer/drawer.dart';
 import 'package:foodpanda/src/views/home/widget/found.dart';
 import 'package:stacked/stacked.dart';
 import 'home_viewmodel.dart';
@@ -19,7 +20,7 @@ class HomeView extends StatelessWidget {
       builder: (context, viewModel, child) {
         return Scaffold(
           drawerEnableOpenDragGesture: false,
-          drawer: const Drawer(),
+          drawer: appDrawer(),
           appBar: AppBar(
             iconTheme: IconThemeData(color: AppColors.white),
             title: Column(

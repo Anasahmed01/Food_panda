@@ -4,6 +4,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../app/app.locator.dart';
 import '../../utils/images/images.dart';
+import '../porduct_detail/product_detail.dart';
 
 class CategoryViewModel extends BaseViewModel {
   navigateToBack() {
@@ -17,6 +18,27 @@ class CategoryViewModel extends BaseViewModel {
       duration: const Duration(milliseconds: 500),
       transitionStyle: Transition.downToUp,
       curve: Curves.slowMiddle,
+    );
+  }
+   navigateToProductDetailView({
+    required String deliveryType,
+    required String deliveryPrice,
+    required String productName,
+    required String deliveryTime,
+    required String discountText,
+  }) {
+    locator<NavigationService>().navigateWithTransition(
+      ProductDetailView(
+        discountText: discountText,
+        deliveryType: deliveryType,
+        deliveryPrice: deliveryPrice,
+        productName: productName,
+        deliveryTime: deliveryTime,
+      ),
+      opaque: true,
+      duration: const Duration(milliseconds: 100),
+      transitionStyle: Transition.leftToRight,
+      curve: Curves.ease,
     );
   }
 

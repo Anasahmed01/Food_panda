@@ -104,7 +104,16 @@ Widget categoryFound(CategoryViewModel viewModel) {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return deliveryContainer(context, viewModel, index);
+              return GestureDetector(
+                  onTap: () {
+                    viewModel.navigateToProductDetailView(
+                        deliveryType: viewModel.popularResItemType[index],
+                        deliveryPrice: viewModel.popularResText[index],
+                        productName: viewModel.popularResItemNames[index],
+                        deliveryTime: viewModel.popularResDeliveryTimes[index],
+                        discountText: viewModel.popularResDiscountText[index]);
+                  },
+                  child: deliveryContainer(context, viewModel, index));
             },
           ),
         ),
@@ -136,7 +145,7 @@ Widget categoryFound(CategoryViewModel viewModel) {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                   child: const Icon(
-                    Icons.multitrack_audio_rounded,
+                    Icons.filter_list_alt,
                   ),
                 ),
               ),
@@ -210,7 +219,16 @@ Widget categoryFound(CategoryViewModel viewModel) {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 10),
-              child: deliveryContainer(context, viewModel, index),
+              child: GestureDetector(
+                  onTap: () {
+                    viewModel.navigateToProductDetailView(
+                        deliveryType: viewModel.popularResItemType[index],
+                        deliveryPrice: viewModel.popularResText[index],
+                        productName: viewModel.popularResItemNames[index],
+                        deliveryTime: viewModel.popularResDeliveryTimes[index],
+                        discountText: viewModel.popularResDiscountText[index]);
+                  },
+                  child: deliveryContainer(context, viewModel, index)),
             );
           },
         ),

@@ -44,7 +44,7 @@ class ProductDetailView extends StatelessWidget {
                 ),
                 CustomText.customSizedText(
                   text: deliveryTime,
-                  size: 14,
+                  size: 12,
                   color: AppColors.primaryColor,
                 ),
               ],
@@ -70,6 +70,7 @@ class ProductDetailView extends StatelessWidget {
             ],
           ),
           body: productFound(
+              viewModel: viewModel,
               discountText: discountText,
               productName: productName,
               deliveryPrice: deliveryPrice,

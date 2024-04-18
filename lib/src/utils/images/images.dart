@@ -26,4 +26,10 @@ class AppImages {
   static String pandaMart1 = 'assets/images/home/panda_mart1.webp';
   static String pandaMart2 = 'assets/images/home/panda_mart2.png';
   static String pandaMart3 = 'assets/images/home/panda_mart3.webp';
+
+  //product detail
+  static String product1 = 'assets/images/product_detail/product1.webp';
+  static String product2 = 'assets/images/product_detail/product2.webp';
+  static String product3 = 'assets/images/product_detail/product3.webp';
+  static String product4 = 'assets/images/product_detail/product4.webp';
 }
