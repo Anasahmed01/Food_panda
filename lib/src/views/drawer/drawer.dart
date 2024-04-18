@@ -27,103 +27,113 @@ Widget appDrawer() {
               child: AnimationLimiter(
                 child: AnimationConfiguration.synchronized(
                   duration: const Duration(milliseconds: 500),
-                  child: SlideAnimation(
-                    child: FadeInAnimation(
-                      child: Column(
-                        children: [
-                          Column(
-                            children: [
-                              SizedBox(
-                                  height: MediaQuery.of(context).size.height *
-                                      0.05),
-                              Container(
-                                color: AppColors.primaryColor,
-                                height: MediaQuery.of(context).size.height / 6,
-                                width: MediaQuery.of(context).size.width,
-                                child: Center(
-                                  child: GestureDetector(
-                                    onTap: () {},
-                                    child: Container(
-                                      height: 70,
-                                      width: 70,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(30),
-                                        image: DecorationImage(
-                                          image:
-                                              AssetImage(AppImages.pandaMart1),
-                                        ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(
+                          color: AppColors.primaryColor,
+                          height: MediaQuery.of(context).size.height / 3.8,
+                          width: MediaQuery.of(context).size.width,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 15.0, horizontal: 15),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  height:
+                                      MediaQuery.sizeOf(context).height / 32,
+                                ),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      color: AppColors.white,
+                                      borderRadius: BorderRadius.circular(100),
+                                      image: DecorationImage(
+                                        image: AssetImage(AppImages.pandaMart1),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(height: 10),
-                              Center(
-                                child: CustomText.customSizedText(
-                                  text: 'Jhon',
+                                CustomText.customSizedText(
+                                  text: 'Jhon Doe',
                                   size: 22,
                                   color: AppColors.white,
                                   fontWeight: FontWeight.w600,
                                 ),
-                              ),
-                              const SizedBox(height: 30),
-                            ],
-                          ),
-                          Expanded(
-                            child: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  listTile(
-                                    title: 'Become a pandapro',
-                                    icon: Icons.polymer_rounded,
-                                    onTap: () {},
-                                  ),
-                                  listTile(
-                                    title: 'Vouchers & offers',
-                                    icon: CupertinoIcons.ticket,
-                                    onTap: () {},
-                                  ),
-                                  listTile(
-                                    title: 'Favourites',
-                                    icon: CupertinoIcons.heart,
-                                    onTap: () {},
-                                  ),
-                                  listTile(
-                                    title: 'Orders & recordering',
-                                    icon: Icons.receipt_long_sharp,
-                                    onTap: () {},
-                                  ),
-                                  listTile(
-                                    title: 'View profile',
-                                    icon: CupertinoIcons.person,
-                                    onTap: () {},
-                                  ),
-                                  listTile(
-                                    title: 'Addresses',
-                                    icon: Icons.location_on_outlined,
-                                    onTap: () {},
-                                  ),
-                                  listTile(
-                                    title: 'panda rewards',
-                                    icon: Icons.workspace_premium_sharp,
-                                    onTap: () {},
-                                  ),
-                                  listTile(
-                                    title: 'Help center',
-                                    icon: Icons.headset_mic_outlined,
-                                    onTap: () {},
-                                  ),
-                                  listTile(
-                                    title: 'Logout',
-                                    icon: Icons.logout_outlined,
-                                    onTap: () {},
-                                  ),
-                                ],
-                              ),
+                              ],
                             ),
-                          )
-                        ],
-                      ),
+                          ),
+                        ),
+                        listTile(
+                          title: 'Become a pandapro',
+                          icon: Icons.polymer_rounded,
+                          onTap: () {},
+                        ),
+                        listTile(
+                          title: 'Vouchers & offers',
+                          icon: CupertinoIcons.ticket,
+                          onTap: () {},
+                        ),
+                        listTile(
+                          title: 'Favourites',
+                          icon: CupertinoIcons.heart,
+                          onTap: () {},
+                        ),
+                        listTile(
+                          title: 'Orders & recordering',
+                          icon: Icons.receipt_long_sharp,
+                          onTap: () {},
+                        ),
+                        listTile(
+                          title: 'View profile',
+                          icon: CupertinoIcons.person,
+                          onTap: () {},
+                        ),
+                        listTile(
+                          title: 'Addresses',
+                          icon: Icons.location_on_outlined,
+                          onTap: () {},
+                        ),
+                        listTile(
+                          title: 'panda rewards',
+                          icon: Icons.workspace_premium_sharp,
+                          onTap: () {},
+                        ),
+                        listTile(
+                          title: 'Help center',
+                          icon: Icons.help_outline,
+                          onTap: () {},
+                        ),
+                        listTile(
+                          title: 'foodpanda for business',
+                          icon: Icons.business_rounded,
+                          onTap: () {},
+                        ),
+                        Divider(
+                          thickness: 2,
+                          color: AppColors.lightGreyColor,
+                        ),
+                        listTile(
+                          title: 'Settings',
+                          isIcon: false,
+                          onTap: () {},
+                        ),
+                        listTile(
+                          title: 'Terms & Conditions / Privacy.',
+                          isIcon: false,
+                          onTap: () {},
+                        ),
+                        listTile(
+                          title: 'Logout',
+                          isIcon: false,
+                          onTap: () {},
+                        ),
+                      ],
                     ),
                   ),
                 ),
