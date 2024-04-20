@@ -30,6 +30,8 @@ class _MyAppState extends State<MyApp> {
       navigatorKey: StackedService.navigatorKey,
       onGenerateRoute: StackedRouter().onGenerateRoute,
       theme: ThemeData(
+          cardColor: AppColors.white,
+          cardTheme: CardTheme(color: AppColors.white),
           scaffoldBackgroundColor: AppColors.white,
           drawerTheme: DrawerThemeData(
             width: MediaQuery.sizeOf(context).width * 0.85,

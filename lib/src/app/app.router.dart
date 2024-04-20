@@ -5,13 +5,16 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i5;
+import 'package:flutter/cupertino.dart' as _i8;
+import 'package:flutter/material.dart' as _i7;
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/views/basic/splash/splash.dart' as _i2;
+import 'package:foodpanda/src/views/cart/cart.dart' as _i6;
 import 'package:foodpanda/src/views/category/category.dart' as _i4;
 import 'package:foodpanda/src/views/home/home.dart' as _i3;
+import 'package:foodpanda/src/views/porduct_detail/product_detail.dart' as _i5;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i6;
+import 'package:stacked_services/stacked_services.dart' as _i9;
 
 class Routes {
   static const splashView = '/';
@@ -20,10 +23,16 @@ class Routes {
 
   static const categoryView = '/category-view';
 
+  static const productDetailView = '/product-detail-view';
+
+  static const cartView = '/cart-view';
+
   static const all = <String>{
     splashView,
     homeView,
     categoryView,
+    productDetailView,
+    cartView,
   };
 }
 
@@ -41,26 +50,59 @@ class StackedRouter extends _i1.RouterBase {
       Routes.categoryView,
       page: _i4.CategoryView,
     ),
+    _i1.RouteDef(
+      Routes.productDetailView,
+      page: _i5.ProductDetailView,
+    ),
+    _i1.RouteDef(
+      Routes.cartView,
+      page: _i6.CartView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.SplashView: (data) {
-      return _i5.MaterialPageRoute<dynamic>(
+      return _i7.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.SplashView(),
         settings: data,
       );
     },
     _i3.HomeView: (data) {
-      return _i5.MaterialPageRoute<dynamic>(
+      return _i7.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.HomeView(),
         settings: data,
       );
     },
     _i4.CategoryView: (data) {
       final args = data.getArgs<CategoryViewArguments>(nullOk: false);
-      return _i5.MaterialPageRoute<dynamic>(
+      return _i7.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i4.CategoryView(key: args.key, categoryName: args.categoryName),
+        settings: data,
+      );
+    },
+    _i5.ProductDetailView: (data) {
+      final args = data.getArgs<ProductDetailViewArguments>(nullOk: false);
+      return _i7.MaterialPageRoute<dynamic>(
+        builder: (context) => _i5.ProductDetailView(
+            key: args.key,
+            deliveryTime: args.deliveryTime,
+            productName: args.productName,
+            deliveryType: args.deliveryType,
+            deliveryPrice: args.deliveryPrice,
+            discountText: args.discountText),
+        settings: data,
+      );
+    },
+    _i6.CartView: (data) {
+      final args = data.getArgs<CartViewArguments>(nullOk: false);
+      return _i7.MaterialPageRoute<dynamic>(
+        builder: (context) => _i6.CartView(
+            key: args.key,
+            productName: args.productName,
+            productPrice: args.productPrice,
+            image: args.image,
+            productDiscription: args.productDiscription),
         settings: data,
       );
     },
@@ -79,7 +121,7 @@ class CategoryViewArguments {
     required this.categoryName,
   });
 
-  final _i5.Key? key;
+  final _i8.Key? key;
 
   final String categoryName;
 
@@ -100,7 +142,100 @@ class CategoryViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i6.NavigationService {
+class ProductDetailViewArguments {
+  const ProductDetailViewArguments({
+    this.key,
+    required this.deliveryTime,
+    required this.productName,
+    required this.deliveryType,
+    required this.deliveryPrice,
+    required this.discountText,
+  });
+
+  final _i8.Key? key;
+
+  final String deliveryTime;
+
+  final String productName;
+
+  final String deliveryType;
+
+  final String deliveryPrice;
+
+  final String discountText;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "deliveryTime": "$deliveryTime", "productName": "$productName", "deliveryType": "$deliveryType", "deliveryPrice": "$deliveryPrice", "discountText": "$discountText"}';
+  }
+
+  @override
+  bool operator ==(covariant ProductDetailViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key &&
+        other.deliveryTime == deliveryTime &&
+        other.productName == productName &&
+        other.deliveryType == deliveryType &&
+        other.deliveryPrice == deliveryPrice &&
+        other.discountText == discountText;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^
+        deliveryTime.hashCode ^
+        productName.hashCode ^
+        deliveryType.hashCode ^
+        deliveryPrice.hashCode ^
+        discountText.hashCode;
+  }
+}
+
+class CartViewArguments {
+  const CartViewArguments({
+    this.key,
+    required this.productName,
+    required this.productPrice,
+    required this.image,
+    required this.productDiscription,
+  });
+
+  final _i8.Key? key;
+
+  final String productName;
+
+  final String productPrice;
+
+  final String image;
+
+  final String productDiscription;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "productName": "$productName", "productPrice": "$productPrice", "image": "$image", "productDiscription": "$productDiscription"}';
+  }
+
+  @override
+  bool operator ==(covariant CartViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key &&
+        other.productName == productName &&
+        other.productPrice == productPrice &&
+        other.image == image &&
+        other.productDiscription == productDiscription;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^
+        productName.hashCode ^
+        productPrice.hashCode ^
+        image.hashCode ^
+        productDiscription.hashCode;
+  }
+}
+
+extension NavigatorStateExtension on _i9.NavigationService {
   Future<dynamic> navigateToSplashView([
     int? routerId,
     bool preventDuplicates = true,
@@ -130,7 +265,7 @@ extension NavigatorStateExtension on _i6.NavigationService {
   }
 
   Future<dynamic> navigateToCategoryView({
-    _i5.Key? key,
+    _i8.Key? key,
     required String categoryName,
     int? routerId,
     bool preventDuplicates = true,
@@ -140,6 +275,58 @@ extension NavigatorStateExtension on _i6.NavigationService {
   }) async {
     return navigateTo<dynamic>(Routes.categoryView,
         arguments: CategoryViewArguments(key: key, categoryName: categoryName),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToProductDetailView({
+    _i8.Key? key,
+    required String deliveryTime,
+    required String productName,
+    required String deliveryType,
+    required String deliveryPrice,
+    required String discountText,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.productDetailView,
+        arguments: ProductDetailViewArguments(
+            key: key,
+            deliveryTime: deliveryTime,
+            productName: productName,
+            deliveryType: deliveryType,
+            deliveryPrice: deliveryPrice,
+            discountText: discountText),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToCartView({
+    _i8.Key? key,
+    required String productName,
+    required String productPrice,
+    required String image,
+    required String productDiscription,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.cartView,
+        arguments: CartViewArguments(
+            key: key,
+            productName: productName,
+            productPrice: productPrice,
+            image: image,
+            productDiscription: productDiscription),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -175,7 +362,7 @@ extension NavigatorStateExtension on _i6.NavigationService {
   }
 
   Future<dynamic> replaceWithCategoryView({
-    _i5.Key? key,
+    _i8.Key? key,
     required String categoryName,
     int? routerId,
     bool preventDuplicates = true,
@@ -185,6 +372,58 @@ extension NavigatorStateExtension on _i6.NavigationService {
   }) async {
     return replaceWith<dynamic>(Routes.categoryView,
         arguments: CategoryViewArguments(key: key, categoryName: categoryName),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithProductDetailView({
+    _i8.Key? key,
+    required String deliveryTime,
+    required String productName,
+    required String deliveryType,
+    required String deliveryPrice,
+    required String discountText,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(Routes.productDetailView,
+        arguments: ProductDetailViewArguments(
+            key: key,
+            deliveryTime: deliveryTime,
+            productName: productName,
+            deliveryType: deliveryType,
+            deliveryPrice: deliveryPrice,
+            discountText: discountText),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithCartView({
+    _i8.Key? key,
+    required String productName,
+    required String productPrice,
+    required String image,
+    required String productDiscription,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(Routes.cartView,
+        arguments: CartViewArguments(
+            key: key,
+            productName: productName,
+            productPrice: productPrice,
+            image: image,
+            productDiscription: productDiscription),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

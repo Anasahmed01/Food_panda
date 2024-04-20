@@ -265,7 +265,14 @@ Widget productFound(
                   itemCount: viewModel.productDetailImg.length,
                   itemBuilder: (BuildContext ctx, index) {
                     return GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        viewModel.navigateToCartView(
+                            productDiscription:
+                                viewModel.productDetailDiscription[index],
+                            productImg: viewModel.productDetailImg[index],
+                            productName: viewModel.productDetailNames[index],
+                            productPrice: viewModel.productPrices[index]);
+                      },
                       child: productDetailCon(
                           image: viewModel.productDetailImg[index],
                           productName: viewModel.productDetailNames[index],
@@ -348,78 +355,107 @@ Widget productFound(
                 duration: const Duration(milliseconds: 500),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                  child: Row(
-                    children: [
-                      Flexible(
-                        flex: 3,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomText.customSizedText(
-                                text: viewModel.productDetailNames[index],
-                                maxLine: 1,
-                                maxFontSize: 16,
-                                color: AppColors.blackColor,
-                                fontWeight: FontWeight.w800,
-                                textAlign: TextAlign.left,
-                                minFontSize: 16),
-                            const SizedBox(
-                              height: 2,
-                            ),
-                            CustomText.customSizedText(
-                                text: dummyText,
-                                maxLine: 2,
-                                maxFontSize: 12,
-                                color: AppColors.greyColor,
-                                textAlign: TextAlign.left,
-                                minFontSize: 12),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            CustomText.customSizedText(
-                                text:
-                                    'from Rs. ${viewModel.productPrices[index]}',
-                                maxLine: 1,
-                                maxFontSize: 14,
-                                color: AppColors.blackColor,
-                                textAlign: TextAlign.left,
-                                minFontSize: 14),
-                          ],
-                        ),
-                      ),
-                      Flexible(
-                        flex: 1,
-                        child: SizedBox(
-                          height: 100,
-                          child: Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  viewModel.productDetailImg[index],
+                  child: GestureDetector(
+                    onTap: () {
+                      viewModel.navigateToCartView(
+                          productDiscription:
+                              viewModel.productDetailDiscription[index],
+                          productImg: viewModel.productDetailImg[index],
+                          productName: viewModel.productDetailNames[index],
+                          productPrice: viewModel.productPrices[index]);
+                    },
+                    child: Container(
+                      color: AppColors.white,
+                      child: Row(
+                        children: [
+                          Flexible(
+                            flex: 3,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomText.customSizedText(
+                                    text: viewModel.productDetailNames[index],
+                                    maxLine: 1,
+                                    maxFontSize: 16,
+                                    color: AppColors.blackColor,
+                                    fontWeight: FontWeight.w800,
+                                    textAlign: TextAlign.left,
+                                    minFontSize: 16),
+                                const SizedBox(
+                                  height: 2,
                                 ),
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                right: 0,
-                                child: Container(
-                                  margin: const EdgeInsets.only(right: 5),
-                                  decoration: BoxDecoration(
-                                      color: AppColors.primaryColor,
-                                      borderRadius: BorderRadius.circular(30)),
-                                  padding: const EdgeInsets.all(3),
-                                  child: Icon(
-                                    Icons.add,
-                                    color: AppColors.white,
-                                    size: 24,
-                                  ),
+                                CustomText.customSizedText(
+                                    text: viewModel
+                                        .productDetailDiscription[index],
+                                    maxLine: 2,
+                                    maxFontSize: 12,
+                                    color: AppColors.greyColor,
+                                    textAlign: TextAlign.left,
+                                    minFontSize: 12),
+                                const SizedBox(
+                                  height: 20,
                                 ),
-                              ),
-                            ],
+                                CustomText.customSizedText(
+                                    text:
+                                        'from Rs. ${viewModel.productPrices[index]}',
+                                    maxLine: 1,
+                                    maxFontSize: 14,
+                                    color: AppColors.blackColor,
+                                    textAlign: TextAlign.left,
+                                    minFontSize: 14),
+                              ],
+                            ),
                           ),
-                        ),
+                          Flexible(
+                            flex: 1,
+                            child: SizedBox(
+                              height: 100,
+                              child: Stack(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.asset(
+                                      viewModel.productDetailImg[index],
+                                    ),
+                                  ),
+                                  Positioned(
+                                    bottom: 0,
+                                    right: 0,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        viewModel.navigateToCartView(
+                                            productDiscription: viewModel
+                                                    .productDetailDiscription[
+                                                index],
+                                            productImg: viewModel
+                                                .productDetailImg[index],
+                                            productName: viewModel
+                                                .productDetailNames[index],
+                                            productPrice:
+                                                viewModel.productPrices[index]);
+                                      },
+                                      child: Container(
+                                        margin: const EdgeInsets.only(right: 5),
+                                        decoration: BoxDecoration(
+                                            color: AppColors.primaryColor,
+                                            borderRadius:
+                                                BorderRadius.circular(30)),
+                                        padding: const EdgeInsets.all(3),
+                                        child: Icon(
+                                          Icons.add,
+                                          color: AppColors.white,
+                                          size: 24,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),
