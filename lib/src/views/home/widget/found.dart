@@ -189,6 +189,7 @@ Widget homeFound(
             return GestureDetector(
                 onTap: () {
                   viewModel.navigateToProductDetailView(
+                      productImage: viewModel.popularResImg[index],
                       discountText: viewModel.popularResDiscountText[index],
                       deliveryTime: viewModel.popularResDeliveryTimes[index],
                       deliveryPrice: viewModel.popularResItemPrices[index],

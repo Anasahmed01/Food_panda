@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../../reuseable_widget/text/custom_text.dart';
 import '../../../utils/colors/app_colors.dart';
-import '../cart_viewmodel.dart';
+import '../order_details_viewmodel.dart';
 import 'widget.dart';
 
 Widget found(
     {required BuildContext context,
-    required CartViewModel viewModel,
+    required OrderDetailViewModel viewModel,
     required String productDiscription,
     required String productPrice,
     required String productName}) {
@@ -277,7 +277,7 @@ Widget found(
   );
 }
 
-Future bottomSheetX(BuildContext context, CartViewModel viewModel) {
+Future bottomSheetX(BuildContext context, OrderDetailViewModel viewModel) {
   return showModalBottomSheet(
     backgroundColor: AppColors.white,
     context: context,

@@ -107,6 +107,7 @@ Widget categoryFound(CategoryViewModel viewModel) {
               return GestureDetector(
                   onTap: () {
                     viewModel.navigateToProductDetailView(
+                        productImage: viewModel.popularResImg[index],
                         deliveryType: viewModel.popularResItemType[index],
                         deliveryPrice: viewModel.popularResText[index],
                         productName: viewModel.popularResItemNames[index],
@@ -222,6 +223,7 @@ Widget categoryFound(CategoryViewModel viewModel) {
               child: GestureDetector(
                   onTap: () {
                     viewModel.navigateToProductDetailView(
+                        productImage: viewModel.popularResImg[index],
                         deliveryType: viewModel.popularResItemType[index],
                         deliveryPrice: viewModel.popularResText[index],
                         productName: viewModel.popularResItemNames[index],

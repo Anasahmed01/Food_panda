@@ -26,9 +26,11 @@ class CategoryViewModel extends BaseViewModel {
     required String productName,
     required String deliveryTime,
     required String discountText,
+    required String productImage,
   }) {
     locator<NavigationService>().navigateWithTransition(
       ProductDetailView(
+        productImage: productImage,
         discountText: discountText,
         deliveryType: deliveryType,
         deliveryPrice: deliveryPrice,

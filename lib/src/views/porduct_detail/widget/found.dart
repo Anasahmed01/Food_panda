@@ -8,6 +8,7 @@ import 'package:foodpanda/src/views/porduct_detail/widget/product_container.dart
 Widget productFound(
     {required ProductDetailViewModel viewModel,
     required String productName,
+    required String productImage,
     required String deliveryType,
     required String deliveryPrice,
     required String discountText,
@@ -18,13 +19,27 @@ Widget productFound(
       children: [
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12),
+          margin: const EdgeInsets.only(top: 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomText.customSizedText(
-                  text: productName, fontWeight: FontWeight.w800, size: 18),
+              Row(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(right: 15),
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                            fit: BoxFit.fill, image: AssetImage(productImage))),
+                  ),
+                  CustomText.customSizedText(
+                      text: productName, fontWeight: FontWeight.w800, size: 18),
+                ],
+              ),
               const SizedBox(
-                height: 12,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

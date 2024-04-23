@@ -11,13 +11,14 @@ class ProductDetailView extends StatelessWidget {
   final String deliveryPrice;
   final String productName;
   final String discountText;
+  final String productImage;
   const ProductDetailView(
       {super.key,
       required this.deliveryTime,
       required this.productName,
       required this.deliveryType,
       required this.deliveryPrice,
-      required this.discountText});
+      required this.discountText, required this.productImage,});
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +72,7 @@ class ProductDetailView extends StatelessWidget {
           ),
           body: productFound(
               viewModel: viewModel,
+              productImage: productImage,
               discountText: discountText,
               productName: productName,
               deliveryPrice: deliveryPrice,

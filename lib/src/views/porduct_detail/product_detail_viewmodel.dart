@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodpanda/src/views/cart/cart.dart';
+import 'package:foodpanda/src/views/order_details/order_details.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../app/app.locator.dart';
@@ -17,7 +17,7 @@ class ProductDetailViewModel extends BaseViewModel {
       required String productPrice,
       required String productDiscription}) {
     locator<NavigationService>().navigateWithTransition(
-      CartView(
+      OrderDetailView(
         image: productImg,
         productName: productName,
         productPrice: productPrice,
