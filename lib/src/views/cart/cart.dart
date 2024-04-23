@@ -67,33 +67,57 @@ class CartView extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                    margin: const EdgeInsets.only(top: 10),
-                    decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
-                        borderRadius: BorderRadius.circular(30)),
-                    padding: const EdgeInsets.all(5),
-                    child: Icon(
-                      Icons.remove,
-                      color: AppColors.white,
-                    )),
+                GestureDetector(
+                  onTap: viewModel.required == true
+                      ? () {
+                          if (viewModel.quantity <= 1) {
+                            viewModel.navigateToBack();
+                          }
+                          viewModel.decrement();
+                          viewModel.rebuildUi();
+                        }
+                      : () {},
+                  child: Container(
+                      margin: const EdgeInsets.only(top: 10),
+                      decoration: BoxDecoration(
+                          color: viewModel.required == true
+                              ? AppColors.primaryColor
+                              : AppColors.greyColor,
+                          borderRadius: BorderRadius.circular(30)),
+                      padding: const EdgeInsets.all(5),
+                      child: Icon(
+                        Icons.remove,
+                        color: AppColors.white,
+                      )),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0),
                   child: CustomText.customSizedText(
-                      text: '5', color: AppColors.blackColor),
+                      text: viewModel.quantity.toString(),
+                      color: AppColors.blackColor),
                 ),
-                Container(
-                    margin: const EdgeInsets.only(top: 10),
-                    decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
-                        borderRadius: BorderRadius.circular(30)),
-                    padding: const EdgeInsets.all(5),
-                    child: Icon(
-                      Icons.add,
-                      color: AppColors.white,
-                    )),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: viewModel.required == true
+                      ? () {
+                          viewModel.increment();
+                          viewModel.rebuildUi();
+                        }
+                      : () {},
+                  child: Container(
+                      margin: const EdgeInsets.only(top: 10),
+                      decoration: BoxDecoration(
+                          color: viewModel.required == true
+                              ? AppColors.primaryColor
+                              : AppColors.greyColor,
+                          borderRadius: BorderRadius.circular(30)),
+                      padding: const EdgeInsets.all(5),
+                      child: Icon(
+                        Icons.add,
+                        color: AppColors.white,
+                      )),
+                ),
+                GestureDetector(
+                  onTap: viewModel.required == true ? () {} : () {},
                   child: Container(
                     margin: const EdgeInsets.only(
                         left: 8, top: 15, right: 8, bottom: 10),
@@ -101,7 +125,9 @@ class CartView extends StatelessWidget {
                     height: 50,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: AppColors.primaryColor),
+                        color: viewModel.required == true
+                            ? AppColors.primaryColor
+                            : AppColors.greyColor),
                     child: Center(
                       child: CustomText.customSizedText(
                           text: 'Add to cart', color: AppColors.white),

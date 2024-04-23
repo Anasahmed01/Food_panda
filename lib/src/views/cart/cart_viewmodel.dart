@@ -14,6 +14,8 @@ class CartViewModel extends BaseViewModel {
     false,
   ];
 
+  bool required = false;
+
   List softDrinks = [
     'Next Cola - 345 ml',
     'Mirinda - 345 ml',
@@ -53,4 +55,16 @@ class CartViewModel extends BaseViewModel {
     false,
     false,
   ];
+
+  var quantity = 1;
+
+  void increment() {
+    if (quantity >= 1) {
+      quantity++;
+    }
+  }
+
+  void decrement() {
+    quantity--;
+  }
 }

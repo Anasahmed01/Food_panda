@@ -11,8 +11,6 @@ Widget homeFound(
     children: [
       Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-        height: 505,
-        //height: MediaQuery.sizeOf(context).height * 0.6,
         color: AppColors.lightGreyColor,
         child: GridView.builder(
             shrinkWrap: true,
@@ -290,91 +288,3 @@ Widget homeFound(
     ],
   );
 }
-
-
-// categoryCard(
-//                       height: MediaQuery.sizeOf(context).height * 0.2,
-//                       width: MediaQuery.sizeOf(context).width * 0.43,
-//                       title: viewModel.getData == null
-//                           ? ''
-//                           : viewModel.getData!.data[0].title,
-//                       subTitle: viewModel.getData == null
-//                           ? ''
-//                           : viewModel.getData!.data[0].subtitle,
-//                       context: context),
-
-
-
-
-
-
-
-
-
-
-
-
-//old code
-
-
-
-
-
-// Padding(
-//           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceAround,
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               Column(
-//                 children: [
-                  
-                  
-//                   categoryCard(
-//                       height: MediaQuery.sizeOf(context).height * 0.1,
-//                       width: MediaQuery.sizeOf(context).width * 0.43,
-//                       title: viewModel.getData == null
-//                           ? ''
-//                           : viewModel.getData!.data[4].title,
-//                       subTitle: viewModel.getData == null
-//                           ? ''
-//                           : viewModel.getData!.data[4].subtitle,
-//                       context: context),
-//                 ],
-//               ),
-//               Column(
-//                 children: [
-//                   categoryCard(
-//                       height: MediaQuery.sizeOf(context).height * 0.2,
-//                       width: MediaQuery.sizeOf(context).width * 0.43,
-//                       title: viewModel.getData == null
-//                           ? ''
-//                           : viewModel.getData!.data[1].title,
-//                       subTitle: viewModel.getData == null
-//                           ? ''
-//                           : viewModel.getData!.data[3].subtitle,
-//                       context: context),
-//                   Padding(
-//                     padding: const EdgeInsets.symmetric(vertical: 10),
-//                     child: categoryCard(
-//                         height: MediaQuery.sizeOf(context).height * 0.1,
-//                         width: MediaQuery.sizeOf(context).width * 0.43,
-//                         title: viewModel.getData == null
-//                             ? ''
-//                             : viewModel.getData!.data[5].title,
-//                         subTitle: viewModel.getData == null
-//                             ? ''
-//                             : viewModel.getData!.data[5].subtitle,
-//                         context: context),
-//                   ),
-//                   categoryCard(
-//                       height: MediaQuery.sizeOf(context).height * 0.1,
-//                       width: MediaQuery.sizeOf(context).width * 0.43,
-//                       title: 'Pandago',
-//                       subTitle: 'Send parcels in a tap',
-//                       context: context),
-//                 ],
-//               ),
-//             ],
-//           ),
-//         ),

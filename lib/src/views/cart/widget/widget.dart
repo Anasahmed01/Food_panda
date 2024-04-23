@@ -24,6 +24,15 @@ Widget feedbackField() {
   );
 }
 
+extension SB on num {
+  SizedBox get ph => SizedBox(
+        height: toDouble(),
+      );
+  SizedBox get pw => SizedBox(
+        height: toDouble(),
+      );
+}
+
 // BottomSheet bottomSheet(CartViewModel viewModel, VoidCallback back) {
 //   return BottomSheet(
 //     shadowColor: AppColors.blackColor,

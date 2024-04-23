@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/del_custom_model/cat_del_model.dart';
 import 'package:foodpanda/src/models/category_data.dart';

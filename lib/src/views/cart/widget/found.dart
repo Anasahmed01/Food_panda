@@ -70,20 +70,27 @@ Widget found(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 6, vertical: 2),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: AppColors.primaryColor),
+                          borderRadius: BorderRadius.circular(20),
+                          color: viewModel.required == true
+                              ? AppColors.white
+                              : AppColors.primaryColor,
+                        ),
                         child: CustomText.customSizedText(
-                            text: 'Required',
-                            size: 12,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white),
+                          text: viewModel.required == true
+                              ? 'Complete'
+                              : 'Required',
+                          size: 12,
+                          fontWeight: FontWeight.w700,
+                          color: viewModel.required == true
+                              ? AppColors.blackColor
+                              : AppColors.white,
+                        ),
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsets.only(top: 10.0, bottom: 20, left: 15),
+                  padding: const EdgeInsets.only(top: 10.0, left: 15),
                   child: CustomText.customSizedText(
                       text: 'Select one',
                       size: 12,
@@ -110,6 +117,7 @@ Widget found(
                                     i < viewModel.isSelected.length;
                                     i++) {
                                   viewModel.isSelected[i] = (value == i);
+                                  viewModel.required = true;
                                 }
                                 viewModel.rebuildUi();
                               },
@@ -129,9 +137,7 @@ Widget found(
               ],
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          10.ph,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
