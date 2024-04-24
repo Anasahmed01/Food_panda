@@ -4,9 +4,21 @@ import 'package:foodpanda/src/reuseable_widget/text/custom_text.dart';
 import 'package:foodpanda/src/views/cart/cart_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 import '../../utils/colors/app_colors.dart';
+import 'widget/found.dart';
 
 class CartView extends StatelessWidget {
-  const CartView({super.key});
+  final String productName;
+  final String productPrice;
+  final String productImage;
+  final String productQuantity;
+  //final String requiredItem;
+  const CartView({
+    super.key,
+    required this.productName,
+    required this.productPrice,
+    required this.productImage,
+    required this.productQuantity,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,26 +27,46 @@ class CartView extends StatelessWidget {
       builder: (context, viewModel, child) {
         return Scaffold(
           appBar: AppBar(
-            titleSpacing: 15,
             backgroundColor: AppColors.white,
             automaticallyImplyLeading: false,
             title: GestureDetector(
               onTap: () => viewModel.navigateToBack(),
               child: Row(
                 children: [
-                  Icon(
-                    CupertinoIcons.xmark,
-                    size: 18,
-                    color: AppColors.primaryColor,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Icon(
+                      CupertinoIcons.xmark,
+                      size: 20,
+                      color: AppColors.primaryColor,
+                    ),
                   ),
                   Column(
-                    children: [CustomText.customSizedText(text: 'Cart'),CustomText.customSizedText(text: 'Cart')],
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomText.customSizedText(
+                          text: 'Cart', fontWeight: FontWeight.w800, size: 18),
+                      CustomText.customSizedText(text: productName)
+                    ],
                   ),
                 ],
               ),
             ),
+            // bottom: PreferredSize(
+            //   preferredSize: Size.fromHeight(20),
+            //   child: Row(
+            //     children: [
+            //       TimelineTile(),
+            //     ],
+            //   ),
+            // ),
           ),
-          body: Container(),
+          body: cartFound(
+              viewModel: viewModel,
+              quantity: productQuantity,
+              productImage: productImage,
+              productName: productName,
+              productPrice: productPrice),
         );
       },
     );

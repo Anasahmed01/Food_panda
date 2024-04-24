@@ -9,9 +9,21 @@ class OrderDetailViewModel extends BaseViewModel {
     locator<NavigationService>().back();
   }
 
-  navigateToCartView() {
+  navigateToCartView({
+    required String productImage,
+    required String productName,
+    required String productPrice,
+    required String productQuantity,
+    required String requiredItem,
+  }) {
     locator<NavigationService>().navigateWithTransition(
-      const CartView(),
+      CartView(
+        productImage: productImage,
+        productName: productName,
+        productPrice: productPrice,
+        productQuantity: productQuantity,
+        // requiredItem: requiredItem,
+      ),
       opaque: true,
       duration: const Duration(milliseconds: 500),
       transitionStyle: Transition.downToUp,
@@ -34,6 +46,8 @@ class OrderDetailViewModel extends BaseViewModel {
     'dew - 345 ml',
     '7up - 345 ml',
   ];
+
+  String requideSaveData = '';
 
   List<bool> isChecked = [
     false,

@@ -102,6 +102,8 @@ Widget found(
                   shrinkWrap: true,
                   itemCount: viewModel.isSelected.length,
                   itemBuilder: (context, index) {
+                    // viewModel.requideSaveData = viewModel.softDrinks[index];
+                    // print('Req Data${viewModel.requideSaveData}');
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -118,6 +120,7 @@ Widget found(
                                     i++) {
                                   viewModel.isSelected[i] = (value == i);
                                   viewModel.required = true;
+                                  // viewModel.requideSaveData =
                                 }
                                 viewModel.rebuildUi();
                               },

@@ -121,7 +121,13 @@ class OrderDetailView extends StatelessWidget {
                 GestureDetector(
                   onTap: viewModel.required == true
                       ? () {
-                          viewModel.navigateToCartView();
+                          viewModel.navigateToCartView(
+                            productImage: image,
+                            productName: productName,
+                            productPrice: productPrice,
+                            productQuantity: viewModel.quantity.toString(),
+                            requiredItem: viewModel.requideSaveData,
+                          );
                         }
                       : () {},
                   child: Container(

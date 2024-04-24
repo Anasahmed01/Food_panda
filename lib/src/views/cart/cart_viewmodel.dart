@@ -7,4 +7,6 @@ class CartViewModel extends BaseViewModel {
   navigateToBack() {
     locator<NavigationService>().back();
   }
+
+  bool customIcon = false;
 }
