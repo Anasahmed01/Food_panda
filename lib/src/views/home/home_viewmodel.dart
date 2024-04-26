@@ -6,11 +6,12 @@ import 'package:foodpanda/src/del_custom_model/popular_restaurants.dart';
 import 'package:foodpanda/src/models/category_data.dart';
 import 'package:foodpanda/src/utils/images/images.dart';
 import 'package:foodpanda/src/views/category/category.dart';
-import 'package:foodpanda/src/views/porduct_detail/product_detail.dart';
+import 'package:foodpanda/src/views/resturant_detail/resturant_detail.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../app/app.locator.dart';
 import '../../models/popular_restaurant.dart';
+import '../cart/cart.dart';
 
 class HomeViewModel extends BaseViewModel {
   var scaffoldKey = GlobalKey<ScaffoldState>();
@@ -27,22 +28,38 @@ class HomeViewModel extends BaseViewModel {
     );
   }
 
+  // navigateToCartView({
+  //   required String resturantName,
+  //   required String deliveryTime,
+  // }) {
+  //   locator<NavigationService>().navigateWithTransition(
+  //     CartView(
+  //       deliveryTime: deliveryTime,
+  //       resturantName: resturantName,
+  //     ),
+  //     opaque: true,
+  //     duration: const Duration(milliseconds: 500),
+  //     transitionStyle: Transition.downToUp,
+  //     curve: Curves.slowMiddle,
+  //   );
+  // }
+
   navigateToProductDetailView(
       {required String deliveryType,
       required String deliveryPrice,
-      required String productName,
+      required String resturantName,
       required String deliveryTime,
       required String discountText,
-      required String productImage,
-      required String productRating}) {
+      required String resturantImage,
+      required String resturantRating}) {
     locator<NavigationService>().navigateWithTransition(
-      ProductDetailView(
-        productRating: productRating,
-        productImage: productImage,
+      ResturantDetailView(
+        resturantRating: resturantRating,
+        resturantImage: resturantImage,
         discountText: discountText,
         deliveryType: deliveryType,
         deliveryPrice: deliveryPrice,
-        productName: productName,
+        resturantName: resturantName,
         deliveryTime: deliveryTime,
       ),
       opaque: true,
@@ -101,7 +118,6 @@ class HomeViewModel extends BaseViewModel {
     'Fish rise',
   ];
 
- 
   //Panda Mart data
 
   List pandaMartImg = [

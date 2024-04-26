@@ -4,7 +4,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../app/app.locator.dart';
 import '../../utils/images/images.dart';
-import '../porduct_detail/product_detail.dart';
+import '../resturant_detail/resturant_detail.dart';
 
 class CategoryViewModel extends BaseViewModel {
   navigateToBack() {
@@ -21,23 +21,23 @@ class CategoryViewModel extends BaseViewModel {
     );
   }
 
-  navigateToProductDetailView({
+  navigateToResturantDetailView({
     required String deliveryType,
     required String deliveryPrice,
-    required String productName,
+    required String resturantName,
     required String deliveryTime,
     required String discountText,
-    required String productImage,
-    required String productRating,
+    required String resturantImage,
+    required String resturantRating,
   }) {
     locator<NavigationService>().navigateWithTransition(
-      ProductDetailView(
-        productRating: productRating,
-        productImage: productImage,
+      ResturantDetailView(
+        resturantRating: resturantRating,
+        resturantImage: resturantImage,
         discountText: discountText,
         deliveryType: deliveryType,
         deliveryPrice: deliveryPrice,
-        productName: productName,
+        resturantName: resturantName,
         deliveryTime: deliveryTime,
       ),
       opaque: true,

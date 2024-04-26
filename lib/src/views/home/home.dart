@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/reuseable_widget/text/custom_text.dart';
 import 'package:foodpanda/src/reuseable_widget/textfield/app_textfield.dart';
@@ -40,14 +41,20 @@ class HomeView extends StatelessWidget {
                 ),
               ],
             ),
-            actions: const [
+            actions: [
               SizedBox(
                 width: 90,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Icon(Icons.favorite_border_rounded),
-                    Icon(Icons.shopping_bag_outlined),
+                    const Icon(Icons.favorite_border_rounded),
+                    GestureDetector(
+                        onTap: () {
+                          // viewModel.navigateToCartView(
+                          //     deliveryTime: 'viewModel.getResData.data',
+                          //     resturantName: 'resturantName');
+                        },
+                        child: const Icon(Icons.shopping_bag_outlined)),
                   ],
                 ),
               )

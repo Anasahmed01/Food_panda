@@ -7,17 +7,16 @@ import '../../utils/colors/app_colors.dart';
 import 'widget/found.dart';
 
 class CartView extends StatelessWidget {
+  final String resturantName;
+  final String deliveryTime;
   final String productName;
   final String productPrice;
   final String productImage;
-  final String productQuantity;
-  //final String requiredItem;
+  
   const CartView({
     super.key,
-    required this.productName,
-    required this.productPrice,
-    required this.productImage,
-    required this.productQuantity,
+    required this.resturantName,
+    required this.deliveryTime, required this.productName, required this.productPrice, required this.productImage,
   });
 
   @override
@@ -47,7 +46,7 @@ class CartView extends StatelessWidget {
                   children: [
                     CustomText.customSizedText(
                         text: 'Cart', fontWeight: FontWeight.w800, size: 18),
-                    CustomText.customSizedText(text: productName)
+                    CustomText.customSizedText(text: resturantName)
                   ],
                 ),
               ],
@@ -61,12 +60,12 @@ class CartView extends StatelessWidget {
             //   ),
             // ),
           ),
-          body: cartFound(
-              viewModel: viewModel,
-              quantity: productQuantity,
-              productImage: productImage,
-              productName: productName,
-              productPrice: productPrice),
+          body: SingleChildScrollView(
+            child: cartFound(
+                viewModel: viewModel,
+                deliveryTime: deliveryTime,
+                resturantName: resturantName),
+          ),
           bottomNavigationBar: Container(
             padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
             height: 140,

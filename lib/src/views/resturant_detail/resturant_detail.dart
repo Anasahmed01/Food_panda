@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:foodpanda/src/views/porduct_detail/product_detail_viewmodel.dart';
-import 'package:foodpanda/src/views/porduct_detail/widget/found.dart';
+import 'package:foodpanda/src/views/resturant_detail/resturant_detail_viewmodel.dart';
+import 'package:foodpanda/src/views/resturant_detail/widget/found.dart';
 import 'package:stacked/stacked.dart';
 import '../../reuseable_widget/text/custom_text.dart';
 import '../../utils/colors/app_colors.dart';
 
-class ProductDetailView extends StatelessWidget {
+class ResturantDetailView extends StatelessWidget {
   final String deliveryTime;
   final String deliveryType;
   final String deliveryPrice;
-  final String productName;
+  final String resturantName;
   final String discountText;
-  final String productImage;
-  final String productRating;
-  const ProductDetailView({
+  final String resturantImage;
+  final String resturantRating;
+  const ResturantDetailView({
     super.key,
     required this.deliveryTime,
-    required this.productName,
+    required this.resturantName,
     required this.deliveryType,
     required this.deliveryPrice,
     required this.discountText,
-    required this.productImage,
-    required this.productRating,
+    required this.resturantImage,
+    required this.resturantRating,
   });
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      viewModelBuilder: () => ProductDetailViewModel(),
+      viewModelBuilder: () => ResturantDetailViewModel(),
       onViewModelReady: (viewModel) => viewModel.init(),
       builder: (context, viewModel, child) {
         return Scaffold(
@@ -76,11 +76,12 @@ class ProductDetailView extends StatelessWidget {
             ],
           ),
           body: productFound(
-              storeRating: productRating,
+              model: viewModel.model!,
+              resturantRating: resturantRating,
               viewModel: viewModel,
-              productImage: productImage,
+              resturantImage: resturantImage,
               discountText: discountText,
-              productName: productName,
+              resturantName: resturantName,
               deliveryPrice: deliveryPrice,
               deliveryTime: deliveryTime,
               deliveryType: deliveryType),

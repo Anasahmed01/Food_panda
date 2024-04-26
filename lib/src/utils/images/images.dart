@@ -32,4 +32,7 @@ class AppImages {
   static String product2 = 'assets/images/product_detail/product2.webp';
   static String product3 = 'assets/images/product_detail/product3.webp';
   static String product4 = 'assets/images/product_detail/product4.webp';
+
+  //cart
+  static String delivery = 'assets/images/cart_img/delivery.png';
 }

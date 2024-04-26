@@ -14,7 +14,8 @@ import 'package:foodpanda/src/views/cart/cart.dart' as _i7;
 import 'package:foodpanda/src/views/category/category.dart' as _i4;
 import 'package:foodpanda/src/views/home/home.dart' as _i3;
 import 'package:foodpanda/src/views/order_details/order_details.dart' as _i6;
-import 'package:foodpanda/src/views/porduct_detail/product_detail.dart' as _i5;
+import 'package:foodpanda/src/views/resturant_detail/resturant_detail.dart'
+    as _i5;
 import 'package:stacked/stacked.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i11;
 
@@ -25,7 +26,7 @@ class Routes {
 
   static const categoryView = '/category-view';
 
-  static const productDetailView = '/product-detail-view';
+  static const resturantDetailView = '/resturant-detail-view';
 
   static const orderDetailView = '/order-detail-view';
 
@@ -35,7 +36,7 @@ class Routes {
     splashView,
     homeView,
     categoryView,
-    productDetailView,
+    resturantDetailView,
     orderDetailView,
     cartView,
   };
@@ -56,8 +57,8 @@ class StackedRouter extends _i1.RouterBase {
       page: _i4.CategoryView,
     ),
     _i1.RouteDef(
-      Routes.productDetailView,
-      page: _i5.ProductDetailView,
+      Routes.resturantDetailView,
+      page: _i5.ResturantDetailView,
     ),
     _i1.RouteDef(
       Routes.orderDetailView,
@@ -90,18 +91,18 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
-    _i5.ProductDetailView: (data) {
-      final args = data.getArgs<ProductDetailViewArguments>(nullOk: false);
+    _i5.ResturantDetailView: (data) {
+      final args = data.getArgs<ResturantDetailViewArguments>(nullOk: false);
       return _i8.MaterialPageRoute<dynamic>(
-        builder: (context) => _i5.ProductDetailView(
+        builder: (context) => _i5.ResturantDetailView(
             key: args.key,
             deliveryTime: args.deliveryTime,
-            productName: args.productName,
+            resturantName: args.resturantName,
             deliveryType: args.deliveryType,
             deliveryPrice: args.deliveryPrice,
             discountText: args.discountText,
-            productImage: args.productImage,
-            productRating: args.productRating),
+            resturantImage: args.resturantImage,
+            resturantRating: args.resturantRating),
         settings: data,
       );
     },
@@ -112,9 +113,11 @@ class StackedRouter extends _i1.RouterBase {
             key: args.key,
             productName: args.productName,
             productPrice: args.productPrice,
-            image: args.image,
+            productImage: args.productImage,
             productDiscription: args.productDiscription,
-            model: args.model),
+            model: args.model,
+            resturantName: args.resturantName,
+            deliveryTime: args.deliveryTime),
         settings: data,
       );
     },
@@ -123,10 +126,11 @@ class StackedRouter extends _i1.RouterBase {
       return _i8.MaterialPageRoute<dynamic>(
         builder: (context) => _i7.CartView(
             key: args.key,
+            resturantName: args.resturantName,
+            deliveryTime: args.deliveryTime,
             productName: args.productName,
             productPrice: args.productPrice,
-            productImage: args.productImage,
-            productQuantity: args.productQuantity),
+            productImage: args.productImage),
         settings: data,
       );
     },
@@ -166,23 +170,23 @@ class CategoryViewArguments {
   }
 }
 
-class ProductDetailViewArguments {
-  const ProductDetailViewArguments({
+class ResturantDetailViewArguments {
+  const ResturantDetailViewArguments({
     this.key,
     required this.deliveryTime,
-    required this.productName,
+    required this.resturantName,
     required this.deliveryType,
     required this.deliveryPrice,
     required this.discountText,
-    required this.productImage,
-    required this.productRating,
+    required this.resturantImage,
+    required this.resturantRating,
   });
 
   final _i9.Key? key;
 
   final String deliveryTime;
 
-  final String productName;
+  final String resturantName;
 
   final String deliveryType;
 
@@ -190,38 +194,38 @@ class ProductDetailViewArguments {
 
   final String discountText;
 
-  final String productImage;
+  final String resturantImage;
 
-  final String productRating;
+  final String resturantRating;
 
   @override
   String toString() {
-    return '{"key": "$key", "deliveryTime": "$deliveryTime", "productName": "$productName", "deliveryType": "$deliveryType", "deliveryPrice": "$deliveryPrice", "discountText": "$discountText", "productImage": "$productImage", "productRating": "$productRating"}';
+    return '{"key": "$key", "deliveryTime": "$deliveryTime", "resturantName": "$resturantName", "deliveryType": "$deliveryType", "deliveryPrice": "$deliveryPrice", "discountText": "$discountText", "resturantImage": "$resturantImage", "resturantRating": "$resturantRating"}';
   }
 
   @override
-  bool operator ==(covariant ProductDetailViewArguments other) {
+  bool operator ==(covariant ResturantDetailViewArguments other) {
     if (identical(this, other)) return true;
     return other.key == key &&
         other.deliveryTime == deliveryTime &&
-        other.productName == productName &&
+        other.resturantName == resturantName &&
         other.deliveryType == deliveryType &&
         other.deliveryPrice == deliveryPrice &&
         other.discountText == discountText &&
-        other.productImage == productImage &&
-        other.productRating == productRating;
+        other.resturantImage == resturantImage &&
+        other.resturantRating == resturantRating;
   }
 
   @override
   int get hashCode {
     return key.hashCode ^
         deliveryTime.hashCode ^
-        productName.hashCode ^
+        resturantName.hashCode ^
         deliveryType.hashCode ^
         deliveryPrice.hashCode ^
         discountText.hashCode ^
-        productImage.hashCode ^
-        productRating.hashCode;
+        resturantImage.hashCode ^
+        resturantRating.hashCode;
   }
 }
 
@@ -230,57 +234,11 @@ class OrderDetailViewArguments {
     this.key,
     required this.productName,
     required this.productPrice,
-    required this.image,
+    required this.productImage,
     required this.productDiscription,
     required this.model,
-  });
-
-  final _i9.Key? key;
-
-  final String productName;
-
-  final String productPrice;
-
-  final String image;
-
-  final String productDiscription;
-
-  final _i10.Datum model;
-
-  @override
-  String toString() {
-    return '{"key": "$key", "productName": "$productName", "productPrice": "$productPrice", "image": "$image", "productDiscription": "$productDiscription", "model": "$model"}';
-  }
-
-  @override
-  bool operator ==(covariant OrderDetailViewArguments other) {
-    if (identical(this, other)) return true;
-    return other.key == key &&
-        other.productName == productName &&
-        other.productPrice == productPrice &&
-        other.image == image &&
-        other.productDiscription == productDiscription &&
-        other.model == model;
-  }
-
-  @override
-  int get hashCode {
-    return key.hashCode ^
-        productName.hashCode ^
-        productPrice.hashCode ^
-        image.hashCode ^
-        productDiscription.hashCode ^
-        model.hashCode;
-  }
-}
-
-class CartViewArguments {
-  const CartViewArguments({
-    this.key,
-    required this.productName,
-    required this.productPrice,
-    required this.productImage,
-    required this.productQuantity,
+    required this.resturantName,
+    required this.deliveryTime,
   });
 
   final _i9.Key? key;
@@ -291,21 +249,30 @@ class CartViewArguments {
 
   final String productImage;
 
-  final String productQuantity;
+  final String productDiscription;
+
+  final _i10.Datum model;
+
+  final String resturantName;
+
+  final String deliveryTime;
 
   @override
   String toString() {
-    return '{"key": "$key", "productName": "$productName", "productPrice": "$productPrice", "productImage": "$productImage", "productQuantity": "$productQuantity"}';
+    return '{"key": "$key", "productName": "$productName", "productPrice": "$productPrice", "productImage": "$productImage", "productDiscription": "$productDiscription", "model": "$model", "resturantName": "$resturantName", "deliveryTime": "$deliveryTime"}';
   }
 
   @override
-  bool operator ==(covariant CartViewArguments other) {
+  bool operator ==(covariant OrderDetailViewArguments other) {
     if (identical(this, other)) return true;
     return other.key == key &&
         other.productName == productName &&
         other.productPrice == productPrice &&
         other.productImage == productImage &&
-        other.productQuantity == productQuantity;
+        other.productDiscription == productDiscription &&
+        other.model == model &&
+        other.resturantName == resturantName &&
+        other.deliveryTime == deliveryTime;
   }
 
   @override
@@ -314,7 +281,59 @@ class CartViewArguments {
         productName.hashCode ^
         productPrice.hashCode ^
         productImage.hashCode ^
-        productQuantity.hashCode;
+        productDiscription.hashCode ^
+        model.hashCode ^
+        resturantName.hashCode ^
+        deliveryTime.hashCode;
+  }
+}
+
+class CartViewArguments {
+  const CartViewArguments({
+    this.key,
+    required this.resturantName,
+    required this.deliveryTime,
+    required this.productName,
+    required this.productPrice,
+    required this.productImage,
+  });
+
+  final _i9.Key? key;
+
+  final String resturantName;
+
+  final String deliveryTime;
+
+  final String productName;
+
+  final String productPrice;
+
+  final String productImage;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "resturantName": "$resturantName", "deliveryTime": "$deliveryTime", "productName": "$productName", "productPrice": "$productPrice", "productImage": "$productImage"}';
+  }
+
+  @override
+  bool operator ==(covariant CartViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key &&
+        other.resturantName == resturantName &&
+        other.deliveryTime == deliveryTime &&
+        other.productName == productName &&
+        other.productPrice == productPrice &&
+        other.productImage == productImage;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^
+        resturantName.hashCode ^
+        deliveryTime.hashCode ^
+        productName.hashCode ^
+        productPrice.hashCode ^
+        productImage.hashCode;
   }
 }
 
@@ -364,31 +383,31 @@ extension NavigatorStateExtension on _i11.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToProductDetailView({
+  Future<dynamic> navigateToResturantDetailView({
     _i9.Key? key,
     required String deliveryTime,
-    required String productName,
+    required String resturantName,
     required String deliveryType,
     required String deliveryPrice,
     required String discountText,
-    required String productImage,
-    required String productRating,
+    required String resturantImage,
+    required String resturantRating,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   }) async {
-    return navigateTo<dynamic>(Routes.productDetailView,
-        arguments: ProductDetailViewArguments(
+    return navigateTo<dynamic>(Routes.resturantDetailView,
+        arguments: ResturantDetailViewArguments(
             key: key,
             deliveryTime: deliveryTime,
-            productName: productName,
+            resturantName: resturantName,
             deliveryType: deliveryType,
             deliveryPrice: deliveryPrice,
             discountText: discountText,
-            productImage: productImage,
-            productRating: productRating),
+            resturantImage: resturantImage,
+            resturantRating: resturantRating),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -399,9 +418,11 @@ extension NavigatorStateExtension on _i11.NavigationService {
     _i9.Key? key,
     required String productName,
     required String productPrice,
-    required String image,
+    required String productImage,
     required String productDiscription,
     required _i10.Datum model,
+    required String resturantName,
+    required String deliveryTime,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -413,9 +434,11 @@ extension NavigatorStateExtension on _i11.NavigationService {
             key: key,
             productName: productName,
             productPrice: productPrice,
-            image: image,
+            productImage: productImage,
             productDiscription: productDiscription,
-            model: model),
+            model: model,
+            resturantName: resturantName,
+            deliveryTime: deliveryTime),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -424,10 +447,11 @@ extension NavigatorStateExtension on _i11.NavigationService {
 
   Future<dynamic> navigateToCartView({
     _i9.Key? key,
+    required String resturantName,
+    required String deliveryTime,
     required String productName,
     required String productPrice,
     required String productImage,
-    required String productQuantity,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -437,10 +461,11 @@ extension NavigatorStateExtension on _i11.NavigationService {
     return navigateTo<dynamic>(Routes.cartView,
         arguments: CartViewArguments(
             key: key,
+            resturantName: resturantName,
+            deliveryTime: deliveryTime,
             productName: productName,
             productPrice: productPrice,
-            productImage: productImage,
-            productQuantity: productQuantity),
+            productImage: productImage),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -492,31 +517,31 @@ extension NavigatorStateExtension on _i11.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithProductDetailView({
+  Future<dynamic> replaceWithResturantDetailView({
     _i9.Key? key,
     required String deliveryTime,
-    required String productName,
+    required String resturantName,
     required String deliveryType,
     required String deliveryPrice,
     required String discountText,
-    required String productImage,
-    required String productRating,
+    required String resturantImage,
+    required String resturantRating,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   }) async {
-    return replaceWith<dynamic>(Routes.productDetailView,
-        arguments: ProductDetailViewArguments(
+    return replaceWith<dynamic>(Routes.resturantDetailView,
+        arguments: ResturantDetailViewArguments(
             key: key,
             deliveryTime: deliveryTime,
-            productName: productName,
+            resturantName: resturantName,
             deliveryType: deliveryType,
             deliveryPrice: deliveryPrice,
             discountText: discountText,
-            productImage: productImage,
-            productRating: productRating),
+            resturantImage: resturantImage,
+            resturantRating: resturantRating),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -527,9 +552,11 @@ extension NavigatorStateExtension on _i11.NavigationService {
     _i9.Key? key,
     required String productName,
     required String productPrice,
-    required String image,
+    required String productImage,
     required String productDiscription,
     required _i10.Datum model,
+    required String resturantName,
+    required String deliveryTime,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -541,9 +568,11 @@ extension NavigatorStateExtension on _i11.NavigationService {
             key: key,
             productName: productName,
             productPrice: productPrice,
-            image: image,
+            productImage: productImage,
             productDiscription: productDiscription,
-            model: model),
+            model: model,
+            resturantName: resturantName,
+            deliveryTime: deliveryTime),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -552,10 +581,11 @@ extension NavigatorStateExtension on _i11.NavigationService {
 
   Future<dynamic> replaceWithCartView({
     _i9.Key? key,
+    required String resturantName,
+    required String deliveryTime,
     required String productName,
     required String productPrice,
     required String productImage,
-    required String productQuantity,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -565,10 +595,11 @@ extension NavigatorStateExtension on _i11.NavigationService {
     return replaceWith<dynamic>(Routes.cartView,
         arguments: CartViewArguments(
             key: key,
+            resturantName: resturantName,
+            deliveryTime: deliveryTime,
             productName: productName,
             productPrice: productPrice,
-            productImage: productImage,
-            productQuantity: productQuantity),
+            productImage: productImage),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

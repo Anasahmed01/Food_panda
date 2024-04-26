@@ -1,21 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:foodpanda/src/models/order_detail.dart';
 import 'package:foodpanda/src/reuseable_widget/text/custom_text.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
-import 'package:foodpanda/src/views/porduct_detail/product_detail_viewmodel.dart';
-import 'package:foodpanda/src/views/porduct_detail/widget/product_container.dart';
+import 'package:foodpanda/src/views/resturant_detail/resturant_detail_viewmodel.dart';
+import 'package:foodpanda/src/views/resturant_detail/widget/product_container.dart';
 
-Widget productFound({
-  required ProductDetailViewModel viewModel,
-  required String productName,
-  required String productImage,
-  required String deliveryType,
-  required String deliveryPrice,
-  required String discountText,
-  required String deliveryTime,
-  required String storeRating,
-}) {
+Widget productFound(
+    {required ResturantDetailViewModel viewModel,
+    required String resturantName,
+    required String resturantImage,
+    required String deliveryType,
+    required String deliveryPrice,
+    required String discountText,
+    required String deliveryTime,
+    required String resturantRating,
+    required OrderDetailModel model}) {
   return DefaultTabController(
     length: 5,
     child: ListView(
@@ -33,13 +34,16 @@ Widget productFound({
                     height: 60,
                     width: 60,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                            fit: BoxFit.fill, image: AssetImage(productImage))),
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage(resturantImage),
+                      ),
+                    ),
                   ),
                   Flexible(
                     child: CustomText.customSizedText(
-                      text: productName,
+                      text: resturantName,
                       fontWeight: FontWeight.w800,
                       maxLine: 2,
                       size: 18,
@@ -99,7 +103,7 @@ Widget productFound({
                         color: AppColors.primaryColor,
                       ),
                       CustomText.customSizedText(
-                          text: '   $storeRating   ',
+                          text: '   $resturantRating   ',
                           fontWeight: FontWeight.w800,
                           size: 13,
                           color: AppColors.blackColor),
@@ -288,23 +292,24 @@ Widget productFound({
                       childAspectRatio: 3 / 2.5,
                       crossAxisSpacing: 15,
                       mainAxisSpacing: 15),
-                  itemCount: viewModel.productDetailImg.length,
+                  itemCount: model.data.length,
                   itemBuilder: (BuildContext ctx, index) {
                     return GestureDetector(
                       onTap: () {
-                        viewModel.navigateToCartView(
-                          productDiscription:
-                              viewModel.productDetailDiscription[index],
-                          productImg: viewModel.productDetailImg[index],
-                          productName: viewModel.productDetailNames[index],
-                          productPrice: viewModel.productPrices[index],
+                        viewModel.navigateToOrderDetailView(
+                          deliveryTime: deliveryTime,
+                          resturantName: resturantName,
+                          productDiscription: model.data[index].discription,
+                          productImg: model.data[index].productImage,
+                          productName: model.data[index].productName,
+                          productPrice: model.data[index].productPrice,
                           index: index,
                         );
                       },
                       child: productDetailCon(
-                          image: viewModel.productDetailImg[index],
-                          productName: viewModel.productDetailNames[index],
-                          productPrice: viewModel.productPrices[index]),
+                          image: model.data[index].productImage,
+                          productName: model.data[index].productName,
+                          productPrice: model.data[index].productPrice),
                     );
                   }),
             ],
@@ -371,7 +376,7 @@ Widget productFound({
           height: 10,
         ),
         ListView.separated(
-          itemCount: viewModel.productDetailImg.length,
+          itemCount: model.data.length,
           //controller: viewModel.scrollController,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -385,12 +390,14 @@ Widget productFound({
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: GestureDetector(
                     onTap: () {
-                      viewModel.navigateToCartView(
-                          productDiscription:
-                              viewModel.productDetailDiscription[index],
-                          productImg: viewModel.productDetailImg[index],
-                          productName: viewModel.productDetailNames[index],
-                          productPrice: viewModel.productPrices[index]);
+                      viewModel.navigateToOrderDetailView(
+                          deliveryTime: deliveryTime,
+                          resturantName: resturantName,
+                          index: index,
+                          productDiscription: model.data[index].discription,
+                          productImg: model.data[index].productImage,
+                          productName: model.data[index].productName,
+                          productPrice: model.data[index].productPrice);
                     },
                     child: Container(
                       color: AppColors.white,
@@ -402,7 +409,7 @@ Widget productFound({
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 CustomText.customSizedText(
-                                    text: viewModel.productDetailNames[index],
+                                    text: model.data[index].productName,
                                     maxLine: 1,
                                     maxFontSize: 16,
                                     color: AppColors.blackColor,
@@ -413,8 +420,7 @@ Widget productFound({
                                   height: 2,
                                 ),
                                 CustomText.customSizedText(
-                                    text: viewModel
-                                        .productDetailDiscription[index],
+                                    text: model.data[index].discription,
                                     maxLine: 2,
                                     maxFontSize: 12,
                                     color: AppColors.greyColor,
@@ -425,7 +431,7 @@ Widget productFound({
                                 ),
                                 CustomText.customSizedText(
                                     text:
-                                        'from Rs. ${viewModel.productPrices[index]}',
+                                        'from Rs. ${model.data[index].productPrice}',
                                     maxLine: 1,
                                     maxFontSize: 14,
                                     color: AppColors.blackColor,
@@ -443,7 +449,7 @@ Widget productFound({
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: Image.asset(
-                                      viewModel.productDetailImg[index],
+                                      model.data[index].productImage,
                                     ),
                                   ),
                                   Positioned(
@@ -451,16 +457,18 @@ Widget productFound({
                                     right: 0,
                                     child: GestureDetector(
                                       onTap: () {
-                                        viewModel.navigateToCartView(
-                                            productDiscription: viewModel
-                                                    .productDetailDiscription[
-                                                index],
-                                            productImg: viewModel
-                                                .productDetailImg[index],
-                                            productName: viewModel
-                                                .productDetailNames[index],
+                                        viewModel.navigateToOrderDetailView(
+                                            deliveryTime: deliveryTime,
+                                            resturantName: resturantName,
+                                            index: index,
+                                            productDiscription:
+                                                model.data[index].discription,
+                                            productImg:
+                                                model.data[index].productImage,
+                                            productName:
+                                                model.data[index].productName,
                                             productPrice:
-                                                viewModel.productPrices[index]);
+                                                model.data[index].productPrice);
                                       },
                                       child: Container(
                                         margin: const EdgeInsets.only(right: 5),
@@ -523,7 +531,7 @@ Widget productFound({
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomText.customSizedText(
-                  text: productName,
+                  text: resturantName,
                   maxLine: 1,
                   maxFontSize: 20,
                   color: AppColors.primaryColor,

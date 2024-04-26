@@ -1,8 +1,7 @@
 class OrderDelModel {
-  static Map<String, dynamic> xtremeDuoBox = {
+  static Map<String, dynamic> dummy = {
     "data": [
       {
-        "store_name": "Subway - PECHS",
         "product_name": "Xtreme Duo Box",
         "product_image": "assets/images/product_detail/product1.webp",
         "product_price": "299.00",
@@ -28,9 +27,8 @@ class OrderDelModel {
         ]
       },
       {
-        "store_name": "Subway - PECHS",
         "product_name": "Mighty Zinger Burger",
-        "product_image": "assets/images/product_detail/product2.webp",
+        "product_image": "assets/images/product_detail/product3.webp",
         "product_price": "599.00",
         "discription":
             "Delight in the flavors of tender chicken pieces wrapped in a soft tortilla with crisp vegetables & a medley of condiments",
@@ -54,7 +52,6 @@ class OrderDelModel {
         ]
       },
       {
-        "store_name": "Subway - PECHS",
         "product_name": "Hot Wings",
         "product_image": "assets/images/product_detail/product3.webp",
         "product_price": "699.00",
@@ -80,7 +77,6 @@ class OrderDelModel {
         ]
       },
       {
-        "store_name": "Subway - PECHS",
         "product_name": "Crispy Box",
         "product_image": "assets/images/product_detail/product4.webp",
         "product_price": "799.00",
@@ -104,13 +100,9 @@ class OrderDelModel {
           },
           {"optional_item_name": "Cheese", "optional_item_price": "70.00"}
         ]
-      },
+      }
     ]
   };
-
-  static Map<String, dynamic> mightyZingerBurger = {"data": []};
-
-  static Map<String, dynamic> hotWings = {"data": []};
-
-  static Map<String, dynamic> crispyBox = {"data": []};
 }
+
+List cart = [];

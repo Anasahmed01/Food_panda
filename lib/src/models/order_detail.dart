@@ -1,22 +1,24 @@
 // To parse this JSON data, do
 //
-//     final orderDetModel = orderDetModelFromJson(jsonString);
+//     final orderDetailModel = orderDetailModelFromJson(jsonString);
 
 import 'dart:convert';
 
-OrderDetModel orderDetModelFromJson(String str) =>
-    OrderDetModel.fromJson(json.decode(str));
+OrderDetailModel orderDetailModelFromJson(String str) =>
+    OrderDetailModel.fromJson(json.decode(str));
 
-String orderDetModelToJson(OrderDetModel data) => json.encode(data.toJson());
+String orderDetailModelToJson(OrderDetailModel data) =>
+    json.encode(data.toJson());
 
-class OrderDetModel {
+class OrderDetailModel {
   List<Datum> data;
 
-  OrderDetModel({
+  OrderDetailModel({
     required this.data,
   });
 
-  factory OrderDetModel.fromJson(Map<String, dynamic> json) => OrderDetModel(
+  factory OrderDetailModel.fromJson(Map<String, dynamic> json) =>
+      OrderDetailModel(
         data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
       );
 
@@ -26,7 +28,6 @@ class OrderDetModel {
 }
 
 class Datum {
-  String storeName;
   String productName;
   String productImage;
   String productPrice;
@@ -35,7 +36,6 @@ class Datum {
   List<OptionalItem> optionalItem;
 
   Datum({
-    required this.storeName,
     required this.productName,
     required this.productImage,
     required this.productPrice,
@@ -45,7 +45,6 @@ class Datum {
   });
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        storeName: json["store_name"],
         productName: json["product_name"],
         productImage: json["product_image"],
         productPrice: json["product_price"],
@@ -57,7 +56,6 @@ class Datum {
       );
 
   Map<String, dynamic> toJson() => {
-        "store_name": storeName,
         "product_name": productName,
         "product_image": productImage,
         "product_price": productPrice,

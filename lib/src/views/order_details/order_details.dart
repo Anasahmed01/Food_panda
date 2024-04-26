@@ -9,22 +9,27 @@ import 'widget/found.dart';
 
 class OrderDetailView extends StatelessWidget {
   final String productName;
+  final String resturantName;
+  final String deliveryTime;
   final String productPrice;
   final String productDiscription;
-  final String image;
+  final String productImage;
   final Datum model;
   const OrderDetailView(
       {super.key,
       required this.productName,
       required this.productPrice,
-      required this.image,
+      required this.productImage,
       required this.productDiscription,
-      required this.model});
+      required this.model,
+      required this.resturantName,
+      required this.deliveryTime});
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => OrderDetailViewModel(),
+      onViewModelReady: (viewModel) => viewModel.getRes(),
       builder: (context, viewModel, child) {
         return Scaffold(
           body: CustomScrollView(
@@ -35,7 +40,7 @@ class OrderDetailView extends StatelessWidget {
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Image.asset(
-                    image,
+                    productImage,
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -79,15 +84,6 @@ class OrderDetailView extends StatelessWidget {
                           viewModel.decrement();
                           viewModel.rebuildUi();
                         },
-                  // viewModel.required == true
-                  //     ? () {
-                  //         if (viewModel.quantity == 1) {
-                  //           viewModel.navigateToBack();
-                  //         }
-                  //         viewModel.decrement();
-                  //         viewModel.rebuildUi();
-                  //       }
-                  //     : () {},
                   child: Container(
                       margin: const EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
@@ -127,12 +123,14 @@ class OrderDetailView extends StatelessWidget {
                   onTap: viewModel.required == true
                       ? () {
                           viewModel.navigateToCartView(
-                            productImage: image,
+                            deliveryTime: deliveryTime,
+                            resturantName: resturantName,
                             productName: productName,
                             productPrice: productPrice,
-                            productQuantity: viewModel.quantity.toString(),
-                            requiredItem: viewModel.requideSaveData,
+                            productImage: productImage,
                           );
+                          // cart.add();
+                          // print(model);
                         }
                       : () {},
                   child: Container(

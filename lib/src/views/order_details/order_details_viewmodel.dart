@@ -12,19 +12,19 @@ class OrderDetailViewModel extends BaseViewModel {
   }
 
   navigateToCartView({
-    required String productImage,
+    required String resturantName,
+    required String deliveryTime,
     required String productName,
     required String productPrice,
-    required String productQuantity,
-    required String requiredItem,
+    required String productImage,
   }) {
     locator<NavigationService>().navigateWithTransition(
       CartView(
-        productImage: productImage,
+        deliveryTime: deliveryTime,
+        resturantName: resturantName,
         productName: productName,
         productPrice: productPrice,
-        productQuantity: productQuantity,
-        // requiredItem: requiredItem,
+        productImage: productImage,
       ),
       opaque: true,
       duration: const Duration(milliseconds: 500),
@@ -96,10 +96,10 @@ class OrderDetailViewModel extends BaseViewModel {
     quantity--;
   }
 
-   OrderDetModel? getData;
+  OrderDetailModel? getData;
   getRes() async {
     try {
-      getData = OrderDetModel.fromJson(OrderDelModel.crispyBox);
+      getData = OrderDetailModel.fromJson(OrderDelModel.dummy);
     } catch (e) {
       print(e);
     }

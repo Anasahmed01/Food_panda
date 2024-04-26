@@ -190,13 +190,14 @@ Widget homeFound(BuildContext context, HomeViewModel viewModel,
             return GestureDetector(
                 onTap: () {
                   viewModel.navigateToProductDetailView(
-                      productRating: popResModel.data[index].restaurantsRating,
-                      productImage: popResModel.data[index].restaurantsImage,
+                      resturantRating:
+                          popResModel.data[index].restaurantsRating,
+                      resturantImage: popResModel.data[index].restaurantsImage,
                       discountText: popResModel.data[index].discount,
                       deliveryTime: popResModel.data[index].deliveryTime,
                       deliveryPrice: popResModel.data[index].minimumPrice,
                       deliveryType: popResModel.data[index].restaurantsType,
-                      productName: popResModel.data[index].restaurantsName);
+                      resturantName: popResModel.data[index].restaurantsName);
                 },
                 child:
                     popularRestaurants(viewModel, index, context, popResModel));

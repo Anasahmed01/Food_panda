@@ -49,7 +49,7 @@ Widget found({
           ),
           Container(
             decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 240, 234, 235),
+                color: const Color.fromARGB(255, 240, 240, 240),
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(color: AppColors.greyColor)),
             padding: const EdgeInsets.symmetric(
@@ -101,42 +101,35 @@ Widget found({
                       color: AppColors.primaryColor),
                 ),
                 ListView.builder(
+                  itemCount: model.requideItems.length,
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: viewModel.isSelected.length,
                   itemBuilder: (context, index) {
-                    // viewModel.requideSaveData = viewModel.softDrinks[index];
-                    // print('Req Data${viewModel.requideSaveData}');
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Radio(
-                              activeColor: AppColors.primaryColor,
-                              value: index,
-                              groupValue: viewModel.isSelected.indexOf(true),
-                              onChanged: (int? value) {
-                                viewModel.rebuildUi();
-                                for (int i = 0;
-                                    i < viewModel.isSelected.length;
-                                    i++) {
-                                  viewModel.isSelected[i] = (value == i);
-                                  viewModel.required = true;
-                                  // viewModel.requideSaveData =
-                                }
-                                viewModel.rebuildUi();
-                              },
-                            ),
-                            CustomText.customSizedText(
-                                text: viewModel.softDrinks[index]),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 15.0),
-                          child: CustomText.customSizedText(text: 'Free'),
-                        ),
-                      ],
+                    return RadioListTile(
+                      activeColor: AppColors.primaryColor,
+                      contentPadding: const EdgeInsets.only(left: 5),
+                      value: index,
+                      groupValue: viewModel.isSelected.indexOf(true),
+                      onChanged: (int? value) {
+                        viewModel.rebuildUi();
+                        for (int i = 0; i < viewModel.isSelected.length; i++) {
+                          viewModel.isSelected[i] = (value == i);
+                          viewModel.required = true;
+                        }
+
+                        viewModel.rebuildUi();
+                      },
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomText.customSizedText(
+                              text: model.requideItems[index].coldDrink),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10.0),
+                            child: CustomText.customSizedText(text: 'Free'),
+                          ),
+                        ],
+                      ),
                     );
                   },
                 ),
@@ -277,27 +270,6 @@ Widget found({
               ),
             ),
           ),
-          ListView.builder(
-            itemCount: 2,
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return RadioListTile(
-                value: index,
-                groupValue: viewModel.isSelected.indexOf(true),
-                onChanged: (int? value) {
-                  viewModel.rebuildUi();
-                  for (int i = 0; i < viewModel.isSelected.length; i++) {
-                    viewModel.isSelected[i] = (value == i);
-                    viewModel.required = true;
-                    // viewModel.requideSaveData =
-                  }
-                  viewModel.rebuildUi();
-                },
-                title: CustomText.customSizedText(text: 'Frid'),
-              );
-            },
-          )
         ],
       ),
     ),

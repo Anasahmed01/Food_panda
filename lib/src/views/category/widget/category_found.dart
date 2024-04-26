@@ -106,12 +106,12 @@ Widget categoryFound(CategoryViewModel viewModel) {
             itemBuilder: (context, index) {
               return GestureDetector(
                   onTap: () {
-                    viewModel.navigateToProductDetailView(
-                        productRating: viewModel.storeRating[index],
-                        productImage: viewModel.popularResImg[index],
+                    viewModel.navigateToResturantDetailView(
+                        resturantRating: viewModel.storeRating[index],
+                        resturantImage: viewModel.popularResImg[index],
                         deliveryType: viewModel.popularResItemType[index],
                         deliveryPrice: viewModel.popularResText[index],
-                        productName: viewModel.popularResItemNames[index],
+                        resturantName: viewModel.popularResItemNames[index],
                         deliveryTime: viewModel.popularResDeliveryTimes[index],
                         discountText: viewModel.popularResDiscountText[index]);
                   },
@@ -223,12 +223,12 @@ Widget categoryFound(CategoryViewModel viewModel) {
               padding: const EdgeInsets.only(bottom: 10),
               child: GestureDetector(
                   onTap: () {
-                    viewModel.navigateToProductDetailView(
-                        productRating: viewModel.storeRating[index],
-                        productImage: viewModel.popularResImg[index],
+                    viewModel.navigateToResturantDetailView(
+                        resturantRating: viewModel.storeRating[index],
+                        resturantImage: viewModel.popularResImg[index],
                         deliveryType: viewModel.popularResItemType[index],
                         deliveryPrice: viewModel.popularResText[index],
-                        productName: viewModel.popularResItemNames[index],
+                        resturantName: viewModel.popularResItemNames[index],
                         deliveryTime: viewModel.popularResDeliveryTimes[index],
                         discountText: viewModel.popularResDiscountText[index]);
                   },
