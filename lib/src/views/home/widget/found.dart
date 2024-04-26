@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/models/category_data.dart';
+import '../../../models/popular_restaurant.dart';
 import '../../../reuseable_widget/text/custom_text.dart';
 import '../../../utils/colors/app_colors.dart';
 import '../home_viewmodel.dart';
 import 'card.dart';
 
-Widget homeFound(
-    BuildContext context, HomeViewModel viewModel, CategoryData model) {
+Widget homeFound(BuildContext context, HomeViewModel viewModel,
+    CategoryData model, PopularRestDelModel popResModel) {
   return ListView(
     children: [
       Container(
@@ -29,10 +30,10 @@ Widget homeFound(
                 child: categoryCard(
                     height: MediaQuery.sizeOf(context).height * 0.2,
                     width: MediaQuery.sizeOf(context).width * 0.43,
-                    title: viewModel.getData == null
+                    title: viewModel.getCatData == null
                         ? ''
                         : model.data[index].title,
-                    subTitle: viewModel.getData == null
+                    subTitle: viewModel.getCatData == null
                         ? ''
                         : model.data[index].subtitle,
                     context: context,
@@ -182,27 +183,26 @@ Widget homeFound(
       SizedBox(
         height: 225,
         child: ListView.builder(
-          itemCount: viewModel.popularResImg.length,
+          itemCount: popResModel.data.length,
           padding: const EdgeInsets.symmetric(horizontal: 10),
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return GestureDetector(
                 onTap: () {
                   viewModel.navigateToProductDetailView(
-                      productImage: viewModel.popularResImg[index],
-                      discountText: viewModel.popularResDiscountText[index],
-                      deliveryTime: viewModel.popularResDeliveryTimes[index],
-                      deliveryPrice: viewModel.popularResItemPrices[index],
-                      deliveryType: viewModel.popularResText[index],
-                      productName: viewModel.popularResItemNames[index]);
+                      productRating: popResModel.data[index].restaurantsRating,
+                      productImage: popResModel.data[index].restaurantsImage,
+                      discountText: popResModel.data[index].discount,
+                      deliveryTime: popResModel.data[index].deliveryTime,
+                      deliveryPrice: popResModel.data[index].minimumPrice,
+                      deliveryType: popResModel.data[index].restaurantsType,
+                      productName: popResModel.data[index].restaurantsName);
                 },
-                child: popularRestaurants(viewModel, index, context));
+                child:
+                    popularRestaurants(viewModel, index, context, popResModel));
           },
         ),
       ),
-      // const SizedBox(
-      //   height: 20,
-      // ),
       Padding(
         padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20),
         child: CustomText.customSizedText(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foodpanda/src/del_custom_model/product_detail_model.dart';
+import 'package:foodpanda/src/models/order_detail.dart';
 import 'package:foodpanda/src/views/order_details/order_details.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -6,28 +8,39 @@ import '../../app/app.locator.dart';
 import '../../utils/images/images.dart';
 
 class ProductDetailViewModel extends BaseViewModel {
+  OrderDetModel? model;
+
+  init() {
+    model = OrderDetModel.fromJson(OrderDelModel.xtremeDuoBox);
+  }
+
   ScrollController scrollController = ScrollController();
   navigateToBack() {
     locator<NavigationService>().back();
   }
 
-  navigateToCartView(
-      {required String productImg,
-      required String productName,
-      required String productPrice,
-      required String productDiscription}) {
-    locator<NavigationService>().navigateWithTransition(
-      OrderDetailView(
-        image: productImg,
-        productName: productName,
-        productPrice: productPrice,
-        productDiscription: productDiscription,
-      ),
-      opaque: true,
-      duration: const Duration(milliseconds: 500),
-      transitionStyle: Transition.downToUp,
-      curve: Curves.slowMiddle,
-    );
+  navigateToCartView({
+    required String productImg,
+    required String productName,
+    required String productPrice,
+    required String productDiscription,
+    int index = 0,
+  }) {
+    if (model != null) {
+      locator<NavigationService>().navigateWithTransition(
+        OrderDetailView(
+          image: productImg,
+          productName: productName,
+          productPrice: productPrice,
+          productDiscription: productDiscription,
+          model: model!.data[index],
+        ),
+        opaque: true,
+        duration: const Duration(milliseconds: 500),
+        transitionStyle: Transition.downToUp,
+        curve: Curves.slowMiddle,
+      );
+    }
   }
 
   List productDetailImg = [

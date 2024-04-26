@@ -15,7 +15,8 @@ class HomeView extends StatelessWidget {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => HomeViewModel(),
       onViewModelReady: (viewModel) {
-        viewModel.getRes();
+        viewModel.getCategory();
+        viewModel.getRestaurant();
       },
       builder: (context, viewModel, child) {
         return Scaffold(
@@ -70,7 +71,8 @@ class HomeView extends StatelessWidget {
                 )
               ];
             },
-            body: homeFound(context, viewModel, viewModel.getData!),
+            body: homeFound(context, viewModel, viewModel.getCatData!,
+                viewModel.getResData!),
           ),
         );
       },

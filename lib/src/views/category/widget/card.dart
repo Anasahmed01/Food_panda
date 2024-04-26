@@ -114,7 +114,7 @@ Widget deliveryContainer(
                           size: 18,
                         ),
                         CustomText.customSizedText(
-                          text: ' 4.2',
+                          text: ' ${viewModel.storeRating[index]}',
                           fontWeight: FontWeight.w800,
                           size: 12,
                           maxFontSize: 12,

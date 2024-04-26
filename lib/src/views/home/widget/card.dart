@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodpanda/src/models/popular_restaurant.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
 import 'package:foodpanda/src/utils/images/images.dart';
 import '../../../reuseable_widget/text/custom_text.dart';
@@ -96,37 +97,8 @@ Container discountContainer({required String text}) {
   );
 }
 
-// Widget positionPicker(
-//     {required int position,
-//     required BuildContext context,
-//     required CategoryData model,
-//     required HomeViewModel viewModel,
-//     required int index}) {
-//   if (position == 1) {
-//     return categoryCard(
-//         height: MediaQuery.sizeOf(context).height * 0.2,
-//         width: MediaQuery.sizeOf(context).width * 0.43,
-//         title: viewModel.getData == null ? '' : model.data[index].title,
-//         subTitle: viewModel.getData == null ? '' : model.data[index].subtitle,
-//         context: context);
-//   } else if (position == 2) {
-//     return categoryCard(
-//         height: MediaQuery.sizeOf(context).height * 0.2,
-//         width: MediaQuery.sizeOf(context).width * 0.43,
-//         title: viewModel.getData == null ? '' : model.data[index].title,
-//         subTitle: viewModel.getData == null ? '' : model.data[index].subtitle,
-//         context: context);
-//   } else {
-//     return categoryCard(
-//         height: 0,
-//         width: 0,
-//         title: viewModel.getData == null ? '' : model.data[index].title,
-//         subTitle: viewModel.getData == null ? '' : model.data[index].subtitle,
-//         context: context);
-//   }
-// }
-Widget popularRestaurants(
-    HomeViewModel viewModel, int index, BuildContext context) {
+Widget popularRestaurants(HomeViewModel viewModel, int index,
+    BuildContext context, PopularRestDelModel model) {
   return Column(
     children: [
       Padding(
@@ -135,15 +107,14 @@ Widget popularRestaurants(
           borderRadius: BorderRadius.circular(10),
           child: Stack(children: [
             Image.asset(
-              viewModel.popularResImg[index],
+              model.data[index].restaurantsImage,
               width: MediaQuery.sizeOf(context).width * 0.65,
             ),
-            discountContainer(text: viewModel.popularResText[index]),
+            discountContainer(text: model.data[index].offer),
             Positioned(
               left: 0,
               top: 40,
-              child: discountContainer(
-                  text: viewModel.popularResDiscountText[index]),
+              child: discountContainer(text: model.data[index].discount),
             ),
           ]),
         ),
@@ -160,7 +131,7 @@ Widget popularRestaurants(
                 Flexible(
                   flex: 3,
                   child: CustomText.customSizedText(
-                    text: viewModel.popularResItemNames[index],
+                    text: model.data[index].restaurantsName,
                     fontWeight: FontWeight.w800,
                     size: 14,
                     minFontSize: 14,
@@ -178,7 +149,7 @@ Widget popularRestaurants(
                         size: 18,
                       ),
                       CustomText.customSizedText(
-                        text: ' 4.2',
+                        text: ' ${model.data[index].restaurantsRating} ',
                         fontWeight: FontWeight.w800,
                         size: 12,
                         maxFontSize: 12,
@@ -199,7 +170,7 @@ Widget popularRestaurants(
               padding: const EdgeInsets.symmetric(vertical: 3.0),
               child: CustomText.customSizedText(
                 text:
-                    "\$\$\$  -  PKR ${viewModel.popularResItemPrices[index]}  -  ${viewModel.popularResItemType[index]}",
+                    "\$\$\$  -  PKR ${model.data[index].minimumPrice}  -  ${model.data[index].restaurantsType}",
                 color: AppColors.greyColor,
                 size: 12,
                 maxFontSize: 12,
@@ -216,7 +187,7 @@ Widget popularRestaurants(
                       size: 18,
                     ),
                     CustomText.customSizedText(
-                      text: ' ${viewModel.popularResDeliveryTimes[index]}  -  ',
+                      text: ' ${model.data[index].deliveryTime}  -  ',
                       fontWeight: FontWeight.w800,
                       color: AppColors.greyColor,
                       size: 12,

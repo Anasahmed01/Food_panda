@@ -29,11 +29,11 @@ class CartView extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: AppColors.white,
             automaticallyImplyLeading: false,
-            title: GestureDetector(
-              onTap: () => viewModel.navigateToBack(),
-              child: Row(
-                children: [
-                  Padding(
+            title: Row(
+              children: [
+                GestureDetector(
+                  onTap: () => viewModel.navigateToBack(),
+                  child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: Icon(
                       CupertinoIcons.xmark,
@@ -41,16 +41,16 @@ class CartView extends StatelessWidget {
                       color: AppColors.primaryColor,
                     ),
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomText.customSizedText(
-                          text: 'Cart', fontWeight: FontWeight.w800, size: 18),
-                      CustomText.customSizedText(text: productName)
-                    ],
-                  ),
-                ],
-              ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomText.customSizedText(
+                        text: 'Cart', fontWeight: FontWeight.w800, size: 18),
+                    CustomText.customSizedText(text: productName)
+                  ],
+                ),
+              ],
             ),
             // bottom: PreferredSize(
             //   preferredSize: Size.fromHeight(20),
@@ -67,6 +67,66 @@ class CartView extends StatelessWidget {
               productImage: productImage,
               productName: productName,
               productPrice: productPrice),
+          bottomNavigationBar: Container(
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+            height: 140,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        CustomText.customSizedText(
+                          text: 'Total  ',
+                          color: AppColors.blackColor,
+                          fontWeight: FontWeight.w900,
+                          maxLine: 1,
+                          size: 18,
+                        ),
+                        CustomText.customSizedText(
+                          text: '(incl. VAT)',
+                          color: AppColors.greyColor,
+                          fontWeight: FontWeight.w900,
+                          maxLine: 1,
+                          size: 14,
+                        ),
+                      ],
+                    ),
+                    CustomText.customSizedText(
+                      text: 'Rs. 887.09',
+                      color: AppColors.blackColor,
+                      fontWeight: FontWeight.w900,
+                      maxLine: 1,
+                      size: 16,
+                    ),
+                  ],
+                ),
+                CustomText.customSizedText(
+                  text: 'See price breakdown',
+                  color: AppColors.primaryColor,
+                  fontWeight: FontWeight.w600,
+                  maxLine: 1,
+                  size: 12,
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 15),
+                  width: MediaQuery.sizeOf(context).width,
+                  height: 50,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: AppColors.primaryColor),
+                  child: Center(
+                    child: CustomText.customSizedText(
+                        text: 'Confirm payment and address',
+                        fontWeight: FontWeight.w800,
+                        color: AppColors.white),
+                  ),
+                ),
+              ],
+            ),
+          ),
         );
       },
     );

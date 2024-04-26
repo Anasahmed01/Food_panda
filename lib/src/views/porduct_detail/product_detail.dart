@@ -12,18 +12,23 @@ class ProductDetailView extends StatelessWidget {
   final String productName;
   final String discountText;
   final String productImage;
-  const ProductDetailView(
-      {super.key,
-      required this.deliveryTime,
-      required this.productName,
-      required this.deliveryType,
-      required this.deliveryPrice,
-      required this.discountText, required this.productImage,});
+  final String productRating;
+  const ProductDetailView({
+    super.key,
+    required this.deliveryTime,
+    required this.productName,
+    required this.deliveryType,
+    required this.deliveryPrice,
+    required this.discountText,
+    required this.productImage,
+    required this.productRating,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => ProductDetailViewModel(),
+      onViewModelReady: (viewModel) => viewModel.init(),
       builder: (context, viewModel, child) {
         return Scaffold(
           appBar: AppBar(
@@ -71,6 +76,7 @@ class ProductDetailView extends StatelessWidget {
             ],
           ),
           body: productFound(
+              storeRating: productRating,
               viewModel: viewModel,
               productImage: productImage,
               discountText: discountText,

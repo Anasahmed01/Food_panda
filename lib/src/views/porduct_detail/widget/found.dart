@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:foodpanda/src/reuseable_widget/text/custom_text.dart';
@@ -5,14 +6,16 @@ import 'package:foodpanda/src/utils/colors/app_colors.dart';
 import 'package:foodpanda/src/views/porduct_detail/product_detail_viewmodel.dart';
 import 'package:foodpanda/src/views/porduct_detail/widget/product_container.dart';
 
-Widget productFound(
-    {required ProductDetailViewModel viewModel,
-    required String productName,
-    required String productImage,
-    required String deliveryType,
-    required String deliveryPrice,
-    required String discountText,
-    required String deliveryTime}) {
+Widget productFound({
+  required ProductDetailViewModel viewModel,
+  required String productName,
+  required String productImage,
+  required String deliveryType,
+  required String deliveryPrice,
+  required String discountText,
+  required String deliveryTime,
+  required String storeRating,
+}) {
   return DefaultTabController(
     length: 5,
     child: ListView(
@@ -34,8 +37,16 @@ Widget productFound(
                         image: DecorationImage(
                             fit: BoxFit.fill, image: AssetImage(productImage))),
                   ),
-                  CustomText.customSizedText(
-                      text: productName, fontWeight: FontWeight.w800, size: 18),
+                  Flexible(
+                    child: CustomText.customSizedText(
+                      text: productName,
+                      fontWeight: FontWeight.w800,
+                      maxLine: 2,
+                      size: 18,
+                      minFontSize: 18,
+                      maxFontSize: 18,
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(
@@ -88,7 +99,7 @@ Widget productFound(
                         color: AppColors.primaryColor,
                       ),
                       CustomText.customSizedText(
-                          text: '   3.7   ',
+                          text: '   $storeRating   ',
                           fontWeight: FontWeight.w800,
                           size: 13,
                           color: AppColors.blackColor),
@@ -139,7 +150,7 @@ Widget productFound(
               Row(
                 children: [
                   Icon(
-                    Icons.view_comfy_alt_rounded,
+                    CupertinoIcons.tickets,
                     size: 22,
                     color: AppColors.primaryColor,
                   ),
@@ -282,11 +293,13 @@ Widget productFound(
                     return GestureDetector(
                       onTap: () {
                         viewModel.navigateToCartView(
-                            productDiscription:
-                                viewModel.productDetailDiscription[index],
-                            productImg: viewModel.productDetailImg[index],
-                            productName: viewModel.productDetailNames[index],
-                            productPrice: viewModel.productPrices[index]);
+                          productDiscription:
+                              viewModel.productDetailDiscription[index],
+                          productImg: viewModel.productDetailImg[index],
+                          productName: viewModel.productDetailNames[index],
+                          productPrice: viewModel.productPrices[index],
+                          index: index,
+                        );
                       },
                       child: productDetailCon(
                           image: viewModel.productDetailImg[index],

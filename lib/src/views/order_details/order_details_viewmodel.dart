@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foodpanda/src/del_custom_model/product_detail_model.dart';
+import 'package:foodpanda/src/models/order_detail.dart';
 import 'package:foodpanda/src/views/cart/cart.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -92,5 +94,14 @@ class OrderDetailViewModel extends BaseViewModel {
 
   void decrement() {
     quantity--;
+  }
+
+   OrderDetModel? getData;
+  getRes() async {
+    try {
+      getData = OrderDetModel.fromJson(OrderDelModel.crispyBox);
+    } catch (e) {
+      print(e);
+    }
   }
 }

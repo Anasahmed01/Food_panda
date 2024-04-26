@@ -8,6 +8,7 @@
 import 'package:flutter/cupertino.dart' as _i9;
 import 'package:flutter/material.dart' as _i8;
 import 'package:flutter/material.dart';
+import 'package:foodpanda/src/models/order_detail.dart' as _i10;
 import 'package:foodpanda/src/views/basic/splash/splash.dart' as _i2;
 import 'package:foodpanda/src/views/cart/cart.dart' as _i7;
 import 'package:foodpanda/src/views/category/category.dart' as _i4;
@@ -15,7 +16,7 @@ import 'package:foodpanda/src/views/home/home.dart' as _i3;
 import 'package:foodpanda/src/views/order_details/order_details.dart' as _i6;
 import 'package:foodpanda/src/views/porduct_detail/product_detail.dart' as _i5;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i10;
+import 'package:stacked_services/stacked_services.dart' as _i11;
 
 class Routes {
   static const splashView = '/';
@@ -99,7 +100,8 @@ class StackedRouter extends _i1.RouterBase {
             deliveryType: args.deliveryType,
             deliveryPrice: args.deliveryPrice,
             discountText: args.discountText,
-            productImage: args.productImage),
+            productImage: args.productImage,
+            productRating: args.productRating),
         settings: data,
       );
     },
@@ -111,7 +113,8 @@ class StackedRouter extends _i1.RouterBase {
             productName: args.productName,
             productPrice: args.productPrice,
             image: args.image,
-            productDiscription: args.productDiscription),
+            productDiscription: args.productDiscription,
+            model: args.model),
         settings: data,
       );
     },
@@ -172,6 +175,7 @@ class ProductDetailViewArguments {
     required this.deliveryPrice,
     required this.discountText,
     required this.productImage,
+    required this.productRating,
   });
 
   final _i9.Key? key;
@@ -188,9 +192,11 @@ class ProductDetailViewArguments {
 
   final String productImage;
 
+  final String productRating;
+
   @override
   String toString() {
-    return '{"key": "$key", "deliveryTime": "$deliveryTime", "productName": "$productName", "deliveryType": "$deliveryType", "deliveryPrice": "$deliveryPrice", "discountText": "$discountText", "productImage": "$productImage"}';
+    return '{"key": "$key", "deliveryTime": "$deliveryTime", "productName": "$productName", "deliveryType": "$deliveryType", "deliveryPrice": "$deliveryPrice", "discountText": "$discountText", "productImage": "$productImage", "productRating": "$productRating"}';
   }
 
   @override
@@ -202,7 +208,8 @@ class ProductDetailViewArguments {
         other.deliveryType == deliveryType &&
         other.deliveryPrice == deliveryPrice &&
         other.discountText == discountText &&
-        other.productImage == productImage;
+        other.productImage == productImage &&
+        other.productRating == productRating;
   }
 
   @override
@@ -213,7 +220,8 @@ class ProductDetailViewArguments {
         deliveryType.hashCode ^
         deliveryPrice.hashCode ^
         discountText.hashCode ^
-        productImage.hashCode;
+        productImage.hashCode ^
+        productRating.hashCode;
   }
 }
 
@@ -224,6 +232,7 @@ class OrderDetailViewArguments {
     required this.productPrice,
     required this.image,
     required this.productDiscription,
+    required this.model,
   });
 
   final _i9.Key? key;
@@ -236,9 +245,11 @@ class OrderDetailViewArguments {
 
   final String productDiscription;
 
+  final _i10.Datum model;
+
   @override
   String toString() {
-    return '{"key": "$key", "productName": "$productName", "productPrice": "$productPrice", "image": "$image", "productDiscription": "$productDiscription"}';
+    return '{"key": "$key", "productName": "$productName", "productPrice": "$productPrice", "image": "$image", "productDiscription": "$productDiscription", "model": "$model"}';
   }
 
   @override
@@ -248,7 +259,8 @@ class OrderDetailViewArguments {
         other.productName == productName &&
         other.productPrice == productPrice &&
         other.image == image &&
-        other.productDiscription == productDiscription;
+        other.productDiscription == productDiscription &&
+        other.model == model;
   }
 
   @override
@@ -257,7 +269,8 @@ class OrderDetailViewArguments {
         productName.hashCode ^
         productPrice.hashCode ^
         image.hashCode ^
-        productDiscription.hashCode;
+        productDiscription.hashCode ^
+        model.hashCode;
   }
 }
 
@@ -305,7 +318,7 @@ class CartViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i10.NavigationService {
+extension NavigatorStateExtension on _i11.NavigationService {
   Future<dynamic> navigateToSplashView([
     int? routerId,
     bool preventDuplicates = true,
@@ -359,6 +372,7 @@ extension NavigatorStateExtension on _i10.NavigationService {
     required String deliveryPrice,
     required String discountText,
     required String productImage,
+    required String productRating,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -373,7 +387,8 @@ extension NavigatorStateExtension on _i10.NavigationService {
             deliveryType: deliveryType,
             deliveryPrice: deliveryPrice,
             discountText: discountText,
-            productImage: productImage),
+            productImage: productImage,
+            productRating: productRating),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -386,6 +401,7 @@ extension NavigatorStateExtension on _i10.NavigationService {
     required String productPrice,
     required String image,
     required String productDiscription,
+    required _i10.Datum model,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -398,7 +414,8 @@ extension NavigatorStateExtension on _i10.NavigationService {
             productName: productName,
             productPrice: productPrice,
             image: image,
-            productDiscription: productDiscription),
+            productDiscription: productDiscription,
+            model: model),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -483,6 +500,7 @@ extension NavigatorStateExtension on _i10.NavigationService {
     required String deliveryPrice,
     required String discountText,
     required String productImage,
+    required String productRating,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -497,7 +515,8 @@ extension NavigatorStateExtension on _i10.NavigationService {
             deliveryType: deliveryType,
             deliveryPrice: deliveryPrice,
             discountText: discountText,
-            productImage: productImage),
+            productImage: productImage,
+            productRating: productRating),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -510,6 +529,7 @@ extension NavigatorStateExtension on _i10.NavigationService {
     required String productPrice,
     required String image,
     required String productDiscription,
+    required _i10.Datum model,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -522,7 +542,8 @@ extension NavigatorStateExtension on _i10.NavigationService {
             productName: productName,
             productPrice: productPrice,
             image: image,
-            productDiscription: productDiscription),
+            productDiscription: productDiscription,
+            model: model),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

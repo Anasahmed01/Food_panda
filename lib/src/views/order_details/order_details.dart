@@ -4,6 +4,7 @@ import 'package:foodpanda/src/reuseable_widget/text/custom_text.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
 import 'package:foodpanda/src/views/order_details/order_details_viewmodel.dart';
 import 'package:stacked/stacked.dart';
+import '../../models/order_detail.dart';
 import 'widget/found.dart';
 
 class OrderDetailView extends StatelessWidget {
@@ -11,12 +12,14 @@ class OrderDetailView extends StatelessWidget {
   final String productPrice;
   final String productDiscription;
   final String image;
+  final Datum model;
   const OrderDetailView(
       {super.key,
       required this.productName,
       required this.productPrice,
       required this.image,
-      required this.productDiscription});
+      required this.productDiscription,
+      required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +58,13 @@ class OrderDetailView extends StatelessWidget {
                 ),
               ),
               found(
-                  context: context,
-                  viewModel: viewModel,
-                  productDiscription: productDiscription,
-                  productName: productName,
-                  productPrice: productPrice),
+                context: context,
+                viewModel: viewModel,
+                productDiscription: productDiscription,
+                productName: productName,
+                productPrice: productPrice,
+                model: model,
+              ),
             ],
           ),
           bottomNavigationBar: SizedBox(

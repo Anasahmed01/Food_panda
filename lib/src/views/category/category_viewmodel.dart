@@ -20,16 +20,19 @@ class CategoryViewModel extends BaseViewModel {
       curve: Curves.slowMiddle,
     );
   }
-   navigateToProductDetailView({
+
+  navigateToProductDetailView({
     required String deliveryType,
     required String deliveryPrice,
     required String productName,
     required String deliveryTime,
     required String discountText,
     required String productImage,
+    required String productRating,
   }) {
     locator<NavigationService>().navigateWithTransition(
       ProductDetailView(
+        productRating: productRating,
         productImage: productImage,
         discountText: discountText,
         deliveryType: deliveryType,
@@ -105,5 +108,11 @@ class CategoryViewModel extends BaseViewModel {
     '25-40',
     '22-35',
     '30-45',
+  ];
+
+  List storeRating = [
+    '4.2',
+    '4.7',
+    '4.3',
   ];
 }

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:foodpanda/src/reuseable_widget/text/custom_text.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
 import 'package:foodpanda/src/views/cart/cart_viewmodel.dart';
@@ -12,9 +14,9 @@ Widget cartFound({
 }) {
   return Column(
     children: [
-      ListView.builder(
-        shrinkWrap: true,
+      ListView.separated(
         itemCount: 2,
+        shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return Padding(
@@ -44,6 +46,7 @@ Widget cartFound({
                       image: DecorationImage(image: AssetImage(productImage))),
                 ),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomText.customSizedText(
                         text: productName,
@@ -69,7 +72,7 @@ Widget cartFound({
 
                         children: [
                           CustomText.customSizedText(
-                              text: 'Next Cola - 345 ml'),
+                              text: 'Next Cola - 345 ml'), 
                         ],
                         onExpansionChanged: (bool expanded) {
                           viewModel.rebuildUi();
@@ -85,7 +88,134 @@ Widget cartFound({
             ),
           );
         },
-      )
+        separatorBuilder: (context, index) {
+          return AnimationConfiguration.staggeredList(
+            position: index,
+            duration: const Duration(milliseconds: 100),
+            child: FadeInAnimation(
+              duration: const Duration(milliseconds: 500),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    left: 20.0, right: 20, top: 5, bottom: 5),
+                child: Divider(
+                  color: Colors.grey[300],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+      const SizedBox(
+        height: 20,
+      ),
+      Divider(
+        color: AppColors.lightGreyColor,
+        thickness: 10,
+      ),
+      Container(
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomText.customSizedText(
+                    text: 'Subtotal',
+                    maxLine: 1,
+                    size: 16,
+                    fontWeight: FontWeight.w800),
+                CustomText.customSizedText(
+                  text: 'Rs. $productPrice',
+                  maxLine: 1,
+                  fontWeight: FontWeight.w800,
+                  size: 16,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomText.customSizedText(
+                  text: 'Delivery Fee',
+                  maxLine: 1,
+                  size: 14,
+                ),
+                CustomText.customSizedText(
+                  text: 'Rs. 106.19',
+                  maxLine: 1,
+                  size: 14,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    CustomText.customSizedText(
+                      text: 'Platform Fee',
+                      maxLine: 1,
+                      size: 14,
+                    ),
+                    const Icon(Icons.info_outline_rounded),
+                  ],
+                ),
+                CustomText.customSizedText(
+                  text: 'Rs. 8.84',
+                  maxLine: 1,
+                  size: 14,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomText.customSizedText(
+                  text: 'VAT',
+                  maxLine: 1,
+                  size: 14,
+                ),
+                CustomText.customSizedText(
+                  text: 'Rs. 102.05',
+                  maxLine: 1,
+                  size: 14,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            Row(
+              children: [
+                Icon(
+                  CupertinoIcons.ticket,
+                  color: AppColors.primaryColor,
+                ),
+                CustomText.customSizedText(
+                  text: '    Apply a voucher',
+                  color: AppColors.primaryColor,
+                  fontWeight: FontWeight.w900,
+                  maxLine: 1,
+                  size: 16,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      Divider(
+        color: AppColors.lightGreyColor,
+        thickness: 10,
+      ),
     ],
   );
 }

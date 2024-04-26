@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:foodpanda/src/models/order_detail.dart';
 import '../../../reuseable_widget/text/custom_text.dart';
 import '../../../utils/colors/app_colors.dart';
 import '../order_details_viewmodel.dart';
 import 'widget.dart';
 
-Widget found(
-    {required BuildContext context,
-    required OrderDetailViewModel viewModel,
-    required String productDiscription,
-    required String productPrice,
-    required String productName}) {
+Widget found({
+  required BuildContext context,
+  required OrderDetailViewModel viewModel,
+  required String productDiscription,
+  required String productPrice,
+  required String productName,
+  required Datum model,
+}) {
   return SliverToBoxAdapter(
     child: Padding(
       padding: const EdgeInsets.all(15.0),
@@ -20,7 +23,7 @@ Widget found(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CustomText.customSizedText(
-                  text: productName,
+                  text: model.productName,
                   maxLine: 2,
                   size: 22,
                   fontWeight: FontWeight.w700,
@@ -274,6 +277,27 @@ Widget found(
               ),
             ),
           ),
+          ListView.builder(
+            itemCount: 2,
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              return RadioListTile(
+                value: index,
+                groupValue: viewModel.isSelected.indexOf(true),
+                onChanged: (int? value) {
+                  viewModel.rebuildUi();
+                  for (int i = 0; i < viewModel.isSelected.length; i++) {
+                    viewModel.isSelected[i] = (value == i);
+                    viewModel.required = true;
+                    // viewModel.requideSaveData =
+                  }
+                  viewModel.rebuildUi();
+                },
+                title: CustomText.customSizedText(text: 'Frid'),
+              );
+            },
+          )
         ],
       ),
     ),
