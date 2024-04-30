@@ -4,7 +4,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:foodpanda/src/utils/images/images.dart';
 import 'package:foodpanda/src/views/drawer/drawer_viewmodel.dart';
 import 'package:stacked/stacked.dart';
-import '../../reuseable_widget/text/custom_text.dart';
+import '../../reuseable_widget/custom_text.dart';
 import '../../utils/colors/app_colors.dart';
 import 'widget/drawer_tile.dart';
 

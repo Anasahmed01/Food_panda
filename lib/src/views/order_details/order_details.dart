@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:foodpanda/src/reuseable_widget/text/custom_text.dart';
+import 'package:foodpanda/src/del_custom_model/product_detail_model.dart';
+import 'package:foodpanda/src/reuseable_widget/custom_text.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
 import 'package:foodpanda/src/views/order_details/order_details_viewmodel.dart';
 import 'package:stacked/stacked.dart';
@@ -11,19 +12,20 @@ class OrderDetailView extends StatelessWidget {
   final String productName;
   final String resturantName;
   final String deliveryTime;
-  final String productPrice;
+  final double productPrice;
   final String productDiscription;
   final String productImage;
   final Datum model;
-  const OrderDetailView(
-      {super.key,
-      required this.productName,
-      required this.productPrice,
-      required this.productImage,
-      required this.productDiscription,
-      required this.model,
-      required this.resturantName,
-      required this.deliveryTime});
+  const OrderDetailView({
+    super.key,
+    required this.productName,
+    required this.productPrice,
+    required this.productImage,
+    required this.productDiscription,
+    required this.model,
+    required this.resturantName,
+    required this.deliveryTime,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,22 @@ class OrderDetailView extends StatelessWidget {
       viewModelBuilder: () => OrderDetailViewModel(),
       onViewModelReady: (viewModel) => viewModel.getRes(),
       builder: (context, viewModel, child) {
+        // var cartData = [
+        //   productName,
+        //   deliveryTime,
+        //   productPrice,
+        //   productImage,
+        //   resturantName
+        // ];
+
+        Datum cartData = Datum(
+          productName: productName,
+          productImage: productImage,
+          productPrice: productPrice,
+          discription: 'discription',
+          requideItems: [],
+          optionalItem: [],
+        );
         return Scaffold(
           body: CustomScrollView(
             slivers: [
@@ -122,15 +140,9 @@ class OrderDetailView extends StatelessWidget {
                 GestureDetector(
                   onTap: viewModel.required == true
                       ? () {
-                          viewModel.navigateToCartView(
-                            deliveryTime: deliveryTime,
-                            resturantName: resturantName,
-                            productName: productName,
-                            productPrice: productPrice,
-                            productImage: productImage,
-                          );
-                          // cart.add();
-                          // print(model);
+                          viewModel.navigateToCartView();
+                          cart.add(cartData);
+                          print(cart);
                         }
                       : () {},
                   child: Container(

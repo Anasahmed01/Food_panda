@@ -30,7 +30,7 @@ class OrderDetailModel {
 class Datum {
   String productName;
   String productImage;
-  String productPrice;
+  double productPrice;
   String discription;
   List<RequideItem> requideItems;
   List<OptionalItem> optionalItem;
@@ -69,7 +69,7 @@ class Datum {
 
 class OptionalItem {
   String optionalItemName;
-  String optionalItemPrice;
+  dynamic optionalItemPrice;
 
   OptionalItem({
     required this.optionalItemName,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/models/order_detail.dart';
-import '../../../reuseable_widget/text/custom_text.dart';
+import '../../../reuseable_widget/custom_text.dart';
 import '../../../utils/colors/app_colors.dart';
 import '../order_details_viewmodel.dart';
 import 'widget.dart';
@@ -9,7 +9,7 @@ Widget found({
   required BuildContext context,
   required OrderDetailViewModel viewModel,
   required String productDiscription,
-  required String productPrice,
+  required double productPrice,
   required String productName,
   required Datum model,
 }) {

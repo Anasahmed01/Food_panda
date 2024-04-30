@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:foodpanda/src/models/order_detail.dart';
-import 'package:foodpanda/src/reuseable_widget/text/custom_text.dart';
+import 'package:foodpanda/src/reuseable_widget/custom_text.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
 import 'package:foodpanda/src/views/resturant_detail/resturant_detail_viewmodel.dart';
 import 'package:foodpanda/src/views/resturant_detail/widget/product_container.dart';

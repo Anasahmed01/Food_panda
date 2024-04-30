@@ -5,13 +5,13 @@ import 'package:foodpanda/src/del_custom_model/cat_del_model.dart';
 import 'package:foodpanda/src/del_custom_model/popular_restaurants.dart';
 import 'package:foodpanda/src/models/category_data.dart';
 import 'package:foodpanda/src/utils/images/images.dart';
+import 'package:foodpanda/src/views/cart/cart.dart';
 import 'package:foodpanda/src/views/category/category.dart';
 import 'package:foodpanda/src/views/resturant_detail/resturant_detail.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../app/app.locator.dart';
 import '../../models/popular_restaurant.dart';
-import '../cart/cart.dart';
 
 class HomeViewModel extends BaseViewModel {
   var scaffoldKey = GlobalKey<ScaffoldState>();
@@ -28,21 +28,15 @@ class HomeViewModel extends BaseViewModel {
     );
   }
 
-  // navigateToCartView({
-  //   required String resturantName,
-  //   required String deliveryTime,
-  // }) {
-  //   locator<NavigationService>().navigateWithTransition(
-  //     CartView(
-  //       deliveryTime: deliveryTime,
-  //       resturantName: resturantName,
-  //     ),
-  //     opaque: true,
-  //     duration: const Duration(milliseconds: 500),
-  //     transitionStyle: Transition.downToUp,
-  //     curve: Curves.slowMiddle,
-  //   );
-  // }
+  navigateToCartView() {
+    locator<NavigationService>().navigateWithTransition(
+      const CartView(),
+      opaque: true,
+      duration: const Duration(milliseconds: 500),
+      transitionStyle: Transition.downToUp,
+      curve: Curves.slowMiddle,
+    );
+  }
 
   navigateToProductDetailView(
       {required String deliveryType,

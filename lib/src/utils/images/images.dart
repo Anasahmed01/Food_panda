@@ -35,4 +35,5 @@ class AppImages {
 
   //cart
   static String delivery = 'assets/images/cart_img/delivery.png';
+  static String emptyCart = 'assets/images/cart_img/empty_cart.png';
 }

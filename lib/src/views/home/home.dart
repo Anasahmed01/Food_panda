@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:foodpanda/src/reuseable_widget/text/custom_text.dart';
-import 'package:foodpanda/src/reuseable_widget/textfield/app_textfield.dart';
+import 'package:foodpanda/src/reuseable_widget/custom_text.dart';
+import 'package:foodpanda/src/reuseable_widget/app_textfield.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
 import 'package:foodpanda/src/views/drawer/drawer.dart';
 import 'package:foodpanda/src/views/home/widget/found.dart';
@@ -50,9 +50,7 @@ class HomeView extends StatelessWidget {
                     const Icon(Icons.favorite_border_rounded),
                     GestureDetector(
                         onTap: () {
-                          // viewModel.navigateToCartView(
-                          //     deliveryTime: 'viewModel.getResData.data',
-                          //     resturantName: 'resturantName');
+                          viewModel.navigateToCartView();
                         },
                         child: const Icon(Icons.shopping_bag_outlined)),
                   ],

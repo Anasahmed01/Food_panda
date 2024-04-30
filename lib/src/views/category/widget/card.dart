@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../reuseable_widget/text/custom_text.dart';
+import '../../../reuseable_widget/custom_text.dart';
 import '../../../utils/colors/app_colors.dart';
 import '../category_viewmodel.dart';
 

@@ -1,22 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:foodpanda/src/reuseable_widget/text/custom_text.dart';
+import 'package:foodpanda/src/del_custom_model/product_detail_model.dart';
+import 'package:foodpanda/src/reuseable_widget/app_scaffold.dart';
+import 'package:foodpanda/src/reuseable_widget/custom_text.dart';
+import 'package:foodpanda/src/utils/images/images.dart';
 import 'package:foodpanda/src/views/cart/cart_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 import '../../utils/colors/app_colors.dart';
 import 'widget/found.dart';
 
 class CartView extends StatelessWidget {
-  final String resturantName;
-  final String deliveryTime;
-  final String productName;
-  final String productPrice;
-  final String productImage;
-  
   const CartView({
     super.key,
-    required this.resturantName,
-    required this.deliveryTime, required this.productName, required this.productPrice, required this.productImage,
   });
 
   @override
@@ -24,6 +19,52 @@ class CartView extends StatelessWidget {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => CartViewModel(),
       builder: (context, viewModel, child) {
+        if (cart.isEmpty) {
+          return appScafold(
+              onBackTap: () => viewModel.navigateToBack(),
+              appBarTitle: 'Cart',
+              body: SizedBox(
+                height: MediaQuery.sizeOf(context).height,
+                width: double.infinity,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      AppImages.emptyCart,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0),
+                      child: CustomText.customSizedText(
+                          text: 'Hungry?',
+                          size: 24,
+                          fontWeight: FontWeight.w800),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: CustomText.customSizedText(
+                          text: "You haven't added anything to your cart!",
+                          maxLine: 2),
+                    ),
+                    GestureDetector(
+                      onTap: () => viewModel.navigateToHomeView(),
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 15),
+                        decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.circular(5)),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 10),
+                        child: CustomText.customSizedText(
+                            text: 'Browser',
+                            color: AppColors.white,
+                            size: 12,
+                            fontWeight: FontWeight.w800),
+                      ),
+                    )
+                  ],
+                ),
+              ));
+        } else {}
         return Scaffold(
           appBar: AppBar(
             backgroundColor: AppColors.white,
@@ -46,25 +87,14 @@ class CartView extends StatelessWidget {
                   children: [
                     CustomText.customSizedText(
                         text: 'Cart', fontWeight: FontWeight.w800, size: 18),
-                    CustomText.customSizedText(text: resturantName)
+                    //CustomText.customSizedText(text: cart),
                   ],
                 ),
               ],
             ),
-            // bottom: PreferredSize(
-            //   preferredSize: Size.fromHeight(20),
-            //   child: Row(
-            //     children: [
-            //       TimelineTile(),
-            //     ],
-            //   ),
-            // ),
           ),
           body: SingleChildScrollView(
-            child: cartFound(
-                viewModel: viewModel,
-                deliveryTime: deliveryTime,
-                resturantName: resturantName),
+            child: cartFound(viewModel: viewModel, context: context),
           ),
           bottomNavigationBar: Container(
             padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
@@ -94,7 +124,7 @@ class CartView extends StatelessWidget {
                       ],
                     ),
                     CustomText.customSizedText(
-                      text: 'Rs. 887.09',
+                      text: 'Rs. ${viewModel.totalPrice}',
                       color: AppColors.blackColor,
                       fontWeight: FontWeight.w900,
                       maxLine: 1,

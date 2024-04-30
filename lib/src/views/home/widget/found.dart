@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/models/category_data.dart';
 import '../../../models/popular_restaurant.dart';
-import '../../../reuseable_widget/text/custom_text.dart';
+import '../../../reuseable_widget/custom_text.dart';
 import '../../../utils/colors/app_colors.dart';
 import '../home_viewmodel.dart';
 import 'card.dart';

@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:foodpanda/src/views/category/category_viewmodel.dart';
-import '../../reuseable_widget/text/custom_text.dart';
-import '../../reuseable_widget/textfield/app_textfield.dart';
+import '../../reuseable_widget/custom_text.dart';
+import '../../reuseable_widget/app_textfield.dart';
 import '../../utils/colors/app_colors.dart';
 import 'widget/category_found.dart';
 

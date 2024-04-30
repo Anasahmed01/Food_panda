@@ -122,15 +122,8 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i7.CartView: (data) {
-      final args = data.getArgs<CartViewArguments>(nullOk: false);
       return _i8.MaterialPageRoute<dynamic>(
-        builder: (context) => _i7.CartView(
-            key: args.key,
-            resturantName: args.resturantName,
-            deliveryTime: args.deliveryTime,
-            productName: args.productName,
-            productPrice: args.productPrice,
-            productImage: args.productImage),
+        builder: (context) => const _i7.CartView(),
         settings: data,
       );
     },
@@ -245,7 +238,7 @@ class OrderDetailViewArguments {
 
   final String productName;
 
-  final String productPrice;
+  final double productPrice;
 
   final String productImage;
 
@@ -285,55 +278,6 @@ class OrderDetailViewArguments {
         model.hashCode ^
         resturantName.hashCode ^
         deliveryTime.hashCode;
-  }
-}
-
-class CartViewArguments {
-  const CartViewArguments({
-    this.key,
-    required this.resturantName,
-    required this.deliveryTime,
-    required this.productName,
-    required this.productPrice,
-    required this.productImage,
-  });
-
-  final _i9.Key? key;
-
-  final String resturantName;
-
-  final String deliveryTime;
-
-  final String productName;
-
-  final String productPrice;
-
-  final String productImage;
-
-  @override
-  String toString() {
-    return '{"key": "$key", "resturantName": "$resturantName", "deliveryTime": "$deliveryTime", "productName": "$productName", "productPrice": "$productPrice", "productImage": "$productImage"}';
-  }
-
-  @override
-  bool operator ==(covariant CartViewArguments other) {
-    if (identical(this, other)) return true;
-    return other.key == key &&
-        other.resturantName == resturantName &&
-        other.deliveryTime == deliveryTime &&
-        other.productName == productName &&
-        other.productPrice == productPrice &&
-        other.productImage == productImage;
-  }
-
-  @override
-  int get hashCode {
-    return key.hashCode ^
-        resturantName.hashCode ^
-        deliveryTime.hashCode ^
-        productName.hashCode ^
-        productPrice.hashCode ^
-        productImage.hashCode;
   }
 }
 
@@ -417,7 +361,7 @@ extension NavigatorStateExtension on _i11.NavigationService {
   Future<dynamic> navigateToOrderDetailView({
     _i9.Key? key,
     required String productName,
-    required String productPrice,
+    required double productPrice,
     required String productImage,
     required String productDiscription,
     required _i10.Datum model,
@@ -445,27 +389,14 @@ extension NavigatorStateExtension on _i11.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToCartView({
-    _i9.Key? key,
-    required String resturantName,
-    required String deliveryTime,
-    required String productName,
-    required String productPrice,
-    required String productImage,
+  Future<dynamic> navigateToCartView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  }) async {
+  ]) async {
     return navigateTo<dynamic>(Routes.cartView,
-        arguments: CartViewArguments(
-            key: key,
-            resturantName: resturantName,
-            deliveryTime: deliveryTime,
-            productName: productName,
-            productPrice: productPrice,
-            productImage: productImage),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -551,7 +482,7 @@ extension NavigatorStateExtension on _i11.NavigationService {
   Future<dynamic> replaceWithOrderDetailView({
     _i9.Key? key,
     required String productName,
-    required String productPrice,
+    required double productPrice,
     required String productImage,
     required String productDiscription,
     required _i10.Datum model,
@@ -579,27 +510,14 @@ extension NavigatorStateExtension on _i11.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithCartView({
-    _i9.Key? key,
-    required String resturantName,
-    required String deliveryTime,
-    required String productName,
-    required String productPrice,
-    required String productImage,
+  Future<dynamic> replaceWithCartView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  }) async {
+  ]) async {
     return replaceWith<dynamic>(Routes.cartView,
-        arguments: CartViewArguments(
-            key: key,
-            resturantName: resturantName,
-            deliveryTime: deliveryTime,
-            productName: productName,
-            productPrice: productPrice,
-            productImage: productImage),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodpanda/src/models/popular_restaurant.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
 import 'package:foodpanda/src/utils/images/images.dart';
-import '../../../reuseable_widget/text/custom_text.dart';
+import '../../../reuseable_widget/custom_text.dart';
 import '../home_viewmodel.dart';
 
 Widget categoryCard(

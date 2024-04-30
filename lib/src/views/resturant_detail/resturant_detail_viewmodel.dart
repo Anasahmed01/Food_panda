@@ -9,11 +9,11 @@ import '../../app/app.locator.dart';
 class ResturantDetailViewModel extends BaseViewModel {
   OrderDetailModel? model;
 
-  init() async {
-    await getRestaurant();
+  init() {
+    getRestaurant();
   }
 
-  getRestaurant() async {
+  getRestaurant() {
     try {
       model = OrderDetailModel.fromJson(OrderDelModel.dummy);
     } catch (e) {
@@ -30,7 +30,7 @@ class ResturantDetailViewModel extends BaseViewModel {
     required String productImg,
     required String productName,
     required String resturantName,
-    required String productPrice,
+    required double productPrice,
     required String productDiscription,
     required String deliveryTime,
     int index = 0,
@@ -42,7 +42,7 @@ class ResturantDetailViewModel extends BaseViewModel {
           resturantName: resturantName,
           productImage: productImg,
           productName: productName,
-          productPrice: productPrice,
+          productPrice: productPrice ,
           productDiscription: productDiscription,
           model: model!.data[index],
         ),

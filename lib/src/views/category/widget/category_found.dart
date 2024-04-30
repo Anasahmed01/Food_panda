@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
-import '../../../reuseable_widget/text/custom_text.dart';
+import '../../../reuseable_widget/custom_text.dart';
 import '../category_viewmodel.dart';
 import 'card.dart';
 

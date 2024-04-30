@@ -1,13 +1,13 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 
 import 'package:flutter/material.dart';
-import '../../../reuseable_widget/text/custom_text.dart';
+import '../../../reuseable_widget/custom_text.dart';
 import '../../../utils/colors/app_colors.dart';
 
 Widget productDetailCon(
     {required String image,
     required String productName,
-    required String productPrice}) {
+    required productPrice}) {
   return Container(
     padding: const EdgeInsets.all(10),
     decoration: BoxDecoration(

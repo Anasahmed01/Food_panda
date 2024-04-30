@@ -11,21 +11,9 @@ class OrderDetailViewModel extends BaseViewModel {
     locator<NavigationService>().back();
   }
 
-  navigateToCartView({
-    required String resturantName,
-    required String deliveryTime,
-    required String productName,
-    required String productPrice,
-    required String productImage,
-  }) {
+  navigateToCartView() {
     locator<NavigationService>().navigateWithTransition(
-      CartView(
-        deliveryTime: deliveryTime,
-        resturantName: resturantName,
-        productName: productName,
-        productPrice: productPrice,
-        productImage: productImage,
-      ),
+      const CartView(),
       opaque: true,
       duration: const Duration(milliseconds: 500),
       transitionStyle: Transition.downToUp,

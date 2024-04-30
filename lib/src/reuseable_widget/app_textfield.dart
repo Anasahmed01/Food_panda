@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../utils/colors/app_colors.dart';
-import '../text_style/text_style.dart';
+import '../utils/colors/app_colors.dart';
+import 'text_style.dart';
 
 class CustomTextFields {
   static Widget textfield({
