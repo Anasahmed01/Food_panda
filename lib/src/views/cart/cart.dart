@@ -18,7 +18,11 @@ class CartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => CartViewModel(),
+      onViewModelReady: (viewModel) {
+        viewModel.init();
+      },
       builder: (context, viewModel, child) {
+
         if (cart.isEmpty) {
           return appScafold(
               onBackTap: () => viewModel.navigateToBack(),
@@ -87,7 +91,7 @@ class CartView extends StatelessWidget {
                   children: [
                     CustomText.customSizedText(
                         text: 'Cart', fontWeight: FontWeight.w800, size: 18),
-                    //CustomText.customSizedText(text: cart),
+                    // CustomText.customSizedText(text: cart[0][4]),
                   ],
                 ),
               ],

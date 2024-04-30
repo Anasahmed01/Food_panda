@@ -62,10 +62,10 @@ Widget cartFound({
                       text: 'Estimated delivery',
                       color: AppColors.greyColor,
                       size: 12),
-                  CustomText.customSizedText(
-                      text: cart.isEmpty ? '' : 'NOW ( ${cart[0]} )',
-                      size: 16,
-                      fontWeight: FontWeight.w700),
+                  // CustomText.customSizedText(
+                  //     text: cart.isEmpty ? '' : 'NOW ( ${cart[0][1]} )',
+                  //     size: 16,
+                  //     fontWeight: FontWeight.w700),
                 ],
               )
             ],
@@ -76,9 +76,10 @@ Widget cartFound({
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
-            var prices = cart[index];
-            double pp = prices.productPrice;
-            viewModel.sumPrice(pp);
+            // var prices = cart[index];
+            // double pp = prices.productPrice;
+            // viewModel.sumPrice(pp);
+
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Row(
