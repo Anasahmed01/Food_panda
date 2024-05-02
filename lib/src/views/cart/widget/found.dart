@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:foodpanda/src/del_custom_model/product_detail_model.dart';
+import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/reuseable_widget/custom_text.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
 import 'package:foodpanda/src/utils/images/images.dart';
 import 'package:foodpanda/src/views/cart/cart_viewmodel.dart';
+
+import 'widget.dart';
 
 Widget cartFound({
   required CartViewModel viewModel,
@@ -62,10 +64,10 @@ Widget cartFound({
                       text: 'Estimated delivery',
                       color: AppColors.greyColor,
                       size: 12),
-                  // CustomText.customSizedText(
-                  //     text: cart.isEmpty ? '' : 'NOW ( ${cart[0][1]} )',
-                  //     size: 16,
-                  //     fontWeight: FontWeight.w700),
+                  CustomText.customSizedText(
+                      text: cart.isEmpty ? '' : 'NOW ( ${cart[0][1]} )',
+                      size: 16,
+                      fontWeight: FontWeight.w700),
                 ],
               )
             ],
@@ -79,77 +81,78 @@ Widget cartFound({
             // var prices = cart[index];
             // double pp = prices.productPrice;
             // viewModel.sumPrice(pp);
-
+            // print(cart[index].toString());
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Stack(
                 children: [
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
-                    ),
-                    child: Row(
-                      children: [
-                        CustomText.customSizedText(text: '1'),
-                        Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: AppColors.primaryColor,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: 60,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(cart[index].productImage),
-                      ),
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomText.customSizedText(
-                          text: cart[index].productName,
-                          maxLine: 3,
-                          size: 12,
-                          maxFontSize: 12,
-                          minFontSize: 12,
-                          color: AppColors.primaryColor),
-                      SizedBox(
-                        width: 100,
-                        child: ExpansionTile(
-                          tilePadding: EdgeInsets.zero,
-                          expandedAlignment: Alignment.topLeft,
-                          //enabled: true,
-                          title: CustomText.customSizedText(
-                            text: 'Pepsi - 345 ml',
-                            maxLine: 2,
-                            size: 12,
-                          ),
-                          trailing: Icon(viewModel.customIcon
-                              ? Icons.keyboard_arrow_down_rounded
-                              : Icons.keyboard_arrow_up_outlined),
-
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 5),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey.shade300),
+                        ),
+                        child: Row(
                           children: [
                             CustomText.customSizedText(
-                                text: 'Next Cola - 345 ml'),
+                                text: cart[index][7].toString()),
+                            Icon(
+                              Icons.keyboard_arrow_down_rounded,
+                              color: AppColors.primaryColor,
+                            ),
                           ],
-                          onExpansionChanged: (bool expanded) {
-                            viewModel.rebuildUi();
-                            viewModel.customIcon = expanded;
-                            viewModel.rebuildUi();
-                          },
                         ),
                       ),
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(cart[index][3]),
+                          ),
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomText.customSizedText(
+                              text: cart[index][0],
+                              maxLine: 3,
+                              size: 12,
+                              maxFontSize: 12,
+                              minFontSize: 12,
+                              color: AppColors.primaryColor),
+                          SizedBox(
+                            width: 100,
+                            child: expansionTile(
+                                context: context,
+                                viewModel: viewModel,
+                                requideItems: cart[index][6],
+                                optionalItem: 'Next Cola - 345 ml'),
+                          ),
+                        ],
+                      ),
+                      CustomText.customSizedText(text: 'Rs. ${cart[index][2]}'),
                     ],
                   ),
-                  CustomText.customSizedText(
-                      text: 'Rs. ${cart[index].productPrice}'),
+                  Positioned(
+                      top: 0,
+                      right: 0,
+                      child: GestureDetector(
+                        onTap: () {
+                          viewModel.rebuildUi();
+                          cart.removeAt(index);
+                          viewModel.rebuildUi();
+                        },
+                        child: Icon(
+                          size: 18,
+                          CupertinoIcons.xmark,
+                          color: AppColors.primaryColor,
+                        ),
+                      )),
                 ],
               ),
             );

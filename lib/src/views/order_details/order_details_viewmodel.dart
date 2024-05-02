@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodpanda/src/del_custom_model/product_detail_model.dart';
+import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/models/order_detail.dart';
 import 'package:foodpanda/src/views/cart/cart.dart';
 import 'package:stacked/stacked.dart';
@@ -36,6 +36,8 @@ class OrderDetailViewModel extends BaseViewModel {
     'dew - 345 ml',
     '7up - 345 ml',
   ];
+
+  String? selectedValue;
 
   String requideSaveData = '';
 
@@ -74,10 +76,11 @@ class OrderDetailViewModel extends BaseViewModel {
 
   var quantity = 1;
 
-  void increment() {
-    if (quantity >= 1) {
-      quantity++;
-    }
+  void addQuantity(int id) {
+    final index = cart.indexWhere((element) => element.id == id);
+    cart[index].value = cart[index].quantity!.value + 1;
+
+    notifyListeners();
   }
 
   void decrement() {
@@ -92,4 +95,12 @@ class OrderDetailViewModel extends BaseViewModel {
       print(e);
     }
   }
+
+  // void checkAlreadyExItem(Datum newItem) {
+  //   var existingItem = cart.firstWhere(
+  //     (item) => item["product_id"] == newItem["product_id"] ,
+  //     orElse: () => null,
+  //   );
+  //   newItem.add(newItem);
+  // }
 }

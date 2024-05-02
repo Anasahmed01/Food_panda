@@ -31,6 +31,7 @@ class Datum {
   String productName;
   String productImage;
   double productPrice;
+  int productId;
   String discription;
   List<RequideItem> requideItems;
   List<OptionalItem> optionalItem;
@@ -39,6 +40,7 @@ class Datum {
     required this.productName,
     required this.productImage,
     required this.productPrice,
+    required this.productId,
     required this.discription,
     required this.requideItems,
     required this.optionalItem,
@@ -48,6 +50,7 @@ class Datum {
         productName: json["product_name"],
         productImage: json["product_image"],
         productPrice: json["product_price"],
+        productId: json["product_id"],
         discription: json["discription"],
         requideItems: List<RequideItem>.from(
             json["requide_items"].map((x) => RequideItem.fromJson(x))),
@@ -59,6 +62,7 @@ class Datum {
         "product_name": productName,
         "product_image": productImage,
         "product_price": productPrice,
+        "product_id": productId,
         "discription": discription,
         "requide_items":
             List<dynamic>.from(requideItems.map((x) => x.toJson())),

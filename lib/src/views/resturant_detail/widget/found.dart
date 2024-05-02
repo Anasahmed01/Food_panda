@@ -297,6 +297,7 @@ Widget productFound(
                     return GestureDetector(
                       onTap: () {
                         viewModel.navigateToOrderDetailView(
+                          productId: model.data[index].productId,
                           deliveryTime: deliveryTime,
                           resturantName: resturantName,
                           productDiscription: model.data[index].discription,
@@ -391,6 +392,7 @@ Widget productFound(
                   child: GestureDetector(
                     onTap: () {
                       viewModel.navigateToOrderDetailView(
+                          productId: model.data[index].productId,
                           deliveryTime: deliveryTime,
                           resturantName: resturantName,
                           index: index,
@@ -458,6 +460,8 @@ Widget productFound(
                                     child: GestureDetector(
                                       onTap: () {
                                         viewModel.navigateToOrderDetailView(
+                                            productId:
+                                                model.data[index].productId,
                                             deliveryTime: deliveryTime,
                                             resturantName: resturantName,
                                             index: index,

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:foodpanda/src/del_custom_model/product_detail_model.dart';
+import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/reuseable_widget/app_scaffold.dart';
 import 'package:foodpanda/src/reuseable_widget/custom_text.dart';
 import 'package:foodpanda/src/utils/images/images.dart';
@@ -22,7 +22,9 @@ class CartView extends StatelessWidget {
         viewModel.init();
       },
       builder: (context, viewModel, child) {
-
+        double deliveryFee = 106.10;
+        double platformFee = 8.84;
+        double vAT = 102.05;
         if (cart.isEmpty) {
           return appScafold(
               onBackTap: () => viewModel.navigateToBack(),
@@ -91,7 +93,7 @@ class CartView extends StatelessWidget {
                   children: [
                     CustomText.customSizedText(
                         text: 'Cart', fontWeight: FontWeight.w800, size: 18),
-                    // CustomText.customSizedText(text: cart[0][4]),
+                    CustomText.customSizedText(text: cart[0][4]),
                   ],
                 ),
               ],
@@ -128,7 +130,8 @@ class CartView extends StatelessWidget {
                       ],
                     ),
                     CustomText.customSizedText(
-                      text: 'Rs. ${viewModel.totalPrice}',
+                      text:
+                          'Rs. ${(viewModel.totalPrice + deliveryFee + platformFee + vAT).toStringAsFixed(2)}',
                       color: AppColors.blackColor,
                       fontWeight: FontWeight.w900,
                       maxLine: 1,

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:foodpanda/src/del_custom_model/product_detail_model.dart';
+import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/reuseable_widget/custom_text.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
 import 'package:foodpanda/src/views/order_details/order_details_viewmodel.dart';
@@ -15,6 +15,7 @@ class OrderDetailView extends StatelessWidget {
   final double productPrice;
   final String productDiscription;
   final String productImage;
+  final int productId;
   final Datum model;
   const OrderDetailView({
     super.key,
@@ -25,6 +26,7 @@ class OrderDetailView extends StatelessWidget {
     required this.model,
     required this.resturantName,
     required this.deliveryTime,
+    required this.productId,
   });
 
   @override
@@ -33,22 +35,26 @@ class OrderDetailView extends StatelessWidget {
       viewModelBuilder: () => OrderDetailViewModel(),
       onViewModelReady: (viewModel) => viewModel.getRes(),
       builder: (context, viewModel, child) {
-        // var cartData = [
-        //   productName,
-        //   deliveryTime,
-        //   productPrice,
-        //   productImage,
-        //   resturantName
-        // ];
+        var cartData = [
+          productName,
+          deliveryTime,
+          productPrice,
+          productImage,
+          resturantName,
+          productId,
+          viewModel.selectedValue,
+          viewModel.quantity
+        ];
 
-        Datum cartData = Datum(
-          productName: productName,
-          productImage: productImage,
-          productPrice: productPrice,
-          discription: 'discription',
-          requideItems: [],
-          optionalItem: [],
-        );
+        // Datum cartData = Datum(
+        //   productName: productName,
+        //   productImage: productImage,
+        //   productPrice: productPrice,
+        //   discription: 'discription',
+        //   requideItems: [],
+        //   optionalItem: [],
+        // );
+
         return Scaffold(
           body: CustomScrollView(
             slivers: [
@@ -123,7 +129,7 @@ class OrderDetailView extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    viewModel.increment();
+                    // viewModel.addQuantity(cartData[5]);
                     viewModel.rebuildUi();
                   },
                   child: Container(
@@ -140,9 +146,28 @@ class OrderDetailView extends StatelessWidget {
                 GestureDetector(
                   onTap: viewModel.required == true
                       ? () {
+                          //  var existingItem = cart.firstWhere((item) => item[productId] );
+                          // if (cart.firstWhere((item) =>
+                          //     item[productId] == item[cartData[productId]])) {
+                          //   print(cartData);
+                          //   var snackBar = const SnackBar(
+                          //       content: Text('This Product already exisist'));
+                          //   ScaffoldMessenger.of(context)
+                          //       .showSnackBar(snackBar);
+                          // } else {
+
+                          // }
+                          // if (cart.) {
+
+                          // }
+                          // cart.firstWhere(
+                          //   (item) => item[] == cartData[productId],
+                          //   orElse: () => null,
+                          // );
+
                           viewModel.navigateToCartView();
                           cart.add(cartData);
-                          print(cart);
+                          print(cartData);
                         }
                       : () {},
                   child: Container(

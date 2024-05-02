@@ -117,7 +117,8 @@ class StackedRouter extends _i1.RouterBase {
             productDiscription: args.productDiscription,
             model: args.model,
             resturantName: args.resturantName,
-            deliveryTime: args.deliveryTime),
+            deliveryTime: args.deliveryTime,
+            productId: args.productId),
         settings: data,
       );
     },
@@ -232,6 +233,7 @@ class OrderDetailViewArguments {
     required this.model,
     required this.resturantName,
     required this.deliveryTime,
+    required this.productId,
   });
 
   final _i9.Key? key;
@@ -250,9 +252,11 @@ class OrderDetailViewArguments {
 
   final String deliveryTime;
 
+  final int productId;
+
   @override
   String toString() {
-    return '{"key": "$key", "productName": "$productName", "productPrice": "$productPrice", "productImage": "$productImage", "productDiscription": "$productDiscription", "model": "$model", "resturantName": "$resturantName", "deliveryTime": "$deliveryTime"}';
+    return '{"key": "$key", "productName": "$productName", "productPrice": "$productPrice", "productImage": "$productImage", "productDiscription": "$productDiscription", "model": "$model", "resturantName": "$resturantName", "deliveryTime": "$deliveryTime", "productId": "$productId"}';
   }
 
   @override
@@ -265,7 +269,8 @@ class OrderDetailViewArguments {
         other.productDiscription == productDiscription &&
         other.model == model &&
         other.resturantName == resturantName &&
-        other.deliveryTime == deliveryTime;
+        other.deliveryTime == deliveryTime &&
+        other.productId == productId;
   }
 
   @override
@@ -277,7 +282,8 @@ class OrderDetailViewArguments {
         productDiscription.hashCode ^
         model.hashCode ^
         resturantName.hashCode ^
-        deliveryTime.hashCode;
+        deliveryTime.hashCode ^
+        productId.hashCode;
   }
 }
 
@@ -367,6 +373,7 @@ extension NavigatorStateExtension on _i11.NavigationService {
     required _i10.Datum model,
     required String resturantName,
     required String deliveryTime,
+    required int productId,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -382,7 +389,8 @@ extension NavigatorStateExtension on _i11.NavigationService {
             productDiscription: productDiscription,
             model: model,
             resturantName: resturantName,
-            deliveryTime: deliveryTime),
+            deliveryTime: deliveryTime,
+            productId: productId),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -488,6 +496,7 @@ extension NavigatorStateExtension on _i11.NavigationService {
     required _i10.Datum model,
     required String resturantName,
     required String deliveryTime,
+    required int productId,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -503,7 +512,8 @@ extension NavigatorStateExtension on _i11.NavigationService {
             productDiscription: productDiscription,
             model: model,
             resturantName: resturantName,
-            deliveryTime: deliveryTime),
+            deliveryTime: deliveryTime,
+            productId: productId),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

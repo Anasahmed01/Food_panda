@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodpanda/src/del_custom_model/product_detail_model.dart';
+import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/models/order_detail.dart';
 import 'package:foodpanda/src/views/order_details/order_details.dart';
 import 'package:stacked/stacked.dart';
@@ -33,16 +33,19 @@ class ResturantDetailViewModel extends BaseViewModel {
     required double productPrice,
     required String productDiscription,
     required String deliveryTime,
+    required productId,
     int index = 0,
   }) {
     if (model != null) {
       locator<NavigationService>().navigateWithTransition(
         OrderDetailView(
+          
+          productId: productId,
           deliveryTime: deliveryTime,
           resturantName: resturantName,
           productImage: productImg,
           productName: productName,
-          productPrice: productPrice ,
+          productPrice: productPrice,
           productDiscription: productDiscription,
           model: model!.data[index],
         ),

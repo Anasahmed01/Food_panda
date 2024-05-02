@@ -14,6 +14,7 @@ import '../../app/app.locator.dart';
 import '../../models/popular_restaurant.dart';
 
 class HomeViewModel extends BaseViewModel {
+  bool customIcon = false;
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
   navigateToCatView(categoryName) {

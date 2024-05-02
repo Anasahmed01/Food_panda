@@ -105,19 +105,18 @@ Widget found({
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    return RadioListTile(
+                    final softDrink = viewModel.softDrinks[index];
+                    return RadioListTile<String>(
                       activeColor: AppColors.primaryColor,
                       contentPadding: const EdgeInsets.only(left: 5),
-                      value: index,
-                      groupValue: viewModel.isSelected.indexOf(true),
-                      onChanged: (int? value) {
+                      value: softDrink,
+                      groupValue: viewModel.selectedValue,
+                      onChanged: (value) {
                         viewModel.rebuildUi();
-                        for (int i = 0; i < viewModel.isSelected.length; i++) {
-                          viewModel.isSelected[i] = (value == i);
-                          viewModel.required = true;
-                        }
-
+                        viewModel.selectedValue = value;
+                        print(viewModel.selectedValue);
                         viewModel.rebuildUi();
+                        viewModel.required = true;
                       },
                       title: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
