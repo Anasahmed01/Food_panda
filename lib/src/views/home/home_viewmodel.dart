@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/del_custom_model/cat_del_model.dart';
+import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/del_custom_model/popular_restaurants.dart';
 import 'package:foodpanda/src/models/category_data.dart';
 import 'package:foodpanda/src/utils/images/images.dart';
@@ -63,21 +64,6 @@ class HomeViewModel extends BaseViewModel {
       curve: Curves.ease,
     );
   }
-
-  List categorySubData = [
-    'Order food you love',
-    'Top brands to your door',
-    'Self-collect for 50% off',
-    'Go out to eat for 25% off',
-    'Plan events with ease',
-    'Send parcels in a tap'
-  ];
-
-  List storeRating = [
-    '4.2',
-    '4.7',
-    '4.3',
-  ];
 
   List categoryImages = [
     AppImages.pandaMart1,
@@ -144,5 +130,14 @@ class HomeViewModel extends BaseViewModel {
     } catch (e) {
       print(e);
     }
+  }
+
+  int cartLength = 0;
+
+  getCartLength() {
+    cartLength = cart.length;
+    rebuildUi();
+    print(cartLength);
+    return;
   }
 }

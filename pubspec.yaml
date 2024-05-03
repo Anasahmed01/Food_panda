@@ -49,6 +49,7 @@ dependencies:
   overlay_support: ^2.1.0
   timeline_tile: ^2.0.0
   flutter_advanced_switch: ^3.1.0
+  badges: ^3.1.2
 
 dev_dependencies:
   flutter_test:

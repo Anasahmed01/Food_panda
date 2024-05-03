@@ -146,25 +146,6 @@ class OrderDetailView extends StatelessWidget {
                 GestureDetector(
                   onTap: viewModel.required == true
                       ? () {
-                          //  var existingItem = cart.firstWhere((item) => item[productId] );
-                          // if (cart.firstWhere((item) =>
-                          //     item[productId] == item[cartData[productId]])) {
-                          //   print(cartData);
-                          //   var snackBar = const SnackBar(
-                          //       content: Text('This Product already exisist'));
-                          //   ScaffoldMessenger.of(context)
-                          //       .showSnackBar(snackBar);
-                          // } else {
-
-                          // }
-                          // if (cart.) {
-
-                          // }
-                          // cart.firstWhere(
-                          //   (item) => item[] == cartData[productId],
-                          //   orElse: () => null,
-                          // );
-
                           viewModel.navigateToCartView();
                           cart.add(cartData);
                           print(cartData);

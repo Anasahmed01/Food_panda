@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/models/order_detail.dart';
+import 'package:foodpanda/src/views/home/home.dart';
 import 'package:foodpanda/src/views/order_details/order_details.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -26,6 +27,16 @@ class ResturantDetailViewModel extends BaseViewModel {
     locator<NavigationService>().back();
   }
 
+  navigateToHomeView() {
+    locator<NavigationService>().navigateWithTransition(
+      const HomeView(),
+      opaque: true,
+      duration: const Duration(milliseconds: 500),
+      transitionStyle: Transition.downToUp,
+      curve: Curves.slowMiddle,
+    );
+  }
+
   navigateToOrderDetailView({
     required String productImg,
     required String productName,
@@ -39,7 +50,6 @@ class ResturantDetailViewModel extends BaseViewModel {
     if (model != null) {
       locator<NavigationService>().navigateWithTransition(
         OrderDetailView(
-          
           productId: productId,
           deliveryTime: deliveryTime,
           resturantName: resturantName,

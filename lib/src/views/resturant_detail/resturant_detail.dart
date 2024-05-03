@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/views/resturant_detail/resturant_detail_viewmodel.dart';
 import 'package:foodpanda/src/views/resturant_detail/widget/found.dart';
 import 'package:stacked/stacked.dart';
@@ -37,7 +38,8 @@ class ResturantDetailView extends StatelessWidget {
             appBar: AppBar(
               leading: GestureDetector(
                   onTap: () {
-                    viewModel.navigateToBack();
+                    // viewModel.navigateToBack();
+                    viewModel.navigateToHomeView();
                   },
                   child: const Icon(Icons.arrow_back)),
               backgroundColor: AppColors.white,
@@ -88,6 +90,48 @@ class ResturantDetailView extends StatelessWidget {
                 deliveryPrice: deliveryPrice,
                 deliveryTime: deliveryTime,
                 deliveryType: deliveryType),
+            bottomNavigationBar: cart.isNotEmpty
+                ? Container(
+                    decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10))),
+                    height: 80,
+                    child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10))),
+                        margin: const EdgeInsets.all(15),
+                        height: 50,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: AppColors.primaryColor,
+                                  border: Border.all(color: AppColors.white)),
+                              height: 25,
+                              width: 25,
+                              child: Center(
+                                child: CustomText.customSizedText(
+                                    text: '${cart.length}',
+                                    color: AppColors.white),
+                              ),
+                            ),
+                            CustomText.customSizedText(
+                                text: 'View your cart',
+                                color: AppColors.white,
+                                fontWeight: FontWeight.w800)
+                          ],
+                        )),
+                  )
+                : Container(
+                    height: 0,
+                  ),
           );
         }
         return Container();

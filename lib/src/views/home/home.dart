@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/reuseable_widget/custom_text.dart';
 import 'package:foodpanda/src/reuseable_widget/app_textfield.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
@@ -55,7 +56,15 @@ class HomeView extends StatelessWidget {
                           onTap: () {
                             viewModel.navigateToCartView();
                           },
-                          child: const Icon(Icons.shopping_bag_outlined)),
+                          child: Badge(
+                            backgroundColor: AppColors.white,
+                            alignment: Alignment.bottomRight,
+                            label: Text(
+                              '${cart.length}',
+                              style: TextStyle(color: AppColors.primaryColor),
+                            ),
+                            child: const Icon(Icons.shopping_bag_outlined),
+                          )),
                     ],
                   ),
                 )
