@@ -6,6 +6,8 @@ import 'package:stacked_services/stacked_services.dart';
 import '../../app/app.locator.dart';
 
 class CartViewModel extends BaseViewModel {
+  final cutleryController = ValueNotifier(false);
+
   init() {
     for (int j = 0; j < cart.length; j++) {
       double pp = cart[j][2];
@@ -28,6 +30,8 @@ class CartViewModel extends BaseViewModel {
     );
   }
 
+  bool isToggled = false;
+
   bool customIcon = false;
 
   double totalPrice = 0;
@@ -45,5 +49,9 @@ class CartViewModel extends BaseViewModel {
 
   void decrement() {
     quantity--;
+  }
+
+  deleteProduct(int index) {
+    cart.removeAt(index);
   }
 }

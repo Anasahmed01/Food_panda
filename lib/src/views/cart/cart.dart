@@ -8,6 +8,7 @@ import 'package:foodpanda/src/views/cart/cart_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 import '../../utils/colors/app_colors.dart';
 import 'widget/found.dart';
+import 'widget/widget.dart';
 
 class CartView extends StatelessWidget {
   const CartView({
@@ -73,6 +74,8 @@ class CartView extends StatelessWidget {
         } else {}
         return Scaffold(
           appBar: AppBar(
+            surfaceTintColor: Colors.white,
+            bottom: timeLineForCart(context),
             backgroundColor: AppColors.white,
             automaticallyImplyLeading: false,
             title: Row(
@@ -167,4 +170,6 @@ class CartView extends StatelessWidget {
       },
     );
   }
+
+ 
 }

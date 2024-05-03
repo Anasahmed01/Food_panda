@@ -26,6 +26,7 @@ class HomeView extends StatelessWidget {
             drawerEnableOpenDragGesture: false,
             drawer: appDrawer(),
             appBar: AppBar(
+              backgroundColor: AppColors.primaryColor,
               iconTheme: IconThemeData(color: AppColors.white),
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,6 +66,7 @@ class HomeView extends StatelessWidget {
               headerSliverBuilder: (context, innerBoxIsScrolled) {
                 return [
                   SliverAppBar(
+                    backgroundColor: AppColors.primaryColor,
                     automaticallyImplyLeading: false,
                     title: Padding(
                       padding: const EdgeInsets.only(

@@ -6,7 +6,7 @@ import 'package:foodpanda/src/reuseable_widget/custom_text.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
 import 'package:foodpanda/src/utils/images/images.dart';
 import 'package:foodpanda/src/views/cart/cart_viewmodel.dart';
-
+import '../../../reuseable_widget/app_button.dart';
 import 'widget.dart';
 
 Widget cartFound({
@@ -82,78 +82,77 @@ Widget cartFound({
             // double pp = prices.productPrice;
             // viewModel.sumPrice(pp);
             // print(cart[index].toString());
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: Stack(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 5),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey.shade300),
-                        ),
-                        child: Row(
-                          children: [
-                            CustomText.customSizedText(
-                                text: cart[index][7].toString()),
-                            Icon(
-                              Icons.keyboard_arrow_down_rounded,
-                              color: AppColors.primaryColor,
-                            ),
-                          ],
-                        ),
+            return Dismissible(
+              key: Key(index.toString()),
+              direction: DismissDirection.endToStart,
+              background: Container(
+                padding: const EdgeInsets.only(right: 10),
+                alignment: AlignmentDirectional.centerEnd,
+                color: const Color.fromARGB(255, 255, 102, 0),
+                child: const Icon(CupertinoIcons.delete),
+              ),
+              onDismissed: (direction) {
+                if (direction == DismissDirection.endToStart) {
+                  viewModel.deleteProduct(index);
+                }
+                if (cart.isEmpty) {
+                  viewModel.navigateToBack();
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 5),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey.shade300),
                       ),
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(cart[index][3]),
-                          ),
-                        ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      child: Row(
                         children: [
                           CustomText.customSizedText(
-                              text: cart[index][0],
-                              maxLine: 3,
-                              size: 12,
-                              maxFontSize: 12,
-                              minFontSize: 12,
-                              color: AppColors.primaryColor),
-                          SizedBox(
-                            width: 100,
-                            child: expansionTile(
-                                context: context,
-                                viewModel: viewModel,
-                                requideItems: cart[index][6],
-                                optionalItem: 'Next Cola - 345 ml'),
+                              text: cart[index][7].toString()),
+                          Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: AppColors.primaryColor,
                           ),
                         ],
                       ),
-                      CustomText.customSizedText(text: 'Rs. ${cart[index][2]}'),
-                    ],
-                  ),
-                  Positioned(
-                      top: 0,
-                      right: 0,
-                      child: GestureDetector(
-                        onTap: () {
-                          viewModel.rebuildUi();
-                          cart.removeAt(index);
-                          viewModel.rebuildUi();
-                        },
-                        child: Icon(
-                          size: 18,
-                          CupertinoIcons.xmark,
-                          color: AppColors.primaryColor,
+                    ),
+                    Container(
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(cart[index][3]),
                         ),
-                      )),
-                ],
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomText.customSizedText(
+                            text: cart[index][0],
+                            maxLine: 3,
+                            size: 12,
+                            maxFontSize: 12,
+                            minFontSize: 12,
+                            color: AppColors.primaryColor),
+                        SizedBox(
+                          width: 100,
+                          child: expansionTile(
+                              context: context,
+                              viewModel: viewModel,
+                              requideItems: cart[index][6],
+                              optionalItem: 'Next Cola - 345 ml'),
+                        ),
+                      ],
+                    ),
+                    CustomText.customSizedText(text: 'Rs. ${cart[index][2]}'),
+                  ],
+                ),
               ),
             );
           },
@@ -284,6 +283,51 @@ Widget cartFound({
         Divider(
           color: AppColors.lightGreyColor,
           thickness: 10,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.food_bank_outlined,
+                        color: AppColors.primaryColor,
+                      ),
+                      CustomText.customSizedText(
+                        text: '   Cutlery',
+                        fontWeight: FontWeight.w600,
+                        maxLine: 1,
+                        size: 16,
+                      ),
+                    ],
+                  ),
+                  switchButton(
+                    onChanged: (value) {
+                      viewModel.isToggled = value!;
+                      viewModel.rebuildUi();
+                    },
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              CustomText.customSizedText(
+                text: viewModel.isToggled
+                    ? "We won't bring cutlery. Thanks for helping us reduce waste."
+                    : "The restaurant will provide cutlery, if available.",
+                color: AppColors.greyColor,
+                //textAlign: TextAlign.start,
+                maxLine: 2,
+                size: 14,
+              ),
+            ],
+          ),
         ),
       ],
     );

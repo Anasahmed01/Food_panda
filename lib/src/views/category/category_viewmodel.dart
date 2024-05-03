@@ -4,6 +4,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../app/app.locator.dart';
 import '../../utils/images/images.dart';
+import '../cart/cart.dart';
 import '../resturant_detail/resturant_detail.dart';
 
 class CategoryViewModel extends BaseViewModel {
@@ -44,6 +45,16 @@ class CategoryViewModel extends BaseViewModel {
       duration: const Duration(milliseconds: 100),
       transitionStyle: Transition.leftToRight,
       curve: Curves.ease,
+    );
+  }
+
+  navigateToCartView() {
+    locator<NavigationService>().navigateWithTransition(
+      const CartView(),
+      opaque: true,
+      duration: const Duration(milliseconds: 500),
+      transitionStyle: Transition.downToUp,
+      curve: Curves.slowMiddle,
     );
   }
 

@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
 import 'package:foodpanda/src/views/category/category_viewmodel.dart';
 import '../../reuseable_widget/custom_text.dart';
@@ -45,14 +47,20 @@ class CategoryView extends StatelessWidget {
                 ),
               ],
             ),
-            actions: const [
+            actions: [
               SizedBox(
                 width: 90,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Icon(Icons.favorite_border_rounded),
-                    Icon(Icons.shopping_bag_outlined),
+                    GestureDetector(
+                        onTap: () {},
+                        child: const Icon(Icons.favorite_border_rounded)),
+                    GestureDetector(
+                        onTap: () {
+                          viewModel.navigateToCartView();
+                        },
+                        child: const Icon(Icons.shopping_bag_outlined)),
                   ],
                 ),
               )

@@ -129,7 +129,7 @@ class OrderDetailView extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    // viewModel.addQuantity(cartData[5]);
+                    viewModel.addQuantity();
                     viewModel.rebuildUi();
                   },
                   child: Container(

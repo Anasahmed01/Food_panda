@@ -30,14 +30,17 @@ class _MyAppState extends State<MyApp> {
       navigatorKey: StackedService.navigatorKey,
       onGenerateRoute: StackedRouter().onGenerateRoute,
       theme: ThemeData(
-          cardColor: AppColors.white,
-          cardTheme: CardTheme(color: AppColors.white),
-          scaffoldBackgroundColor: AppColors.white,
-          drawerTheme: DrawerThemeData(
-            width: MediaQuery.sizeOf(context).width * 0.85,
-          ),
-          appBarTheme: AppBarTheme(
-              backgroundColor: AppColors.primaryColor, titleSpacing: 0)),
+        //cardColor: AppColors.white,
+        cardTheme: CardTheme(color: AppColors.white),
+        scaffoldBackgroundColor: AppColors.white,
+        drawerTheme: DrawerThemeData(
+          width: MediaQuery.sizeOf(context).width * 0.85,
+        ),
+        appBarTheme: AppBarTheme(
+            surfaceTintColor: AppColors.white,
+            backgroundColor: AppColors.white,
+            titleSpacing: 0),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }

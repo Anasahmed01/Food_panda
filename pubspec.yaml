@@ -48,6 +48,7 @@ dependencies:
   firebase_analytics: ^10.10.0
   overlay_support: ^2.1.0
   timeline_tile: ^2.0.0
+  flutter_advanced_switch: ^3.1.0
 
 dev_dependencies:
   flutter_test:

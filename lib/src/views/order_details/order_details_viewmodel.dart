@@ -76,10 +76,10 @@ class OrderDetailViewModel extends BaseViewModel {
 
   var quantity = 1;
 
-  void addQuantity(int id) {
-    final index = cart.indexWhere((element) => element.id == id);
-    cart[index].value = cart[index].quantity!.value + 1;
-
+  void addQuantity() {
+    // final index = cart.indexWhere((element) => element.id == id);
+    // cart[index].value = cart[index].quantity!.value + 1;
+    quantity++;
     notifyListeners();
   }
 
