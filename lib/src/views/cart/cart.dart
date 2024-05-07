@@ -7,7 +7,7 @@ import 'package:foodpanda/src/utils/images/images.dart';
 import 'package:foodpanda/src/views/cart/cart_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 import '../../utils/colors/app_colors.dart';
-import 'widget/found.dart';
+import 'widget/cart_found.dart';
 import 'widget/widget.dart';
 
 class CartView extends StatelessWidget {
@@ -71,7 +71,7 @@ class CartView extends StatelessWidget {
                   ],
                 ),
               ));
-        } else {}
+        }
         return Scaffold(
           appBar: AppBar(
             surfaceTintColor: Colors.white,
@@ -149,18 +149,21 @@ class CartView extends StatelessWidget {
                   maxLine: 1,
                   size: 12,
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 15),
-                  width: MediaQuery.sizeOf(context).width,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColors.primaryColor),
-                  child: Center(
-                    child: CustomText.customSizedText(
-                        text: 'Confirm payment and address',
-                        fontWeight: FontWeight.w800,
-                        color: AppColors.white),
+                InkWell(
+                  onTap: () => viewModel.navigateToCheckOutView(),
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 15),
+                    width: MediaQuery.sizeOf(context).width,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: AppColors.primaryColor),
+                    child: Center(
+                      child: CustomText.customSizedText(
+                          text: 'Confirm payment and address',
+                          fontWeight: FontWeight.w800,
+                          color: AppColors.white),
+                    ),
                   ),
                 ),
               ],
@@ -170,6 +173,4 @@ class CartView extends StatelessWidget {
       },
     );
   }
-
- 
 }

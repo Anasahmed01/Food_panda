@@ -33,10 +33,6 @@ class HomeViewModel extends BaseViewModel {
   navigateToCartView() {
     locator<NavigationService>().navigateWithTransition(
       const CartView(),
-      opaque: true,
-      duration: const Duration(milliseconds: 500),
-      transitionStyle: Transition.downToUp,
-      curve: Curves.slowMiddle,
     );
   }
 

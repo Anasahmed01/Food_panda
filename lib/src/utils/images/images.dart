@@ -36,4 +36,7 @@ class AppImages {
   //cart
   static String delivery = 'assets/images/cart_img/delivery.png';
   static String emptyCart = 'assets/images/cart_img/empty_cart.png';
+
+  //check_out
+  static String googleMap = 'assets/images/check_out/google_map.png';
 }

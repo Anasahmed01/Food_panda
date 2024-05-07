@@ -18,6 +18,7 @@ class HomeView extends StatelessWidget {
       onViewModelReady: (viewModel) {
         viewModel.getCategory();
         viewModel.getRestaurant();
+        viewModel.getCartLength();
       },
       builder: (context, viewModel, child) {
         return PopScope(
@@ -52,7 +53,7 @@ class HomeView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       const Icon(Icons.favorite_border_rounded),
-                      GestureDetector(
+                      InkWell(
                           onTap: () {
                             viewModel.navigateToCartView();
                           },

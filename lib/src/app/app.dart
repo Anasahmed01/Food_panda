@@ -4,6 +4,7 @@ import 'package:foodpanda/src/views/resturant_detail/resturant_detail.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../views/basic/splash/splash.dart';
+import '../views/cart/widget/update_quantity/update_quantity.dart';
 import '../views/category/category.dart';
 import '../views/home/home.dart';
 
@@ -14,6 +15,7 @@ import '../views/home/home.dart';
   MaterialRoute(page: ResturantDetailView),
   MaterialRoute(page: OrderDetailView),
   MaterialRoute(page: CartView),
+  MaterialRoute(page: UpdateQuantity),
 ], dependencies: [
   Singleton(classType: NavigationService),
 ])

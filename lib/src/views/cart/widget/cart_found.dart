@@ -133,13 +133,23 @@ Widget cartFound({
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomText.customSizedText(
-                            text: cart[index][0],
-                            maxLine: 3,
-                            size: 12,
-                            maxFontSize: 12,
-                            minFontSize: 12,
-                            color: AppColors.primaryColor),
+                        GestureDetector(
+                          onTap: () {
+                            viewModel.navigateToQuantityView(
+                                index: index,
+                                productImage: cart[index][3],
+                                productName: cart[index][0],
+                                productPrice: cart[index][2],
+                                requireditem: cart[index][6]);
+                          },
+                          child: CustomText.customSizedText(
+                              text: cart[index][0],
+                              maxLine: 3,
+                              size: 12,
+                              maxFontSize: 12,
+                              minFontSize: 12,
+                              color: AppColors.primaryColor),
+                        ),
                         SizedBox(
                           width: 100,
                           child: expansionTile(

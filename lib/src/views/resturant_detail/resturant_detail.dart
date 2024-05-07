@@ -91,43 +91,46 @@ class ResturantDetailView extends StatelessWidget {
                 deliveryTime: deliveryTime,
                 deliveryType: deliveryType),
             bottomNavigationBar: cart.isNotEmpty
-                ? Container(
-                    decoration: BoxDecoration(
-                        color: AppColors.white,
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10))),
-                    height: 80,
+                ? GestureDetector(
+                    onTap: () => viewModel.navigateToCartView(),
                     child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        decoration: BoxDecoration(
-                            color: AppColors.primaryColor,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10))),
-                        margin: const EdgeInsets.all(15),
-                        height: 50,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30),
-                                  color: AppColors.primaryColor,
-                                  border: Border.all(color: AppColors.white)),
-                              height: 25,
-                              width: 25,
-                              child: Center(
-                                child: CustomText.customSizedText(
-                                    text: '${cart.length}',
-                                    color: AppColors.white),
+                      decoration: BoxDecoration(
+                          color: AppColors.white,
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              topRight: Radius.circular(10))),
+                      height: 80,
+                      child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          decoration: BoxDecoration(
+                              color: AppColors.primaryColor,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10))),
+                          margin: const EdgeInsets.all(15),
+                          height: 50,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    color: AppColors.primaryColor,
+                                    border: Border.all(color: AppColors.white)),
+                                height: 25,
+                                width: 25,
+                                child: Center(
+                                  child: CustomText.customSizedText(
+                                      text: '${cart.length}',
+                                      color: AppColors.white),
+                                ),
                               ),
-                            ),
-                            CustomText.customSizedText(
-                                text: 'View your cart',
-                                color: AppColors.white,
-                                fontWeight: FontWeight.w800)
-                          ],
-                        )),
+                              CustomText.customSizedText(
+                                  text: 'View your cart',
+                                  color: AppColors.white,
+                                  fontWeight: FontWeight.w800),
+                            ],
+                          )),
+                    ),
                   )
                 : Container(
                     height: 0,

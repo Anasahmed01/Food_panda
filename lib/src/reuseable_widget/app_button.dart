@@ -9,9 +9,9 @@ Widget switchButton({
   return AdvancedSwitch(
     activeColor: AppColors.primaryColor,
     inactiveColor: AppColors.greyColor,
-    borderRadius: BorderRadius.circular(5),
+    borderRadius: BorderRadius.circular(8),
     height: 25,
-    width: 50,
+    width: 45,
     onChanged: onChanged,
   );
 }

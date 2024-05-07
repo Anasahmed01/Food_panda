@@ -1,69 +1,31 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:foodpanda/src/reuseable_widget/custom_text.dart';
-import 'package:foodpanda/src/utils/colors/app_colors.dart';
+import 'package:foodpanda/src/models/order_detail.dart';
+import 'package:foodpanda/src/views/cart/widget/update_quantity/widget/quantity_found.dart';
 import 'package:foodpanda/src/views/order_details/order_details_viewmodel.dart';
 import 'package:stacked/stacked.dart';
-import '../../models/order_detail.dart';
-import 'widget/found.dart';
+import '../../../../reuseable_widget/custom_text.dart';
+import '../../../../utils/colors/app_colors.dart';
 
-class OrderDetailView extends StatelessWidget {
-  final String deliveryType;
-  final String deliveryPrice;
-  final String discountText;
-  final String resturantImage;
-  final String resturantRating;
+class UpdateQuantity extends StatelessWidget {
   final String productName;
-  final String resturantName;
-  final String deliveryTime;
-  final double productPrice;
-  final String productDiscription;
   final String productImage;
-  final int productId;
+  final double productPrice;
+  final String requireditem;
   final Datum model;
-  const OrderDetailView({
-    super.key,
-    required this.productName,
-    required this.productPrice,
-    required this.productImage,
-    required this.productDiscription,
-    required this.model,
-    required this.resturantName,
-    required this.deliveryTime,
-    required this.productId,
-    required this.deliveryType,
-    required this.deliveryPrice,
-    required this.discountText,
-    required this.resturantImage,
-    required this.resturantRating,
-  });
+  const UpdateQuantity(
+      {super.key,
+      required this.productName,
+      required this.productImage,
+      required this.productPrice,
+      required this.requireditem,
+      required this.model});
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => OrderDetailViewModel(),
-      onViewModelReady: (viewModel) => viewModel.getRes(),
       builder: (context, viewModel, child) {
-        var cartData = [
-          productName,
-          deliveryTime,
-          productPrice,
-          productImage,
-          resturantName,
-          productId,
-          viewModel.selectedValue,
-          viewModel.quantity
-        ];
-
-        // Datum cartData = Datum(
-        //   productName: productName,
-        //   productImage: productImage,
-        //   productPrice: productPrice,
-        //   discription: 'discription',
-        //   requideItems: [],
-        //   optionalItem: [],
-        // );
-
         return Scaffold(
           body: CustomScrollView(
             slivers: [
@@ -95,10 +57,11 @@ class OrderDetailView extends StatelessWidget {
                   ),
                 ),
               ),
-              found(
+              quantityFound(
                 context: context,
                 viewModel: viewModel,
-                productDiscription: productDiscription,
+                productImage: productImage,
+                requireditem: requireditem,
                 productName: productName,
                 productPrice: productPrice,
                 model: model,
@@ -155,18 +118,16 @@ class OrderDetailView extends StatelessWidget {
                 GestureDetector(
                   onTap: viewModel.required == true
                       ? () {
-                          viewModel.navigateToResDetailView(
-                              deliveryPrice: deliveryPrice,
-                              deliveryTime: deliveryTime,
-                              deliveryType: deliveryType,
-                              discountText: discountText,
-                              resturantImage: resturantImage,
-                              resturantName: resturantName,
-                              resturantRating: resturantRating);
-
-                          viewModel.addToCart(cartData: cartData);
-                          viewModel.rebuildUi();
-                          print(cartData);
+                          // viewModel.navigateToResDetailView(
+                          //     deliveryPrice: deliveryPrice,
+                          //     deliveryTime: deliveryTime,
+                          //     deliveryType: deliveryType,
+                          //     discountText: discountText,
+                          //     resturantImage: resturantImage,
+                          //     resturantName: resturantName,
+                          //     resturantRating: resturantRating);
+                          // cart.add(cartData);
+                          // print(cartData);
                         }
                       : () {},
                   child: Container(
@@ -176,12 +137,10 @@ class OrderDetailView extends StatelessWidget {
                     height: 50,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: viewModel.required == true
-                            ? AppColors.primaryColor
-                            : AppColors.greyColor),
+                        color: AppColors.primaryColor),
                     child: Center(
                       child: CustomText.customSizedText(
-                          text: 'Add to cart', color: AppColors.white),
+                          text: 'Update', color: AppColors.white),
                     ),
                   ),
                 ),

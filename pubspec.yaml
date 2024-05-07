@@ -87,6 +87,7 @@ flutter:
     - assets/images/home/
     - assets/images/product_detail/
     - assets/images/cart_img/
+    - assets/images/check_out/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

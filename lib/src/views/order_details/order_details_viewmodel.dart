@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/models/order_detail.dart';
-import 'package:foodpanda/src/views/cart/cart.dart';
+import 'package:foodpanda/src/views/resturant_detail/resturant_detail.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../app/app.locator.dart';
@@ -11,9 +11,25 @@ class OrderDetailViewModel extends BaseViewModel {
     locator<NavigationService>().back();
   }
 
-  navigateToCartView() {
+  navigateToResDetailView({
+    required String deliveryPrice,
+    required String deliveryTime,
+    required String deliveryType,
+    required String discountText,
+    required String resturantImage,
+    required String resturantName,
+    required String resturantRating,
+  }) {
     locator<NavigationService>().navigateWithTransition(
-      const CartView(),
+      ResturantDetailView(
+        deliveryPrice: deliveryPrice,
+        deliveryTime: deliveryTime,
+        deliveryType: deliveryType,
+        discountText: discountText,
+        resturantImage: resturantImage,
+        resturantName: resturantName,
+        resturantRating: resturantRating,
+      ),
       opaque: true,
       duration: const Duration(milliseconds: 500),
       transitionStyle: Transition.downToUp,
@@ -74,13 +90,26 @@ class OrderDetailViewModel extends BaseViewModel {
     false,
   ];
 
+  addToCart({required cartData}) {
+    // for (var i = 0; i < cart.length; i++) {
+    //   if (cart[i][5] != cart[i][5]) {
+    //     dev.log('sd');
+    //     print('product already exiest in cart');
+    //   } else {
+
+    //   }
+    // }
+    notifyListeners();
+    cart.add(cartData);
+  }
+
   var quantity = 1;
 
   void addQuantity() {
     // final index = cart.indexWhere((element) => element.id == id);
     // cart[index].value = cart[index].quantity!.value + 1;
     quantity++;
-    notifyListeners();
+    //notifyListeners();
   }
 
   void decrement() {

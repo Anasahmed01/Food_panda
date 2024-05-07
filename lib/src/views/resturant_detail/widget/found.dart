@@ -297,6 +297,11 @@ Widget productFound(
                     return GestureDetector(
                       onTap: () {
                         viewModel.navigateToOrderDetailView(
+                          deliveryPrice: deliveryPrice,
+                          deliveryType: deliveryType,
+                          discountText: discountText,
+                          resturantImage: resturantImage,
+                          resturantRating: resturantRating,
                           productId: model.data[index].productId,
                           deliveryTime: deliveryTime,
                           resturantName: resturantName,
@@ -392,6 +397,11 @@ Widget productFound(
                   child: GestureDetector(
                     onTap: () {
                       viewModel.navigateToOrderDetailView(
+                          deliveryPrice: deliveryPrice,
+                          deliveryType: deliveryType,
+                          discountText: discountText,
+                          resturantImage: resturantImage,
+                          resturantRating: resturantRating,
                           productId: model.data[index].productId,
                           deliveryTime: deliveryTime,
                           resturantName: resturantName,
@@ -460,6 +470,11 @@ Widget productFound(
                                     child: GestureDetector(
                                       onTap: () {
                                         viewModel.navigateToOrderDetailView(
+                                            deliveryPrice: deliveryPrice,
+                                            deliveryType: deliveryType,
+                                            discountText: discountText,
+                                            resturantImage: resturantImage,
+                                            resturantRating: resturantRating,
                                             productId:
                                                 model.data[index].productId,
                                             deliveryTime: deliveryTime,
