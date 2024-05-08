@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
+import '../../../models/popular_restaurant.dart';
 import '../../../reuseable_widget/custom_text.dart';
 import '../../../utils/colors/app_colors.dart';
 import '../category_viewmodel.dart';
@@ -35,8 +36,17 @@ Widget discountContainerForCat({required String text}) {
   );
 }
 
-Widget deliveryContainer(
-    BuildContext context, CategoryViewModel viewModel, int index) {
+Widget deliveryContainer(BuildContext context, CategoryViewModel viewModel,
+    int index, PopularRestDelModel model) {
+  var favouriteData = [
+    model.data[index].restaurantsName,
+    model.data[index].restaurantsImage,
+    model.data[index].deliveryTime,
+    model.data[index].discount,
+    model.data[index].offer,
+    model.data[index].restaurantsRating,
+    model.data[index].restaurantsType
+  ];
   return Container(
     margin: const EdgeInsets.only(right: 15),
     decoration: BoxDecoration(
@@ -51,7 +61,7 @@ Widget deliveryContainer(
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(10), topRight: Radius.circular(10)),
             child: Image.asset(
-              viewModel.popularResImg[index],
+              model.data[index].restaurantsImage,
               width: double.infinity,
               fit: BoxFit.fitHeight,
               height: 200,
@@ -63,23 +73,28 @@ Widget deliveryContainer(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                discountContainerForCat(text: viewModel.popularResText[index]),
-                discountContainerForCat(
-                    text: viewModel.popularResDiscountText[index]),
+                discountContainerForCat(text: model.data[index].offer),
+                discountContainerForCat(text: model.data[index].discount),
               ],
             ),
           ),
           Positioned(
             right: 10,
             top: 8,
-            child: Container(
-              decoration: BoxDecoration(
-                  color: AppColors.white,
-                  borderRadius: BorderRadius.circular(30)),
-              padding: const EdgeInsets.all(5),
-              child: const Icon(
-                size: 16,
-                Icons.favorite_outline_rounded,
+            child: GestureDetector(
+              onTap: () {
+                favourite.add(favouriteData);
+                print(favourite);
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(30)),
+                padding: const EdgeInsets.all(5),
+                child: const Icon(
+                  size: 16,
+                  Icons.favorite_outline_rounded,
+                ),
               ),
             ),
           ),
@@ -96,7 +111,7 @@ Widget deliveryContainer(
                   Flexible(
                     flex: 3,
                     child: CustomText.customSizedText(
-                      text: viewModel.popularResItemNames[index],
+                      text: model.data[index].restaurantsName,
                       fontWeight: FontWeight.w800,
                       size: 14,
                       minFontSize: 14,
@@ -114,7 +129,7 @@ Widget deliveryContainer(
                           size: 18,
                         ),
                         CustomText.customSizedText(
-                          text: ' ${viewModel.storeRating[index]}',
+                          text: ' ${model.data[index].restaurantsRating}',
                           fontWeight: FontWeight.w800,
                           size: 12,
                           maxFontSize: 12,
@@ -134,7 +149,7 @@ Widget deliveryContainer(
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 3.0),
                 child: CustomText.customSizedText(
-                  text: "\$\$\$  -  ${viewModel.popularResItemType[index]}",
+                  text: "\$\$\$  -  ${model.data[index].restaurantsType}",
                   color: AppColors.greyColor,
                   size: 12,
                   maxFontSize: 12,
@@ -151,8 +166,7 @@ Widget deliveryContainer(
                         size: 14,
                       ),
                       CustomText.customSizedText(
-                        text:
-                            ' ${viewModel.popularResDeliveryTimes[index]} min  -  ',
+                        text: ' ${model.data[index].deliveryTime}  -  ',
                         fontWeight: FontWeight.w800,
                         color: AppColors.greyColor,
                         size: 12,

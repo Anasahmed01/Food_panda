@@ -1,7 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
 import 'package:foodpanda/src/views/category/category_viewmodel.dart';
 import '../../reuseable_widget/custom_text.dart';
@@ -20,6 +18,7 @@ class CategoryView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => CategoryViewModel(),
+      onViewModelReady: (viewModel) => viewModel.getRes(),
       builder: (context, viewModel, child) {
         return Scaffold(
           backgroundColor: AppColors.white,
@@ -54,7 +53,9 @@ class CategoryView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          viewModel.navigateToFavouriteView();
+                        },
                         child: const Icon(Icons.favorite_border_rounded)),
                     GestureDetector(
                         onTap: () {
@@ -85,7 +86,7 @@ class CategoryView extends StatelessWidget {
                 )
               ];
             },
-            body: categoryFound(viewModel),
+            body: categoryFound(viewModel, viewModel.getResData!),
           ),
         );
       },

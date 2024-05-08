@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:foodpanda/src/del_custom_model/popular_restaurants.dart';
+import 'package:foodpanda/src/models/popular_restaurant.dart';
 import 'package:foodpanda/src/views/category/see_all/see_all.dart';
+import 'package:foodpanda/src/views/favourite/favourite.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../app/app.locator.dart';
@@ -51,6 +54,16 @@ class CategoryViewModel extends BaseViewModel {
   navigateToCartView() {
     locator<NavigationService>().navigateWithTransition(
       const CartView(),
+      opaque: true,
+      duration: const Duration(milliseconds: 500),
+      transitionStyle: Transition.downToUp,
+      curve: Curves.slowMiddle,
+    );
+  }
+
+  navigateToFavouriteView() {
+    locator<NavigationService>().navigateWithTransition(
+      const FavouriteView(),
       opaque: true,
       duration: const Duration(milliseconds: 500),
       transitionStyle: Transition.downToUp,
@@ -126,4 +139,13 @@ class CategoryViewModel extends BaseViewModel {
     '4.7',
     '4.3',
   ];
+
+  PopularRestDelModel? getResData;
+  getRes() async {
+    try {
+      getResData = PopularRestDelModel.fromJson(PopularRestaurants.dummy);
+    } catch (e) {
+      print(e);
+    }
+  }
 }

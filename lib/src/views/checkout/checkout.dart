@@ -1,25 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
-import 'package:foodpanda/src/utils/images/images.dart';
 import 'package:foodpanda/src/views/checkout/checkout_viewmodel.dart';
 import 'package:foodpanda/src/views/checkout/widget/widget.dart';
 import 'package:stacked/stacked.dart';
-
-import '../../reuseable_widget/app_button.dart';
-import '../../reuseable_widget/app_divider.dart';
 import '../../reuseable_widget/custom_text.dart';
 import '../../utils/colors/app_colors.dart';
+import 'widget/checkout_found.dart';
 
 class CheckoutView extends StatelessWidget {
-  const CheckoutView({super.key});
+  final double totalPrice;
+  const CheckoutView(
+      {super.key, required this.totalPrice});
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => CheckoutViewModel(),
       builder: (context, viewModel, child) {
+        double deliveryFee = 106.10;
+        double platformFee = 8.84;
+        double vAT = 102.05;
         return Scaffold(
           appBar: AppBar(
             surfaceTintColor: Colors.white,
@@ -52,197 +53,70 @@ class CheckoutView extends StatelessWidget {
               ],
             ),
           ),
-          body: Padding(
-            padding: const EdgeInsets.all(15.0),
+          body: SingleChildScrollView(
+              child: checkoutFound(
+                  viewModel: viewModel,
+                  totalPrice: totalPrice,
+                  )),
+          bottomNavigationBar: Container(
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+            height: 140,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  margin: const EdgeInsets.only(bottom: 25),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.lightGreyColor),
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.location_on_outlined,
-                                      color: AppColors.primaryColor,
-                                    ),
-                                    CustomText.customSizedText(
-                                        text: '   Delivery address',
-                                        fontWeight: FontWeight.w800,
-                                        size: 18),
-                                  ],
-                                ),
-                                Icon(
-                                  Icons.edit_outlined,
-                                  color: AppColors.primaryColor,
-                                ),
-                              ],
-                            ),
-                            Container(
-                              margin: const EdgeInsets.symmetric(vertical: 15),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage(AppImages.googleMap))),
-                              height: 110,
-                              width: double.infinity,
-                            ),
-                            CustomText.customSizedText(
-                                text: '41 C Mehmood Hussain Road',
-                                fontWeight: FontWeight.w800,
-                                size: 15),
-                            CustomText.customSizedText(
-                                text: 'Karachi', size: 15),
-                          ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        CustomText.customSizedText(
+                          text: 'Total  ',
+                          color: AppColors.blackColor,
+                          fontWeight: FontWeight.w900,
+                          maxLine: 1,
+                          size: 18,
                         ),
-                      ),
-                      appDivider(color: AppColors.lightGreyColor, thickness: 1),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0, vertical: 5),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.add,
-                              color: AppColors.primaryColor,
-                            ),
-                            CustomText.customSizedText(
-                                text:
-                                    '  Add delivery instruction for your rider',
-                                fontWeight: FontWeight.w800,
-                                size: 14,
-                                color: AppColors.primaryColor),
-                          ],
+                        CustomText.customSizedText(
+                          text: '(incl. VAT)',
+                          color: AppColors.greyColor,
+                          fontWeight: FontWeight.w900,
+                          maxLine: 1,
+                          size: 14,
                         ),
-                      ),
-                      appDivider(color: AppColors.lightGreyColor, thickness: 1),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 15.0, vertical: 15),
-                        child: Row(
-                          children: [
-                            Flexible(
-                              flex: 7,
-                              child: CustomText.customSizedText(
-                                  text:
-                                      'Stay active on your registered number so the rider may contact you.',
-                                  fontWeight: FontWeight.w800,
-                                  textAlign: TextAlign.start,
-                                  size: 14,
-                                  maxLine: 2,
-                                  color: AppColors.blackColor),
-                            ),
-                            Flexible(
-                              child: switchButton(
-                                onChanged: (value) {
-                                  viewModel.isToggled = value!;
-                                  viewModel.rebuildUi();
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
+                    CustomText.customSizedText(
+                      text:
+                          'Rs. ${(totalPrice + deliveryFee + platformFee + vAT).toStringAsFixed(2)}',
+                      color: AppColors.blackColor,
+                      fontWeight: FontWeight.w900,
+                      maxLine: 1,
+                      size: 16,
+                    ),
+                  ],
                 ),
-                Container(
-                  margin: const EdgeInsets.only(bottom: 15),
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 15.0, vertical: 15),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.lightGreyColor),
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.account_balance_wallet_outlined,
-                            color: AppColors.primaryColor,
-                          ),
-                          CustomText.customSizedText(
-                              text: '   Payment method',
-                              fontWeight: FontWeight.w800,
-                              textAlign: TextAlign.start,
-                              size: 18,
-                              maxLine: 2,
-                              color: AppColors.blackColor),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.add,
-                            color: AppColors.primaryColor,
-                          ),
-                          CustomText.customSizedText(
-                              text: '  Add a payment method',
-                              fontWeight: FontWeight.w900,
-                              size: 14,
-                              color: AppColors.primaryColor),
-                        ],
-                      ),
-                    ],
-                  ),
+                CustomText.customSizedText(
+                  text: 'See price breakdown',
+                  color: AppColors.primaryColor,
+                  fontWeight: FontWeight.w600,
+                  maxLine: 1,
+                  size: 12,
                 ),
-                Container(
-                  margin: const EdgeInsets.only(bottom: 15),
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 15.0, vertical: 15),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.lightGreyColor),
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            CupertinoIcons.bookmark,
-                            color: AppColors.primaryColor,
-                          ),
-                          CustomText.customSizedText(
-                              text: '   Order summary',
-                              fontWeight: FontWeight.w800,
-                              textAlign: TextAlign.start,
-                              size: 18,
-                              maxLine: 2,
-                              color: AppColors.blackColor),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.add,
-                            color: AppColors.primaryColor,
-                          ),
-                          CustomText.customSizedText(
-                              text: '  Add a payment method',
-                              fontWeight: FontWeight.w900,
-                              size: 14,
-                              color: AppColors.primaryColor),
-                        ],
-                      ),
-                    ],
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 15),
+                    width: MediaQuery.sizeOf(context).width,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: AppColors.primaryColor),
+                    child: Center(
+                      child: CustomText.customSizedText(
+                          text: 'Place order',
+                          fontWeight: FontWeight.w800,
+                          color: AppColors.white),
+                    ),
                   ),
                 ),
               ],

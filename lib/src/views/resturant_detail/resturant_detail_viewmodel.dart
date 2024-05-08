@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/models/order_detail.dart';
 import 'package:foodpanda/src/views/cart/cart.dart';
+import 'package:foodpanda/src/views/favourite/favourite.dart';
 import 'package:foodpanda/src/views/home/home.dart';
 import 'package:foodpanda/src/views/order_details/order_details.dart';
 import 'package:stacked/stacked.dart';
@@ -37,10 +38,12 @@ class ResturantDetailViewModel extends BaseViewModel {
   navigateToCartView() {
     locator<NavigationService>().navigateWithTransition(
       const CartView(),
-      opaque: true,
-      duration: const Duration(milliseconds: 500),
-      transitionStyle: Transition.downToUp,
-      curve: Curves.slowMiddle,
+    );
+  }
+
+  navigateToFavouriteView() {
+    locator<NavigationService>().navigateWithTransition(
+      const FavouriteView(),
     );
   }
 

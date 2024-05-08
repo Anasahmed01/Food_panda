@@ -39,6 +39,7 @@ Tab timeLineForCart(BuildContext context) {
     child: Row(
       children: [
         Flexible(
+          flex: 2,
           child: SizedBox(
             width: MediaQuery.sizeOf(context).width,
             child: TimelineTile(
@@ -96,6 +97,7 @@ Tab timeLineForCart(BuildContext context) {
           ),
         ),
         Flexible(
+          flex: 2,
           child: SizedBox(
             width: MediaQuery.sizeOf(context).width,
             child: TimelineTile(

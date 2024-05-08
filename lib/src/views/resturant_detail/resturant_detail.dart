@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/views/resturant_detail/resturant_detail_viewmodel.dart';
@@ -60,13 +62,15 @@ class ResturantDetailView extends StatelessWidget {
                   ),
                 ],
               ),
-              actions: const [
+              actions: [
                 SizedBox(
                   width: 130,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Icon(Icons.favorite_border_rounded, size: 22),
+                      InkWell(
+                          onTap: () => viewModel.navigateToFavouriteView(),
+                          child: Icon(Icons.favorite_border_rounded, size: 22)),
                       Icon(
                         Icons.share_outlined,
                         size: 22,

@@ -52,10 +52,20 @@ class HomeView extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      const Icon(Icons.favorite_border_rounded),
+                      InkWell(
+                          onTap: () => viewModel.navigateToFavouriteView(),
+                          child: Badge(
+                              backgroundColor: AppColors.white,
+                              alignment: Alignment.bottomRight,
+                              label: Text(
+                                '${favourite.length}',
+                                style: TextStyle(color: AppColors.primaryColor),
+                              ),
+                              child:
+                                  const Icon(Icons.favorite_border_rounded))),
                       InkWell(
                           onTap: () {
-                            viewModel.navigateToCartView();
+                            viewModel.navigateToHomeView();
                           },
                           child: Badge(
                             backgroundColor: AppColors.white,

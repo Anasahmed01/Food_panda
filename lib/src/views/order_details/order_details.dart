@@ -54,6 +54,16 @@ class OrderDetailView extends StatelessWidget {
           viewModel.selectedValue,
           viewModel.quantity
         ];
+        // var cartData = {
+        //   "product_name": productName,
+        //   "delivery_time": deliveryTime,
+        //   "product_price": productPrice,
+        //   "product_image": productImage,
+        //   "resturant_name": resturantName,
+        //   "product_id": productId,
+        //   "required_item": viewModel.selectedValue,
+        //   "quantity": viewModel.quantity
+        // };
 
         // Datum cartData = Datum(
         //   productName: productName,

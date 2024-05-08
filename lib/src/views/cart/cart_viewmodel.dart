@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/views/cart/widget/update_quantity/update_quantity.dart';
-import 'package:foodpanda/src/views/checkout/checkout.dart';
 import 'package:foodpanda/src/views/home/home.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../app/app.locator.dart';
 import '../../models/order_detail.dart';
+import '../checkout/checkout.dart';
 
 class CartViewModel extends BaseViewModel {
   init() {
@@ -32,13 +32,11 @@ class CartViewModel extends BaseViewModel {
     );
   }
 
-  navigateToCheckOutView() {
+  navigateToCheckOutView({required totalPrice}) {
     locator<NavigationService>().navigateWithTransition(
-      const CheckoutView(),
-      opaque: true,
-      duration: const Duration(milliseconds: 500),
-      transitionStyle: Transition.downToUp,
-      curve: Curves.slowMiddle,
+      CheckoutView(
+        totalPrice: totalPrice,
+      ),
     );
   }
 

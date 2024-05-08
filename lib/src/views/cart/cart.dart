@@ -150,7 +150,9 @@ class CartView extends StatelessWidget {
                   size: 12,
                 ),
                 InkWell(
-                  onTap: () => viewModel.navigateToCheckOutView(),
+                  onTap: () => viewModel.navigateToCheckOutView(
+                    
+                      totalPrice: viewModel.totalPrice),
                   child: Container(
                     margin: const EdgeInsets.only(top: 15),
                     width: MediaQuery.sizeOf(context).width,

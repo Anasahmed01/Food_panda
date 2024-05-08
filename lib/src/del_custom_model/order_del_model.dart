@@ -99,3 +99,5 @@ class OrderDelModel {
 //  List<Datum> cart = [];
 
 List cart = [];
+
+List favourite = [];

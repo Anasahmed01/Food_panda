@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
+import '../../../models/popular_restaurant.dart';
 import '../../../reuseable_widget/custom_text.dart';
 import '../category_viewmodel.dart';
 import 'card.dart';
 
-Widget categoryFound(CategoryViewModel viewModel) {
+Widget categoryFound(CategoryViewModel viewModel, PopularRestDelModel model) {
   return DefaultTabController(
     length: 5,
     child: ListView(
@@ -115,7 +116,8 @@ Widget categoryFound(CategoryViewModel viewModel) {
                         deliveryTime: viewModel.popularResDeliveryTimes[index],
                         discountText: viewModel.popularResDiscountText[index]);
                   },
-                  child: deliveryContainer(context, viewModel, index));
+                  child: deliveryContainer(
+                      context, viewModel, index, viewModel.getResData!));
             },
           ),
         ),
@@ -224,15 +226,16 @@ Widget categoryFound(CategoryViewModel viewModel) {
               child: GestureDetector(
                   onTap: () {
                     viewModel.navigateToResturantDetailView(
-                        resturantRating: viewModel.storeRating[index],
-                        resturantImage: viewModel.popularResImg[index],
-                        deliveryType: viewModel.popularResItemType[index],
-                        deliveryPrice: viewModel.popularResText[index],
-                        resturantName: viewModel.popularResItemNames[index],
-                        deliveryTime: viewModel.popularResDeliveryTimes[index],
-                        discountText: viewModel.popularResDiscountText[index]);
+                        resturantRating: model.data[index].restaurantsRating,
+                        resturantImage: model.data[index].restaurantsImage,
+                        deliveryType: model.data[index].runtimeType.toString(),
+                        deliveryPrice: model.data[index].minimumPrice,
+                        resturantName: model.data[index].restaurantsName,
+                        deliveryTime: model.data[index].deliveryTime,
+                        discountText: model.data[index].discount);
                   },
-                  child: deliveryContainer(context, viewModel, index)),
+                  child: deliveryContainer(
+                      context, viewModel, index, viewModel.getResData!)),
             );
           },
         ),

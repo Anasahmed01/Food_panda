@@ -91,16 +91,21 @@ class OrderDetailViewModel extends BaseViewModel {
   ];
 
   addToCart({required cartData}) {
+    cart.firstWhere(
+      (item) => item == cartData[5],
+      orElse: () {
+        cart.add(cartData);
+      },
+    );
+
     // for (var i = 0; i < cart.length; i++) {
-    //   if (cart[i][5] != cart[i][5]) {
-    //     dev.log('sd');
+    //   if (cart.contains(cart[i]["product_id"]) == true) {
     //     print('product already exiest in cart');
     //   } else {
-
+    //     cart.add(cartData);
+    //     print(cart);
     //   }
     // }
-    notifyListeners();
-    cart.add(cartData);
   }
 
   var quantity = 1;

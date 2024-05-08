@@ -8,6 +8,8 @@ import 'package:foodpanda/src/models/category_data.dart';
 import 'package:foodpanda/src/utils/images/images.dart';
 import 'package:foodpanda/src/views/cart/cart.dart';
 import 'package:foodpanda/src/views/category/category.dart';
+import 'package:foodpanda/src/views/favourite/favourite.dart';
+import 'package:foodpanda/src/views/home/home.dart';
 import 'package:foodpanda/src/views/resturant_detail/resturant_detail.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -30,9 +32,14 @@ class HomeViewModel extends BaseViewModel {
     );
   }
 
-  navigateToCartView() {
+  navigateToFavouriteView() {
     locator<NavigationService>().navigateWithTransition(
-      const CartView(),
+      const FavouriteView(),
+    );
+  }
+   navigateToHomeView() {
+    locator<NavigationService>().navigateWithTransition(
+      const HomeView(),
     );
   }
 
