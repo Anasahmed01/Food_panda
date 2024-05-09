@@ -101,10 +101,10 @@ Widget checkoutFound(
                     const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
                 child: Row(
                   children: [
-                    Flexible(
-                      flex: 7,
+                    Flexible(  
+                      flex: 6,
                       child: CustomText.customSizedText(
-                          text:
+                          text: 
                               'Stay active on your registered number so the rider may contact you.',
                           fontWeight: FontWeight.w800,
                           textAlign: TextAlign.start,
@@ -113,6 +113,7 @@ Widget checkoutFound(
                           color: AppColors.blackColor),
                     ),
                     Flexible(
+                      flex: 1,
                       child: switchButton(
                         onChanged: (value) {
                           viewModel.isToggled = value!;

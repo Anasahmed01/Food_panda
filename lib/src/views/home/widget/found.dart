@@ -11,7 +11,7 @@ Widget homeFound(BuildContext context, HomeViewModel viewModel,
   return ListView(
     children: [
       Container(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         color: AppColors.lightGreyColor,
         child: GridView.builder(
             shrinkWrap: true,
@@ -78,9 +78,6 @@ Widget homeFound(BuildContext context, HomeViewModel viewModel,
             )
           ],
         ),
-      ),
-      const SizedBox(
-        height: 25,
       ),
       Padding(
         padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20),
@@ -285,7 +282,7 @@ Widget homeFound(BuildContext context, HomeViewModel viewModel,
         ),
       ),
       const SizedBox(
-        height: 40,
+        height: 25,
       ),
     ],
   );

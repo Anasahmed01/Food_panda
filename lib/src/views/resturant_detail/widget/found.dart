@@ -166,7 +166,7 @@ Widget productFound(
                 ],
               ),
               const SizedBox(
-                height: 5,
+                height: 15,
               ),
               Container(
                 margin: const EdgeInsets.only(top: 5),
