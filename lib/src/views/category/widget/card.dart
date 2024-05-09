@@ -48,7 +48,6 @@ Widget deliveryContainer(BuildContext context, CategoryViewModel viewModel,
     model.data[index].restaurantsType
   ];
   return Container(
-    margin: const EdgeInsets.only(right: 15),
     decoration: BoxDecoration(
         border: Border.all(color: AppColors.lightGreyColor),
         borderRadius: BorderRadius.circular(10)),
@@ -63,7 +62,7 @@ Widget deliveryContainer(BuildContext context, CategoryViewModel viewModel,
             child: Image.asset(
               model.data[index].restaurantsImage,
               width: double.infinity,
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.cover,
               height: 200,
             ),
           ),
@@ -84,6 +83,15 @@ Widget deliveryContainer(BuildContext context, CategoryViewModel viewModel,
             child: GestureDetector(
               onTap: () {
                 favourite.add(favouriteData);
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  backgroundColor: AppColors.primaryColor,
+                  content: CustomText.customSizedText(
+                      text: 'Product add successfuly!',
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.white,
+                      size: 16),
+                  duration: const Duration(seconds: 2),
+                ));
                 print(favourite);
               },
               child: Container(

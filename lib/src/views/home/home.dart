@@ -55,6 +55,7 @@ class HomeView extends StatelessWidget {
                       InkWell(
                           onTap: () => viewModel.navigateToFavouriteView(),
                           child: Badge(
+                              offset: const Offset(5, 2),
                               backgroundColor: AppColors.white,
                               alignment: Alignment.bottomRight,
                               label: Text(
@@ -65,9 +66,10 @@ class HomeView extends StatelessWidget {
                                   const Icon(Icons.favorite_border_rounded))),
                       InkWell(
                           onTap: () {
-                            viewModel.navigateToHomeView();
+                            viewModel.navigateToCartView();
                           },
                           child: Badge(
+                            offset: const Offset(5, 2),
                             backgroundColor: AppColors.white,
                             alignment: Alignment.bottomRight,
                             label: Text(

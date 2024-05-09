@@ -47,7 +47,7 @@ class CheckoutView extends StatelessWidget {
                         text: 'Checkout',
                         fontWeight: FontWeight.w800,
                         size: 18),
-                    CustomText.customSizedText(text: cart[0][4]),
+                    CustomText.customSizedText(text: cart[0]["resturant_name"].toString()),
                   ],
                 ),
               ],

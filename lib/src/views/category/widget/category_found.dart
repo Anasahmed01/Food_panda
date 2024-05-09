@@ -116,8 +116,11 @@ Widget categoryFound(CategoryViewModel viewModel, PopularRestDelModel model) {
                         deliveryTime: viewModel.popularResDeliveryTimes[index],
                         discountText: viewModel.popularResDiscountText[index]);
                   },
-                  child: deliveryContainer(
-                      context, viewModel, index, viewModel.getResData!));
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 15.0),
+                    child: deliveryContainer(
+                        context, viewModel, index, viewModel.getResData!),
+                  ));
             },
           ),
         ),

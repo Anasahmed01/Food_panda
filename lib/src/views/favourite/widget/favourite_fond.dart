@@ -12,7 +12,7 @@ Widget favoriteFound() {
     shrinkWrap: true,
     itemBuilder: (context, index) {
       return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 15),
+        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         decoration: BoxDecoration(
             border: Border.all(color: AppColors.lightGreyColor),
             borderRadius: BorderRadius.circular(10)),
@@ -55,9 +55,10 @@ Widget favoriteFound() {
                         color: AppColors.white,
                         borderRadius: BorderRadius.circular(30)),
                     padding: const EdgeInsets.all(5),
-                    child: const Icon(
+                    child: Icon(
                       size: 16,
-                      Icons.favorite_outline_rounded,
+                      Icons.favorite,
+                      color: AppColors.primaryColor,
                     ),
                   ),
                 ),

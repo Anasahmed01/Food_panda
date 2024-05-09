@@ -39,4 +39,7 @@ class AppImages {
 
   //check_out
   static String googleMap = 'assets/images/check_out/google_map.png';
+
+  //favourite
+  static String emptyFavourite = 'assets/images/favourite/favourite_empty.png';
 }

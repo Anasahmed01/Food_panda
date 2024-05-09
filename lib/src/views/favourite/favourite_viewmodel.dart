@@ -16,4 +16,8 @@ class FavouriteViewModel extends BaseViewModel {
       const CartView(),
     );
   }
+
+  navigateToBack() {
+    locator<NavigationService>().back();
+  }
 }

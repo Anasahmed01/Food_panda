@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/reuseable_widget/custom_text.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
 import 'package:foodpanda/src/views/order_details/order_details_viewmodel.dart';
@@ -44,26 +45,26 @@ class OrderDetailView extends StatelessWidget {
       viewModelBuilder: () => OrderDetailViewModel(),
       onViewModelReady: (viewModel) => viewModel.getRes(),
       builder: (context, viewModel, child) {
-        var cartData = [
-          productName,
-          deliveryTime,
-          productPrice,
-          productImage,
-          resturantName,
-          productId,
-          viewModel.selectedValue,
-          viewModel.quantity
-        ];
-        // var cartData = {
-        //   "product_name": productName,
-        //   "delivery_time": deliveryTime,
-        //   "product_price": productPrice,
-        //   "product_image": productImage,
-        //   "resturant_name": resturantName,
-        //   "product_id": productId,
-        //   "required_item": viewModel.selectedValue,
-        //   "quantity": viewModel.quantity
-        // };
+        // var cartData = [
+        //   productName,
+        //   deliveryTime,
+        //   productPrice,
+        //   productImage,
+        //   resturantName,
+        //   productId,
+        //   viewModel.selectedValue,
+        //   viewModel.quantity
+        // ];
+        var cartData = {
+          "product_name": productName,
+          "delivery_time": deliveryTime,
+          "product_price": productPrice,
+          "product_image": productImage,
+          "resturant_name": resturantName,
+          "product_id": productId,
+          "required_item": viewModel.selectedValue,
+          "quantity": viewModel.quantity
+        };
 
         // Datum cartData = Datum(
         //   productName: productName,
@@ -176,7 +177,7 @@ class OrderDetailView extends StatelessWidget {
 
                           viewModel.addToCart(cartData: cartData);
                           viewModel.rebuildUi();
-                          print(cartData);
+                          print(cart.length);
                         }
                       : () {},
                   child: Container(

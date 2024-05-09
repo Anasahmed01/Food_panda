@@ -96,7 +96,8 @@ class CartView extends StatelessWidget {
                   children: [
                     CustomText.customSizedText(
                         text: 'Cart', fontWeight: FontWeight.w800, size: 18),
-                    CustomText.customSizedText(text: cart[0][4]),
+                    CustomText.customSizedText(
+                        text: cart[0]["resturant_name"].toString()),
                   ],
                 ),
               ],
@@ -151,7 +152,6 @@ class CartView extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () => viewModel.navigateToCheckOutView(
-                    
                       totalPrice: viewModel.totalPrice),
                   child: Container(
                     margin: const EdgeInsets.only(top: 15),

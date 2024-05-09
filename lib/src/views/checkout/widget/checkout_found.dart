@@ -42,9 +42,20 @@ Widget checkoutFound(
                                 size: 18),
                           ],
                         ),
-                        Icon(
-                          Icons.edit_outlined,
-                          color: AppColors.primaryColor,
+                        InkWell(
+                          onTap: () async {
+                            await viewModel.getCurrentLocation().then((value) {
+                              viewModel.lat = '${value.latitude}';
+                              viewModel.long = '${value.longitude}';
+                              //viewModel.rebuildUi();
+                              print(
+                                  'Lat${viewModel.lat} - Long${viewModel.lat}');
+                            });
+                          },
+                          child: Icon(
+                            Icons.edit_outlined,
+                            color: AppColors.primaryColor,
+                          ),
                         ),
                       ],
                     ),
@@ -201,13 +212,13 @@ Widget checkoutFound(
                       children: [
                         Flexible(
                           child: CustomText.customSizedText(
-                            text: '${cart[index][0]}',
+                            text: '${cart[index]["product_name"]}',
                             size: 14,
                           ),
                         ),
                         Flexible(
                           child: CustomText.customSizedText(
-                            text: 'Rs. ${cart[index][2]}',
+                            text: 'Rs. ${cart[index]["product_price"]}',
                             size: 14,
                           ),
                         ),

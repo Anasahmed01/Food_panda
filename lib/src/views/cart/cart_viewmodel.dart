@@ -11,7 +11,7 @@ import '../checkout/checkout.dart';
 class CartViewModel extends BaseViewModel {
   init() {
     for (int j = 0; j < cart.length; j++) {
-      double pp = cart[j][2];
+      double pp = cart[j]["product_price"];
 
       sumPrice(pp);
     }

@@ -37,7 +37,14 @@ class HomeViewModel extends BaseViewModel {
       const FavouriteView(),
     );
   }
-   navigateToHomeView() {
+
+  navigateToCartView() {
+    locator<NavigationService>().navigateWithTransition(
+      const CartView(),
+    );
+  }
+
+  navigateToHomeView() {
     locator<NavigationService>().navigateWithTransition(
       const HomeView(),
     );

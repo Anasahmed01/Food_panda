@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:stacked/stacked.dart';
 import 'package:foodpanda/src/views/category/category_viewmodel.dart';
 import '../../reuseable_widget/custom_text.dart';
@@ -52,16 +53,31 @@ class CategoryView extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    GestureDetector(
-                        onTap: () {
-                          viewModel.navigateToFavouriteView();
-                        },
-                        child: const Icon(Icons.favorite_border_rounded)),
-                    GestureDetector(
+                    InkWell(
+                        onTap: () => viewModel.navigateToFavouriteView(),
+                        child: Badge(
+                            offset: const Offset(5, 2),
+                            backgroundColor: AppColors.white,
+                            alignment: Alignment.bottomRight,
+                            label: Text(
+                              '${favourite.length}',
+                              style: TextStyle(color: AppColors.primaryColor),
+                            ),
+                            child: const Icon(Icons.favorite_border_rounded))),
+                    InkWell(
                         onTap: () {
                           viewModel.navigateToCartView();
                         },
-                        child: const Icon(Icons.shopping_bag_outlined)),
+                        child: Badge(
+                          offset: const Offset(5, 2),
+                          backgroundColor: AppColors.white,
+                          alignment: Alignment.bottomRight,
+                          label: Text(
+                            '${cart.length}',
+                            style: TextStyle(color: AppColors.primaryColor),
+                          ),
+                          child: const Icon(Icons.shopping_bag_outlined),
+                        )),
                   ],
                 ),
               )

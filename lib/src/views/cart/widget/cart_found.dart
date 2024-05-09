@@ -65,7 +65,9 @@ Widget cartFound({
                       color: AppColors.greyColor,
                       size: 12),
                   CustomText.customSizedText(
-                      text: cart.isEmpty ? '' : 'NOW ( ${cart[0][1]} )',
+                      text: cart.isEmpty
+                          ? ''
+                          : 'NOW ( ${cart[0]["delivery_time"]} )',
                       size: 16,
                       fontWeight: FontWeight.w700),
                 ],
@@ -78,10 +80,6 @@ Widget cartFound({
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
-            // var prices = cart[index];
-            // double pp = prices.productPrice;
-            // viewModel.sumPrice(pp);
-            // print(cart[index].toString());
             return Dismissible(
               key: Key(index.toString()),
               direction: DismissDirection.endToStart,
@@ -113,7 +111,7 @@ Widget cartFound({
                       child: Row(
                         children: [
                           CustomText.customSizedText(
-                              text: cart[index][7].toString()),
+                              text: cart[index]["quantity"].toString()),
                           Icon(
                             Icons.keyboard_arrow_down_rounded,
                             color: AppColors.primaryColor,
@@ -126,7 +124,8 @@ Widget cartFound({
                       width: 60,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(cart[index][3]),
+                          image: AssetImage(
+                              cart[index]["product_image"].toString()),
                         ),
                       ),
                     ),
@@ -143,7 +142,7 @@ Widget cartFound({
                                 requireditem: cart[index][6]);
                           },
                           child: CustomText.customSizedText(
-                              text: cart[index][0],
+                              text: cart[index]["product_name"],
                               maxLine: 3,
                               size: 12,
                               maxFontSize: 12,
@@ -155,12 +154,14 @@ Widget cartFound({
                           child: expansionTile(
                               context: context,
                               viewModel: viewModel,
-                              requideItems: cart[index][6],
+                              requideItems:
+                                  cart[index]["required_item"].toString(),
                               optionalItem: 'Next Cola - 345 ml'),
                         ),
                       ],
                     ),
-                    CustomText.customSizedText(text: 'Rs. ${cart[index][2]}'),
+                    CustomText.customSizedText(
+                        text: 'Rs. ${cart[index]["product_price"]}'),
                   ],
                 ),
               ),
