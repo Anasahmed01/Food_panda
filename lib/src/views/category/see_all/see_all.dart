@@ -12,6 +12,7 @@ class SeeAllView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => CategoryViewModel(),
+      onViewModelReady: (viewModel) => viewModel.getRes(),
       builder: (context, viewModel, child) {
         return Scaffold(
           appBar: AppBar(
@@ -21,14 +22,14 @@ class SeeAllView extends StatelessWidget {
               },
               child: Icon(
                 Icons.arrow_back_rounded,
-                color: AppColors.white,
+                color: AppColors.primaryColor,
               ),
             ),
             title: CustomText.customSizedText(
               text: 'Delivery Fee Savers',
               fontWeight: FontWeight.w800,
               size: 18,
-              color: AppColors.white,
+              color: AppColors.blackColor,
               maxFontSize: 18,
             ),
           ),
