@@ -10,12 +10,12 @@ import 'widget/checkout_found.dart';
 
 class CheckoutView extends StatelessWidget {
   final double totalPrice;
-  const CheckoutView(
-      {super.key, required this.totalPrice});
+  const CheckoutView({super.key, required this.totalPrice});
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
+      onViewModelReady: (viewModel) => viewModel.getAddress(),
       viewModelBuilder: () => CheckoutViewModel(),
       builder: (context, viewModel, child) {
         double deliveryFee = 106.10;
@@ -47,7 +47,8 @@ class CheckoutView extends StatelessWidget {
                         text: 'Checkout',
                         fontWeight: FontWeight.w800,
                         size: 18),
-                    CustomText.customSizedText(text: cart[0]["resturant_name"].toString()),
+                    CustomText.customSizedText(
+                        text: cart[0]["resturant_name"].toString()),
                   ],
                 ),
               ],
@@ -55,9 +56,9 @@ class CheckoutView extends StatelessWidget {
           ),
           body: SingleChildScrollView(
               child: checkoutFound(
-                  viewModel: viewModel,
-                  totalPrice: totalPrice,
-                  )),
+            viewModel: viewModel,
+            totalPrice: totalPrice,
+          )),
           bottomNavigationBar: Container(
             padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
             height: 140,

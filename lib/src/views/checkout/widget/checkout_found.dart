@@ -44,13 +44,11 @@ Widget checkoutFound(
                         ),
                         InkWell(
                           onTap: () async {
-                            await viewModel.getCurrentLocation().then((value) {
-                              viewModel.lat = '${value.latitude}';
-                              viewModel.long = '${value.longitude}';
-                              //viewModel.rebuildUi();
-                              print(
-                                  'Lat${viewModel.lat} - Long${viewModel.lat}');
-                            });
+                            if (addresses.isEmpty) {
+                              viewModel.navigateToGoogleMapView();
+                            } else {
+                              viewModel.navigateToAddressView();
+                            }
                           },
                           child: Icon(
                             Icons.edit_outlined,
@@ -70,10 +68,16 @@ Widget checkoutFound(
                       width: double.infinity,
                     ),
                     CustomText.customSizedText(
-                        text: '41 C Mehmood Hussain Road',
+                        text: viewModel.address == ''
+                            ? 'Add your current location'
+                            : viewModel.address,
+                        maxFontSize: 15,
+                        minFontSize: 15,
                         fontWeight: FontWeight.w800,
                         size: 15),
-                    CustomText.customSizedText(text: 'Karachi', size: 15),
+                    CustomText.customSizedText(
+                        text: viewModel.city == '' ? '' : viewModel.city,
+                        size: 15),
                   ],
                 ),
               ),
@@ -101,10 +105,10 @@ Widget checkoutFound(
                     const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
                 child: Row(
                   children: [
-                    Flexible(  
+                    Flexible(
                       flex: 6,
                       child: CustomText.customSizedText(
-                          text: 
+                          text:
                               'Stay active on your registered number so the rider may contact you.',
                           fontWeight: FontWeight.w800,
                           textAlign: TextAlign.start,

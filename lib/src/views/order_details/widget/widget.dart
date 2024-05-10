@@ -12,6 +12,8 @@ Widget feedbackField() {
       LengthLimitingTextInputFormatter(500),
     ],
     decoration: InputDecoration(
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         hintText: 'e.g. no mayo',
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),

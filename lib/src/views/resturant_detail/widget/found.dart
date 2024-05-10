@@ -22,7 +22,7 @@ Widget productFound(
     child: ListView(
       children: [
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           margin: const EdgeInsets.only(top: 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -223,7 +223,7 @@ Widget productFound(
           padding: const EdgeInsets.only(top: 10.0),
           child: TabBar(
               splashFactory: NoSplash.splashFactory,
-              //labelPadding: const EdgeInsets.only(left: 10),
+              // labelPadding: const EdgeInsets.only(left: 10),
               tabAlignment: TabAlignment.start,
               indicatorSize: TabBarIndicatorSize.tab,
               unselectedLabelColor: Colors.black,
@@ -232,6 +232,7 @@ Widget productFound(
                 borderSide:
                     BorderSide(color: AppColors.primaryColor, width: 2.0),
               ),
+              padding: const EdgeInsets.only(left: 5),
               labelColor: AppColors.primaryColor,
               isScrollable: true,
               tabs: const [
@@ -256,7 +257,7 @@ Widget productFound(
           height: 20,
         ),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -279,7 +280,7 @@ Widget productFound(
               CustomText.customSizedText(
                   text: ' Most ordered right now.',
                   fontWeight: FontWeight.w400,
-                  size: 12,
+                  size: 14,
                   color: AppColors.blackColor),
               const SizedBox(
                 height: 30,
@@ -330,7 +331,7 @@ Widget productFound(
             children: [
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -350,7 +351,7 @@ Widget productFound(
               SizedBox(
                 height: 130,
                 child: ListView.builder(
-                  padding: const EdgeInsets.only(left: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   itemCount: 4,
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
@@ -358,17 +359,12 @@ Widget productFound(
                     return ratingContainer();
                   },
                 ),
-              )
+              ),
             ],
           ),
         ),
-        const SizedBox(
-          height: 30,
-        ),
         Padding(
-          padding: const EdgeInsets.only(
-            left: 15,
-          ),
+          padding: const EdgeInsets.only(left: 20, top: 20, bottom: 15),
           child: CustomText.customSizedText(
               text: 'Meal Box',
               maxLine: 1,
@@ -378,12 +374,9 @@ Widget productFound(
               textAlign: TextAlign.left,
               minFontSize: 24),
         ),
-        const SizedBox(
-          height: 10,
-        ),
         ListView.separated(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           itemCount: model.data.length,
-          //controller: viewModel.scrollController,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
@@ -392,124 +385,121 @@ Widget productFound(
               duration: const Duration(milliseconds: 100),
               child: FadeInAnimation(
                 duration: const Duration(milliseconds: 500),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      viewModel.navigateToOrderDetailView(
-                          deliveryPrice: deliveryPrice,
-                          deliveryType: deliveryType,
-                          discountText: discountText,
-                          resturantImage: resturantImage,
-                          resturantRating: resturantRating,
-                          productId: model.data[index].productId,
-                          deliveryTime: deliveryTime,
-                          resturantName: resturantName,
-                          index: index,
-                          productDiscription: model.data[index].discription,
-                          productImg: model.data[index].productImage,
-                          productName: model.data[index].productName,
-                          productPrice: model.data[index].productPrice);
-                    },
-                    child: Container(
-                      color: AppColors.white,
-                      child: Row(
-                        children: [
-                          Flexible(
-                            flex: 3,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CustomText.customSizedText(
-                                    text: model.data[index].productName,
-                                    maxLine: 1,
-                                    maxFontSize: 16,
-                                    color: AppColors.blackColor,
-                                    fontWeight: FontWeight.w800,
-                                    textAlign: TextAlign.left,
-                                    minFontSize: 16),
-                                const SizedBox(
-                                  height: 2,
-                                ),
-                                CustomText.customSizedText(
-                                    text: model.data[index].discription,
-                                    maxLine: 2,
-                                    maxFontSize: 12,
-                                    color: AppColors.greyColor,
-                                    textAlign: TextAlign.left,
-                                    minFontSize: 12),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                CustomText.customSizedText(
-                                    text:
-                                        'from Rs. ${model.data[index].productPrice}',
-                                    maxLine: 1,
-                                    maxFontSize: 14,
-                                    color: AppColors.blackColor,
-                                    textAlign: TextAlign.left,
-                                    minFontSize: 14),
-                              ],
-                            ),
+                child: GestureDetector(
+                  onTap: () {
+                    viewModel.navigateToOrderDetailView(
+                        deliveryPrice: deliveryPrice,
+                        deliveryType: deliveryType,
+                        discountText: discountText,
+                        resturantImage: resturantImage,
+                        resturantRating: resturantRating,
+                        productId: model.data[index].productId,
+                        deliveryTime: deliveryTime,
+                        resturantName: resturantName,
+                        index: index,
+                        productDiscription: model.data[index].discription,
+                        productImg: model.data[index].productImage,
+                        productName: model.data[index].productName,
+                        productPrice: model.data[index].productPrice);
+                  },
+                  child: Container(
+                    color: AppColors.white,
+                    child: Row(
+                      children: [
+                        Flexible(
+                          flex: 3,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CustomText.customSizedText(
+                                  text: model.data[index].productName,
+                                  maxLine: 1,
+                                  maxFontSize: 16,
+                                  color: AppColors.blackColor,
+                                  fontWeight: FontWeight.w800,
+                                  textAlign: TextAlign.left,
+                                  minFontSize: 16),
+                              const SizedBox(
+                                height: 2,
+                              ),
+                              CustomText.customSizedText(
+                                  text: model.data[index].discription,
+                                  maxLine: 2,
+                                  maxFontSize: 12,
+                                  color: AppColors.greyColor,
+                                  textAlign: TextAlign.left,
+                                  minFontSize: 12),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              CustomText.customSizedText(
+                                  text:
+                                      'from Rs. ${model.data[index].productPrice}',
+                                  maxLine: 1,
+                                  maxFontSize: 14,
+                                  color: AppColors.blackColor,
+                                  textAlign: TextAlign.left,
+                                  minFontSize: 14),
+                            ],
                           ),
-                          Flexible(
-                            flex: 1,
-                            child: SizedBox(
-                              height: 100,
-                              child: Stack(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.asset(
-                                      model.data[index].productImage,
-                                    ),
+                        ),
+                        Flexible(
+                          flex: 1,
+                          child: SizedBox(
+                            height: 100,
+                            child: Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    model.data[index].productImage,
                                   ),
-                                  Positioned(
-                                    bottom: 0,
-                                    right: 0,
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        viewModel.navigateToOrderDetailView(
-                                            deliveryPrice: deliveryPrice,
-                                            deliveryType: deliveryType,
-                                            discountText: discountText,
-                                            resturantImage: resturantImage,
-                                            resturantRating: resturantRating,
-                                            productId:
-                                                model.data[index].productId,
-                                            deliveryTime: deliveryTime,
-                                            resturantName: resturantName,
-                                            index: index,
-                                            productDiscription:
-                                                model.data[index].discription,
-                                            productImg:
-                                                model.data[index].productImage,
-                                            productName:
-                                                model.data[index].productName,
-                                            productPrice:
-                                                model.data[index].productPrice);
-                                      },
-                                      child: Container(
-                                        margin: const EdgeInsets.only(right: 5),
-                                        decoration: BoxDecoration(
-                                            color: AppColors.primaryColor,
-                                            borderRadius:
-                                                BorderRadius.circular(30)),
-                                        padding: const EdgeInsets.all(3),
-                                        child: Icon(
-                                          Icons.add,
-                                          color: AppColors.white,
-                                          size: 24,
-                                        ),
+                                ),
+                                Positioned(
+                                  bottom: 0,
+                                  right: 0,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      viewModel.navigateToOrderDetailView(
+                                          deliveryPrice: deliveryPrice,
+                                          deliveryType: deliveryType,
+                                          discountText: discountText,
+                                          resturantImage: resturantImage,
+                                          resturantRating: resturantRating,
+                                          productId:
+                                              model.data[index].productId,
+                                          deliveryTime: deliveryTime,
+                                          resturantName: resturantName,
+                                          index: index,
+                                          productDiscription:
+                                              model.data[index].discription,
+                                          productImg:
+                                              model.data[index].productImage,
+                                          productName:
+                                              model.data[index].productName,
+                                          productPrice:
+                                              model.data[index].productPrice);
+                                    },
+                                    child: Container(
+                                      margin: const EdgeInsets.only(right: 5),
+                                      decoration: BoxDecoration(
+                                          color: AppColors.primaryColor,
+                                          borderRadius:
+                                              BorderRadius.circular(30)),
+                                      padding: const EdgeInsets.all(3),
+                                      child: Icon(
+                                        Icons.add,
+                                        color: AppColors.white,
+                                        size: 24,
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -523,8 +513,7 @@ Widget productFound(
               child: FadeInAnimation(
                 duration: const Duration(milliseconds: 500),
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 20.0, right: 20, top: 15, bottom: 5),
+                  padding: const EdgeInsets.only(top: 15, bottom: 5),
                   child: Divider(
                     color: Colors.grey[300],
                   ),
@@ -545,7 +534,7 @@ Widget productFound(
           height: 30,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

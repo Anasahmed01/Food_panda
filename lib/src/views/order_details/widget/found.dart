@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:foodpanda/src/models/order_detail.dart';
 import '../../../reuseable_widget/custom_text.dart';
 import '../../../utils/colors/app_colors.dart';
@@ -19,26 +21,35 @@ Widget found({
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomText.customSizedText(
-                  text: model.productName,
-                  maxLine: 2,
-                  size: 22,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.blackColor),
-              CustomText.customSizedText(
-                  text: 'Rs. $productPrice',
-                  size: 14,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.blackColor),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(bottom: 15.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  flex: 3,
+                  child: CustomText.customSizedText(
+                      text: model.productName,
+                      maxLine: 2,
+                      size: 22,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.blackColor),
+                ),
+                Flexible(
+                  flex: 2,
+                  child: CustomText.customSizedText(
+                      text: 'form Rs. ${(productPrice).toStringAsFixed(2)}',
+                      size: 14,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.blackColor),
+                ),
+              ],
+            ),
           ),
           CustomText.customSizedText(
               text: productDiscription,
               maxLine: 3,
-              size: 12,
+              size: 14,
               color: Colors.black45),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -209,7 +220,7 @@ Widget found({
           ),
           Divider(
             height: 30,
-            thickness: 2,
+            thickness: 1,
             color: AppColors.lightGreyColor,
           ),
           CustomText.customSizedText(
@@ -217,19 +228,19 @@ Widget found({
               size: 20,
               fontWeight: FontWeight.w800,
               color: AppColors.blackColor),
+          const SizedBox(
+            height: 5,
+          ),
           CustomText.customSizedText(
               text:
                   'Please let us know if you are allergic to anyting or if we need to avoide anything',
-              size: 12,
+              size: 14,
               maxLine: 2,
               fontWeight: FontWeight.w800,
               color: AppColors.greyColor),
-          const SizedBox(
-            height: 20,
-          ),
-          feedbackField(),
-          const SizedBox(
-            height: 20,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 25.0),
+            child: feedbackField(),
           ),
           CustomText.customSizedText(
               text: 'If this product is not available',
@@ -237,7 +248,7 @@ Widget found({
               fontWeight: FontWeight.w800,
               color: AppColors.blackColor),
           const SizedBox(
-            height: 10,
+            height: 15,
           ),
           GestureDetector(
             onTap: () {

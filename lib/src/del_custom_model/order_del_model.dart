@@ -101,3 +101,5 @@ class OrderDelModel {
 List cart = [];
 
 List favourite = [];
+
+List addresses = [];

@@ -129,17 +129,18 @@ class OrderDetailView extends StatelessWidget {
                           viewModel.rebuildUi();
                         },
                   child: Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      decoration: BoxDecoration(
-                          color: viewModel.quantity == 1
-                              ? AppColors.greyColor
-                              : AppColors.primaryColor,
-                          borderRadius: BorderRadius.circular(30)),
-                      padding: const EdgeInsets.all(5),
-                      child: Icon(
-                        Icons.remove,
-                        color: AppColors.white,
-                      )),
+                    margin: const EdgeInsets.only(top: 10),
+                    decoration: BoxDecoration(
+                        color: viewModel.quantity == 1
+                            ? AppColors.greyColor
+                            : AppColors.primaryColor,
+                        borderRadius: BorderRadius.circular(30)),
+                    padding: const EdgeInsets.all(5),
+                    child: Icon(
+                      Icons.remove,
+                      color: AppColors.white,
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0),

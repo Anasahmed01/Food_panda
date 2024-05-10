@@ -81,8 +81,8 @@ class ResturantDetailViewModel extends BaseViewModel {
         ),
         opaque: true,
         duration: const Duration(milliseconds: 500),
-        transitionStyle: Transition.downToUp,
-        curve: Curves.slowMiddle,
+        transitionStyle: Transition.rightToLeft,
+        curve: Curves.easeIn,
       );
     }
   }

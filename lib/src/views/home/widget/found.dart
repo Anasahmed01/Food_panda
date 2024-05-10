@@ -181,7 +181,7 @@ Widget homeFound(BuildContext context, HomeViewModel viewModel,
         height: 225,
         child: ListView.builder(
           itemCount: popResModel.data.length,
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return GestureDetector(
@@ -213,7 +213,7 @@ Widget homeFound(BuildContext context, HomeViewModel viewModel,
       SizedBox(
         height: 140,
         child: ListView.builder(
-          padding: const EdgeInsets.symmetric(horizontal: 17),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           itemCount: viewModel.pandaMartImg.length,
           itemBuilder: (context, index) {
             return Column(
