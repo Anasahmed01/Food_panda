@@ -5,26 +5,28 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/cupertino.dart' as _i10;
-import 'package:flutter/material.dart' as _i9;
+import 'package:flutter/material.dart' as _i10;
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/models/order_detail.dart' as _i11;
-import 'package:foodpanda/src/views/basic/splash/splash.dart' as _i2;
-import 'package:foodpanda/src/views/cart/cart.dart' as _i7;
+import 'package:foodpanda/src/views/auth/sign_in.dart' as _i3;
+import 'package:foodpanda/src/views/basic/splash/splash.dart' as _i4;
+import 'package:foodpanda/src/views/cart/cart.dart' as _i8;
 import 'package:foodpanda/src/views/cart/widget/update_quantity/update_quantity.dart'
-    as _i8;
-import 'package:foodpanda/src/views/category/category.dart' as _i4;
-import 'package:foodpanda/src/views/home/home.dart' as _i3;
-import 'package:foodpanda/src/views/order_details/order_details.dart' as _i6;
+    as _i9;
+import 'package:foodpanda/src/views/category/category.dart' as _i5;
+import 'package:foodpanda/src/views/home/home.dart' as _i2;
+import 'package:foodpanda/src/views/order_details/order_details.dart' as _i7;
 import 'package:foodpanda/src/views/resturant_detail/resturant_detail.dart'
-    as _i5;
+    as _i6;
 import 'package:stacked/stacked.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i12;
 
 class Routes {
-  static const splashView = '/';
+  static const homeView = '/';
 
-  static const homeView = '/home-view';
+  static const signInView = '/sign-in-view';
+
+  static const splashView = '/splash-view';
 
   static const categoryView = '/category-view';
 
@@ -37,8 +39,9 @@ class Routes {
   static const updateQuantity = '/update-quantity';
 
   static const all = <String>{
-    splashView,
     homeView,
+    signInView,
+    splashView,
     categoryView,
     resturantDetailView,
     orderDetailView,
@@ -50,60 +53,70 @@ class Routes {
 class StackedRouter extends _i1.RouterBase {
   final _routes = <_i1.RouteDef>[
     _i1.RouteDef(
-      Routes.splashView,
-      page: _i2.SplashView,
+      Routes.homeView,
+      page: _i2.HomeView,
     ),
     _i1.RouteDef(
-      Routes.homeView,
-      page: _i3.HomeView,
+      Routes.signInView,
+      page: _i3.SignInView,
+    ),
+    _i1.RouteDef(
+      Routes.splashView,
+      page: _i4.SplashView,
     ),
     _i1.RouteDef(
       Routes.categoryView,
-      page: _i4.CategoryView,
+      page: _i5.CategoryView,
     ),
     _i1.RouteDef(
       Routes.resturantDetailView,
-      page: _i5.ResturantDetailView,
+      page: _i6.ResturantDetailView,
     ),
     _i1.RouteDef(
       Routes.orderDetailView,
-      page: _i6.OrderDetailView,
+      page: _i7.OrderDetailView,
     ),
     _i1.RouteDef(
       Routes.cartView,
-      page: _i7.CartView,
+      page: _i8.CartView,
     ),
     _i1.RouteDef(
       Routes.updateQuantity,
-      page: _i8.UpdateQuantity,
+      page: _i9.UpdateQuantity,
     ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
-    _i2.SplashView: (data) {
-      return _i9.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i2.SplashView(),
+    _i2.HomeView: (data) {
+      return _i10.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
-    _i3.HomeView: (data) {
-      return _i9.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i3.HomeView(),
+    _i3.SignInView: (data) {
+      return _i10.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i3.SignInView(),
         settings: data,
       );
     },
-    _i4.CategoryView: (data) {
+    _i4.SplashView: (data) {
+      return _i10.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i4.SplashView(),
+        settings: data,
+      );
+    },
+    _i5.CategoryView: (data) {
       final args = data.getArgs<CategoryViewArguments>(nullOk: false);
-      return _i9.MaterialPageRoute<dynamic>(
+      return _i10.MaterialPageRoute<dynamic>(
         builder: (context) =>
-            _i4.CategoryView(key: args.key, categoryName: args.categoryName),
+            _i5.CategoryView(key: args.key, categoryName: args.categoryName),
         settings: data,
       );
     },
-    _i5.ResturantDetailView: (data) {
+    _i6.ResturantDetailView: (data) {
       final args = data.getArgs<ResturantDetailViewArguments>(nullOk: false);
-      return _i9.MaterialPageRoute<dynamic>(
-        builder: (context) => _i5.ResturantDetailView(
+      return _i10.MaterialPageRoute<dynamic>(
+        builder: (context) => _i6.ResturantDetailView(
             key: args.key,
             deliveryTime: args.deliveryTime,
             resturantName: args.resturantName,
@@ -115,10 +128,10 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
-    _i6.OrderDetailView: (data) {
+    _i7.OrderDetailView: (data) {
       final args = data.getArgs<OrderDetailViewArguments>(nullOk: false);
-      return _i9.MaterialPageRoute<dynamic>(
-        builder: (context) => _i6.OrderDetailView(
+      return _i10.MaterialPageRoute<dynamic>(
+        builder: (context) => _i7.OrderDetailView(
             key: args.key,
             productName: args.productName,
             productPrice: args.productPrice,
@@ -136,16 +149,16 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
-    _i7.CartView: (data) {
-      return _i9.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i7.CartView(),
+    _i8.CartView: (data) {
+      return _i10.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i8.CartView(),
         settings: data,
       );
     },
-    _i8.UpdateQuantity: (data) {
+    _i9.UpdateQuantity: (data) {
       final args = data.getArgs<UpdateQuantityArguments>(nullOk: false);
-      return _i9.MaterialPageRoute<dynamic>(
-        builder: (context) => _i8.UpdateQuantity(
+      return _i10.MaterialPageRoute<dynamic>(
+        builder: (context) => _i9.UpdateQuantity(
             key: args.key,
             productName: args.productName,
             productImage: args.productImage,
@@ -389,20 +402,6 @@ class UpdateQuantityArguments {
 }
 
 extension NavigatorStateExtension on _i12.NavigationService {
-  Future<dynamic> navigateToSplashView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return navigateTo<dynamic>(Routes.splashView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
-  }
-
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -411,6 +410,34 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition,
   ]) async {
     return navigateTo<dynamic>(Routes.homeView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToSignInView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.signInView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToSplashView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.splashView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -549,20 +576,6 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithSplashView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return replaceWith<dynamic>(Routes.splashView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
-  }
-
   Future<dynamic> replaceWithHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -571,6 +584,34 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.homeView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithSignInView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.signInView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithSplashView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.splashView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

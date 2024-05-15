@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:foodpanda/src/views/address/address.dart';
+import 'package:foodpanda/src/views/drawer/drawer_views/addresses/address.dart';
 import 'package:foodpanda/src/views/checkout/widget/google_map.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -33,7 +33,6 @@ class CheckoutViewModel extends BaseViewModel {
   double long = 0.0;
   String address = '';
   String city = '';
-  late StreamSubscription<Position> streamSubscription;
 
   Future<Position> getCurrentLocation() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
@@ -82,7 +81,7 @@ class CheckoutViewModel extends BaseViewModel {
   getAddress() {
     Geolocator.getPositionStream().listen((Position position) {
       lat = position.latitude;
-      lat = position.latitude;
+      long = position.longitude;
 
       getAddressFromLatLang(position);
     });

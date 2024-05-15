@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foodpanda/src/models/order_detail.dart';
 import '../../../reuseable_widget/custom_text.dart';
 import '../../../utils/colors/app_colors.dart';

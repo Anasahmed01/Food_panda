@@ -11,16 +11,16 @@ class SplashView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => SplashViewModel(),
-      onViewModelReady: (viewModel)async {
-       await viewModel.init();
+      onViewModelReady: (viewModel) async {
+        await viewModel.init();
       },
       builder: (context, viewModel, child) {
         return Scaffold(
           backgroundColor: AppColors.primaryColor,
           body: Center(
             child: SizedBox(
-                height: 170,
-                width: 170,
+                height: 250,
+                width: 250,
                 child: Image.asset(AppImages.splashImage)),
           ),
         );

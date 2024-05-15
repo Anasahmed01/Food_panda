@@ -42,4 +42,7 @@ class AppImages {
 
   //favourite
   static String emptyFavourite = 'assets/images/favourite/favourite_empty.png';
+
+  //SignIn
+  static String google = 'assets/images/sign_in/google.png';
 }

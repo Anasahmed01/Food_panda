@@ -27,3 +27,24 @@ PreferredSizeWidget customAppBar({
     ),
   );
 }
+
+AppBar appAppbar(
+    {required void Function()? ontap, required String title, required icon}) {
+  return AppBar(
+    leading: GestureDetector(
+        onTap: ontap,
+        child: Icon(
+          icon,
+          color: AppColors.primaryColor,
+        )),
+    title: CustomText.customSizedText(
+      text: title,
+      maxFontSize: 18,
+      minFontSize: 18,
+      size: 18,
+      color: AppColors.blackColor,
+      fontWeight: FontWeight.w700,
+      textAlign: TextAlign.justify,
+    ),
+  );
+}

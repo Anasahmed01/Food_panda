@@ -82,6 +82,7 @@ class CustomTextFields {
         validator: validator,
         obscureText: obscureText!,
         decoration: InputDecoration(
+          floatingLabelAlignment: FloatingLabelAlignment.center,
           errorStyle: const TextStyle(color: Colors.red),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30.0),
@@ -98,7 +99,7 @@ class CustomTextFields {
             padding: const EdgeInsets.only(left: 10.0, bottom: 2, right: 10),
             child: Icon(
               prefixIcon,
-              size: 28.0,
+              size: 25.0,
               color: Colors.grey,
             ),
           ),

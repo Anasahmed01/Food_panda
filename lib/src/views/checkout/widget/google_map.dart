@@ -135,13 +135,16 @@ class GoogleMapView extends StatelessWidget {
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           floatingActionButton: GestureDetector(
             onTap: () async {
+              await viewModel.getCurrentLocation();
+              await viewModel.getAddress();
               viewModel.getUserCurrentLocation().then((value) async {
                 viewModel.lat = value.latitude;
                 viewModel.long = value.longitude;
 
                 print(value.latitude.toString() +
                     " " +
-                    value.longitude.toString());
+                    value.longitude.toString() +
+                    viewModel.address.toString());
 
                 // marker added for current users location
                 viewModel.markers.add(Marker(

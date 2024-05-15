@@ -53,6 +53,7 @@ dependencies:
   geolocator: ^11.0.0
   google_maps_flutter: ^2.2.8
   geocoding: ^3.0.0
+  google_sign_in: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -92,6 +93,7 @@ flutter:
     - assets/images/cart_img/
     - assets/images/check_out/
     - assets/images/favourite/
+    - assets/images/sign_in/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

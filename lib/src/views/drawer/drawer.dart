@@ -68,49 +68,45 @@ Widget appDrawer() {
                           ),
                         ),
                         listTile(
-                          title: 'Become a pandapro',
-                          icon: Icons.polymer_rounded,
-                          onTap: () {},
-                        ),
-                        listTile(
-                          title: 'Vouchers & offers',
-                          icon: CupertinoIcons.ticket,
-                          onTap: () {},
-                        ),
-                        listTile(
-                          title: 'Favourites',
-                          icon: CupertinoIcons.heart,
-                          onTap: () {},
-                        ),
-                        listTile(
-                          title: 'Orders & recordering',
-                          icon: Icons.receipt_long_sharp,
-                          onTap: () {},
-                        ),
-                        listTile(
-                          title: 'View profile',
-                          icon: CupertinoIcons.person,
-                          onTap: () {},
-                        ),
-                        listTile(
-                          title: 'Addresses',
-                          icon: Icons.location_on_outlined,
-                          onTap: () {},
+                          title: 'Become a pro',
+                          icon: Icons.bakery_dining_rounded,
+                          //  Icons.polymer_rounded,
+                          onTap: () => viewModel.navigateToPandaProView(),
                         ),
                         listTile(
                           title: 'panda rewards',
                           icon: Icons.workspace_premium_sharp,
-                          onTap: () {},
+                          onTap: () => viewModel.navigateToPandaRewardView(),
+                        ),
+                        listTile(
+                          title: 'Vouchers',
+                          icon: CupertinoIcons.ticket,
+                          onTap: () => viewModel.navigateToVoucherView(),
+                        ),
+                        listTile(
+                          title: 'Favourites',
+                          icon: CupertinoIcons.heart,
+                          onTap: () => viewModel.navigateToFavouriteView(),
+                        ),
+                        listTile(
+                          title: 'Orders',
+                          icon: Icons.receipt_long_sharp,
+                          onTap: () => viewModel.navigateToOrderView(),
+                        ),
+                        listTile(
+                          title: 'View profile',
+                          icon: CupertinoIcons.person,
+                          onTap: () => viewModel.navigateToProfileView(),
+                        ),
+                        listTile(
+                          title: 'Addresses',
+                          icon: Icons.location_on_outlined,
+                          onTap: () => viewModel.navigateToAddressView(),
                         ),
                         listTile(
                           title: 'Help center',
                           icon: Icons.help_outline,
-                          onTap: () {},
-                        ),
-                        listTile(
-                          title: 'foodpanda for business',
-                          icon: Icons.business_rounded,
-                          onTap: () {},
+                          onTap: () => viewModel.navigateToHelpCenterView(),
                         ),
                         Divider(
                           thickness: 2,
@@ -119,17 +115,17 @@ Widget appDrawer() {
                         listTile(
                           title: 'Settings',
                           isIcon: false,
-                          onTap: () {},
+                          onTap: () => viewModel.navigateToSettingsView(),
                         ),
                         listTile(
                           title: 'Terms & Conditions / Privacy.',
                           isIcon: false,
-                          onTap: () {},
+                          onTap: () => viewModel.navigateToTermCondView(),
                         ),
                         listTile(
                           title: 'Logout',
                           isIcon: false,
-                          onTap: () {},
+                          onTap: () => viewModel,
                         ),
                       ],
                     ),

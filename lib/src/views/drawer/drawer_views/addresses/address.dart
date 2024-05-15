@@ -4,9 +4,9 @@ import 'package:flutter/widgets.dart';
 import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/reuseable_widget/app_divider.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
-import 'package:foodpanda/src/views/address/address_viewmodel.dart';
+import 'package:foodpanda/src/views/drawer/drawer_views/addresses/address_viewmodel.dart';
 import 'package:stacked/stacked.dart';
-import '../../reuseable_widget/custom_text.dart';
+import '../../../../reuseable_widget/custom_text.dart';
 
 class AddressView extends StatelessWidget {
   const AddressView({super.key});
