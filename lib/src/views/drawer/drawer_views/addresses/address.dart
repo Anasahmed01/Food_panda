@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import 'package:foodpanda/src/reuseable_widget/app_divider.dart';
+import 'package:foodpanda/src/reuseable_widget/app_scaffold.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
 import 'package:foodpanda/src/views/drawer/drawer_views/addresses/address_viewmodel.dart';
 import 'package:stacked/stacked.dart';
@@ -16,6 +16,31 @@ class AddressView extends StatelessWidget {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => AddressViewModel(),
       builder: (context, viewModel, child) {
+        if (addresses.isEmpty) {
+          return appScafold(
+              onBackTap: () => viewModel.navigateToBack(),
+              appBarTitle: 'Addresses',
+              body: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.location_off_outlined,
+                      size: 70,
+                      color: AppColors.primaryColor,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    CustomText.customSizedText(
+                      text: 'Address not found!',
+                      fontWeight: FontWeight.w800,
+                      size: 18,
+                    ),
+                  ],
+                ),
+              ));
+        }
         return Scaffold(
           appBar: AppBar(
             surfaceTintColor: Colors.white,

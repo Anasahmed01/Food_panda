@@ -14,7 +14,7 @@ PreferredSizeWidget customAppBar({
     elevation: 0,
     title: CustomText.customSizedText(
         text: title,
-        size: 16,
+        size: 18,
         color: AppColors.blackColor,
         fontWeight: FontWeight.w800),
     leading: IconButton(

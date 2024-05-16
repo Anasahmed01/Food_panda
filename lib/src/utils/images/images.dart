@@ -45,4 +45,7 @@ class AppImages {
 
   //SignIn
   static String google = 'assets/images/sign_in/google.png';
+
+  //Panda Reward
+  static String circlePanda = 'assets/images/panda_reward/circle_panda.png';
 }
