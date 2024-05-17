@@ -55,6 +55,10 @@ class OrderDetailViewModel extends BaseViewModel {
 
   String? selectedValue;
 
+  int bottomSheetIsSelectedItem = 0;
+
+  String? bottomSheetSelectedItem;
+
   String requideSaveData = '';
 
   List<bool> isChecked = [
@@ -79,16 +83,16 @@ class OrderDetailViewModel extends BaseViewModel {
   ];
 
   List bottomSheetItem = [
+    'Call me & Confirm',
     'Remove it from my order',
     'Cancel the entire order',
-    'Call me & Confirm',
   ];
 
-  List bottomSheetIsSelected = [
-    false,
-    false,
-    false,
-  ];
+  // List bottomSheetIsSelected = [
+  //   false,
+  //   false,
+  //   false,
+  // ];
 
   addToCart({required cartData}) {
     cart.add(cartData);

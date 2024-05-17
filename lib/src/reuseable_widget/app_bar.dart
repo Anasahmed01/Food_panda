@@ -29,8 +29,12 @@ PreferredSizeWidget customAppBar({
 }
 
 AppBar appAppbar(
-    {required void Function()? ontap, required String title, required icon}) {
+    {required void Function()? ontap,
+    required String title,
+    required icon,
+    backgroundColor}) {
   return AppBar(
+    backgroundColor: backgroundColor,
     leading: GestureDetector(
         onTap: ontap,
         child: Icon(

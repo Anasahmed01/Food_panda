@@ -84,6 +84,7 @@ class HomeViewModel extends BaseViewModel {
     AppImages.pandaMart2,
     AppImages.pandaMart3,
   ];
+
   List dealImages = [
     AppImages.deal1,
     AppImages.deal2,
@@ -118,6 +119,7 @@ class HomeViewModel extends BaseViewModel {
     AppImages.pandaMart3,
     AppImages.pandaMart1,
   ];
+
   List pandaMartText = [
     'Eid Specials',
     'Zaiqa Mil Bethnay Ka',

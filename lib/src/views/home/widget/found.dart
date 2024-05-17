@@ -75,7 +75,7 @@ Widget homeFound(BuildContext context, HomeViewModel viewModel,
                   );
                 },
               ),
-            )
+            ),
           ],
         ),
       ),

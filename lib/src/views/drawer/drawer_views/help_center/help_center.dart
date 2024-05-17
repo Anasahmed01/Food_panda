@@ -60,7 +60,7 @@ class HelpCenterView extends StatelessWidget {
                       leading: const Icon(CupertinoIcons.person_crop_circle),
                       title: 'My Account'),
                   drawerListTile(
-                      leading: const Icon(CupertinoIcons.square_favorites_alt),
+                      leading: const Icon(Icons.volunteer_activism_sharp),
                       title: 'Safety Conscerns'),
                   drawerListTile(
                       leading: const Icon(Icons.credit_card),

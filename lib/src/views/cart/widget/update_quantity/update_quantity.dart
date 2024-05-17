@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/models/order_detail.dart';
-import 'package:foodpanda/src/views/cart/widget/update_quantity/widget/quantity_found.dart';
 import 'package:foodpanda/src/views/order_details/order_details_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../reuseable_widget/custom_text.dart';
@@ -57,15 +56,15 @@ class UpdateQuantity extends StatelessWidget {
                   ),
                 ),
               ),
-              quantityFound(
-                context: context,
-                viewModel: viewModel,
-                productImage: productImage,
-                requireditem: requireditem,
-                productName: productName,
-                productPrice: productPrice,
-                model: model,
-              ),
+              // quantityFound(
+              //   context: context,
+              //   viewModel: viewModel,
+              //   productImage: productImage,
+              //   requireditem: requireditem,
+              //   productName: productName,
+              //   productPrice: productPrice,
+              //   model: model,
+              // ),
             ],
           ),
           bottomNavigationBar: SizedBox(
