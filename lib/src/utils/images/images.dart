@@ -48,4 +48,5 @@ class AppImages {
 
   //Panda Reward
   static String circlePanda = 'assets/images/panda_reward/circle_panda.png';
+  static String dinInPanda = 'assets/images/panda_reward/din_in_panda.png';
 }
