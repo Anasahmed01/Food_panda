@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foodpanda/src/reuseable_widget/app_divider.dart';
 import 'package:foodpanda/src/reuseable_widget/custom_text.dart';
 import 'package:foodpanda/src/utils/colors/app_colors.dart';
@@ -21,7 +19,7 @@ class PandaProView extends StatelessWidget {
         return Scaffold(
           appBar: appAppbar(
             ontap: () => viewModel.navigateToBack(),
-            title: '',
+            title: 'pandapro',
             icon: Icons.arrow_back,
           ),
           body: SingleChildScrollView(
@@ -315,7 +313,9 @@ class PandaProView extends StatelessWidget {
                 ),
                 Flexible(
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      pandaProbottomSheetX(context);
+                    },
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 4,
                       height: 70,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodpanda/src/views/drawer/drawer_views/panda_pro/widget/bottom_sheet.dart';
 import '../../../../../reuseable_widget/custom_text.dart';
 import '../../../../../utils/colors/app_colors.dart';
 
@@ -48,6 +49,62 @@ Widget pandaProExpTile({required String title, required String subTitle}) {
           subTitle,
         ),
       ],
+    ),
+  );
+}
+
+Future pandaProbottomSheetX(
+  BuildContext context,
+) {
+  return showModalBottomSheet(
+    backgroundColor: AppColors.white,
+    context: context,
+    builder: (context) {
+      return const PandaProBottomSheet();
+    },
+  );
+}
+
+Widget topText({required BuildContext context, required Color color}) {
+  return Container(
+    height: 30,
+    width: MediaQuery.sizeOf(context).width,
+    decoration: BoxDecoration(
+      color: color,
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(20),
+        topRight: Radius.circular(20),
+      ),
+    ),
+    child: Padding(
+      padding: const EdgeInsets.only(top: 5.0),
+      child: CustomText.customSizedText(
+        text: 'SAVE 34%',
+        color: AppColors.white,
+        size: 13,
+        minFontSize: 12,
+        maxFontSize: 15,
+        textAlign: TextAlign.center,
+      ),
+    ),
+  );
+}
+
+Container pandaproDisContainer({required String text}) {
+  return Container(
+    margin: const EdgeInsets.only(top: 10),
+    decoration: BoxDecoration(
+      color: AppColors.primaryColor.withOpacity(0.1),
+      borderRadius: const BorderRadius.only(
+        bottomRight: Radius.circular(15),
+        topRight: Radius.circular(15),
+      ),
+    ),
+    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+    child: CustomText.customSizedText(
+      text: text,
+      color: AppColors.primaryColor,
+      fontWeight: FontWeight.w900,
     ),
   );
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/models/order_detail.dart';
-import 'package:foodpanda/src/views/order_details/widget/bottom_sheet.dart';
 import '../../../reuseable_widget/custom_text.dart';
 import '../../../utils/colors/app_colors.dart';
 import '../order_details_viewmodel.dart';
@@ -251,9 +250,7 @@ Widget found({
           ),
           GestureDetector(
             onTap: () {
-              bottomSheetX(context, viewModel);
-              viewModel.rebuildUi();
-              viewModel.notifyListeners();
+              bottomSheetX(context);
             },
             child: Container(
               width: double.infinity,
@@ -283,15 +280,5 @@ Widget found({
         ],
       ),
     ),
-  );
-}
-
-Future bottomSheetX(BuildContext context, OrderDetailViewModel viewModel) {
-  return showModalBottomSheet(
-    backgroundColor: AppColors.white,
-    context: context,
-    builder: (context) {
-      return const ModelBottomSheet();
-    },
   );
 }

@@ -18,4 +18,11 @@ class PandaProViewModel extends BaseViewModel {
     'Valid for selected restaurants',
     'Look out for exclusive discounts!'
   ];
+
+  int seletedContiner = 0;
+
+  selectIndex(int index) {
+    seletedContiner = index;
+    rebuildUi();
+  }
 }

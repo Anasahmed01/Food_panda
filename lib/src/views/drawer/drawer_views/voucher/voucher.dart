@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foodpanda/src/reuseable_widget/app_bar.dart';
 import 'package:foodpanda/src/reuseable_widget/app_divider.dart';
 import 'package:foodpanda/src/reuseable_widget/custom_text.dart';

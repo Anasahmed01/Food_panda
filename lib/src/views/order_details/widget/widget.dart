@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:foodpanda/src/views/order_details/widget/bottom_sheet.dart';
 import '../../../utils/colors/app_colors.dart';
 
 Widget feedbackField() {
@@ -23,6 +24,18 @@ Widget feedbackField() {
         border: OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.blackColor),
             borderRadius: BorderRadius.circular(10))),
+  );
+}
+
+Future bottomSheetX(
+  BuildContext context,
+) {
+  return showModalBottomSheet(
+    backgroundColor: AppColors.white,
+    context: context,
+    builder: (context) {
+      return const ModelBottomSheet();
+    },
   );
 }
 
