@@ -8,9 +8,9 @@ class SubscriptionViewModel extends BaseViewModel {
     locator<NavigationService>().back();
   }
 
-  navigateToSubPayment({required String month, required String subsPrice}) {
+  navigateToSelectPymentMethodView() {
     locator<NavigationService>().replaceWithTransition(
-      SelectPymentMethodView(),
+      const SelectPymentMethodView(),
     );
   }
 }

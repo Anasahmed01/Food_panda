@@ -109,3 +109,15 @@ Container pandaproDisContainer({required String text}) {
     ),
   );
 }
+
+Widget cardContainer({required Color color, required image}) => Container(
+      margin: const EdgeInsets.only(right: 10, top: 5),
+      padding: const EdgeInsets.all(2),
+      decoration:
+          BoxDecoration(color: color, borderRadius: BorderRadius.circular(2)),
+      child: Image.asset(
+        image,
+        height: 10,
+        width: 15,
+      ),
+    );

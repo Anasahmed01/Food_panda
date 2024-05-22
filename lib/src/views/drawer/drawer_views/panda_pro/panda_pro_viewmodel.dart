@@ -29,7 +29,7 @@ class PandaProViewModel extends BaseViewModel {
     'Look out for exclusive discounts!'
   ];
 
-  int seletedContiner = 0;
+  int seletedContiner = 2;
 
   selectIndex(int index) {
     seletedContiner = index;

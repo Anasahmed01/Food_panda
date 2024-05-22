@@ -260,10 +260,14 @@ class PandaRewardView extends StatelessWidget {
                                   maxLine: 2),
                               Padding(
                                 padding: const EdgeInsets.only(top: 15.0),
-                                child: CustomText.customSizedText(
-                                  text: 'Terms & conditions',
-                                  color: AppColors.primaryColor,
-                                  size: 14,
+                                child: InkWell(
+                                  onTap: () =>
+                                      viewModel.navigateToTermCondView(),
+                                  child: CustomText.customSizedText(
+                                    text: 'Terms & conditions',
+                                    color: AppColors.primaryColor,
+                                    size: 14,
+                                  ),
                                 ),
                               ),
                               Container(

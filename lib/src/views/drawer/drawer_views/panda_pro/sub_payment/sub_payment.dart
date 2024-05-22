@@ -134,9 +134,8 @@ class SubscriptionView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: InkWell(
-                        onTap: () {
-                          
-                        },
+                        onTap: () =>
+                            viewModel.navigateToSelectPymentMethodView(),
                         child: Row(
                           children: [
                             Icon(

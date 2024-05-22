@@ -98,6 +98,7 @@ flutter:
     - assets/images/favourite/
     - assets/images/sign_in/
     - assets/images/panda_reward/
+    - assets/images/sub_payment/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
