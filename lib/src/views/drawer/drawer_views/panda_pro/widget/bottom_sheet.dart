@@ -20,7 +20,7 @@ class PandaProBottomSheet extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
           padding: const EdgeInsets.all(15),
-          height: 380,
+          height: MediaQuery.sizeOf(context).height / 2.25,
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,31 +88,15 @@ class PandaProBottomSheet extends StatelessWidget {
                                               horizontal: 10, vertical: 10),
                                           child: Column(
                                             children: [
-                                              RichText(
-                                                text: TextSpan(
-                                                  text: 'Rs. ',
-                                                  style: DefaultTextStyle.of(
-                                                          context)
-                                                      .style,
-                                                  children: const <TextSpan>[
-                                                    TextSpan(
-                                                      text: '249.00',
-                                                      style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w900,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        fontSize: 18,
-                                                      ),
-                                                    ),
-                                                    TextSpan(
-                                                      text: ' /mo.',
-                                                      style: TextStyle(
-                                                        color: Colors.black54,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
+                                              CustomText.customSizedText(
+                                                text: 'Rs. 249.00/mo',
+                                                textAlign: TextAlign.start,
+                                                color: AppColors.blackColor,
+                                                fontWeight: FontWeight.w600,
+                                                maxFontSize: 18,
+                                                minFontSize: 18,
+                                                size: 18,
+                                                maxLine: 2,
                                               ),
                                               const SizedBox(
                                                 height: 10,
@@ -123,9 +107,9 @@ class PandaProBottomSheet extends StatelessWidget {
                                                 textAlign: TextAlign.start,
                                                 color: AppColors.primaryColor,
                                                 fontWeight: FontWeight.w600,
-                                                maxFontSize: 14,
-                                                minFontSize: 14,
-                                                size: 14,
+                                                maxFontSize: 12,
+                                                minFontSize: 12,
+                                                size: 12,
                                                 maxLine: 2,
                                               ),
                                             ],
@@ -173,14 +157,15 @@ class PandaProBottomSheet extends StatelessWidget {
                     width: 8,
                   ),
                   Flexible(
-                      child: planContainer(
-                          index: 2,
-                          viewModel: viewModel,
-                          context: context,
-                          discountPercent: 'SAVE 34%',
-                          month: '12',
-                          discountPrice: '166.58',
-                          price: '1,999.00')),
+                    child: planContainer(
+                        index: 2,
+                        viewModel: viewModel,
+                        context: context,
+                        discountPercent: 'SAVE 34%',
+                        month: '12',
+                        discountPrice: '166.58',
+                        price: '1,999.00'),
+                  ),
                 ],
               ),
               const SizedBox(
@@ -191,7 +176,8 @@ class PandaProBottomSheet extends StatelessWidget {
                 height: 10,
               ),
               InkWell(
-                onTap: () => viewModel.navigateToBack(),
+                onTap: () => viewModel.navigateToSubPayment(
+                    month: '12', subsPrice: '1,999.00'),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width,
                   height: 50,
@@ -270,27 +256,15 @@ class PandaProBottomSheet extends StatelessWidget {
                               horizontal: 10, vertical: 10),
                           child: Column(
                             children: [
-                              RichText(
-                                text: TextSpan(
-                                  text: 'Rs. ',
-                                  style: DefaultTextStyle.of(context).style,
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: discountPrice,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        overflow: TextOverflow.ellipsis,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                    const TextSpan(
-                                      text: ' /mo.',
-                                      style: TextStyle(
-                                        color: Colors.black54,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                              CustomText.customSizedText(
+                                text: 'Rs. $discountPrice/mo',
+                                textAlign: TextAlign.start,
+                                color: AppColors.blackColor,
+                                fontWeight: FontWeight.w600,
+                                maxFontSize: 18,
+                                minFontSize: 18,
+                                size: 18,
+                                maxLine: 2,
                               ),
                               const SizedBox(
                                 height: 10,
@@ -300,9 +274,9 @@ class PandaProBottomSheet extends StatelessWidget {
                                 textAlign: TextAlign.start,
                                 color: AppColors.primaryColor,
                                 fontWeight: FontWeight.w600,
-                                maxFontSize: 14,
-                                minFontSize: 14,
-                                size: 14,
+                                maxFontSize: 12,
+                                minFontSize: 12,
+                                size: 12,
                                 maxLine: 2,
                               ),
                             ],
@@ -315,7 +289,7 @@ class PandaProBottomSheet extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 30,
+              top: 25,
               right: 0,
               child: Padding(
                 padding: const EdgeInsets.only(right: 7.0, top: 5),

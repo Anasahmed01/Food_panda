@@ -102,6 +102,7 @@ Container pandaproDisContainer({required String text}) {
     ),
     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
     child: CustomText.customSizedText(
+      size: 12,
       text: text,
       color: AppColors.primaryColor,
       fontWeight: FontWeight.w900,
