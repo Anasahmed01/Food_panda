@@ -125,7 +125,7 @@ Widget appDrawer() {
                         listTile(
                           title: 'Logout',
                           isIcon: false,
-                          onTap: () => viewModel,
+                          onTap: () => viewModel.navigateToSignInView(),
                         ),
                       ],
                     ),

@@ -3,7 +3,6 @@ import 'package:foodpanda/src/del_custom_model/order_del_model.dart';
 import '../../../models/popular_restaurant.dart';
 import '../../../reuseable_widget/custom_text.dart';
 import '../../../utils/colors/app_colors.dart';
-import '../category_viewmodel.dart';
 
 Widget discountContainerForCat({required String text}) {
   return Container(
@@ -36,8 +35,8 @@ Widget discountContainerForCat({required String text}) {
   );
 }
 
-Widget deliveryContainer(BuildContext context, CategoryViewModel viewModel,
-    int index, PopularRestDelModel model) {
+Widget deliveryContainer(
+    BuildContext context, int index, PopularRestDelModel model) {
   var favouriteData = [
     model.data[index].restaurantsName,
     model.data[index].restaurantsImage,

@@ -119,7 +119,7 @@ Widget categoryFound(CategoryViewModel viewModel, PopularRestDelModel model) {
                   child: Padding(
                     padding: const EdgeInsets.only(right: 15.0),
                     child: deliveryContainer(
-                        context, viewModel, index, viewModel.getResData!),
+                        context, index, viewModel.getResData!),
                   ));
             },
           ),
@@ -238,7 +238,7 @@ Widget categoryFound(CategoryViewModel viewModel, PopularRestDelModel model) {
                         discountText: model.data[index].discount);
                   },
                   child: deliveryContainer(
-                      context, viewModel, index, viewModel.getResData!)),
+                      context,  index, viewModel.getResData!)),
             );
           },
         ),

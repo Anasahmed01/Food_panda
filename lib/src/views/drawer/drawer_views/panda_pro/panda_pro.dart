@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:foodpanda/src/reuseable_widget/app_divider.dart';
 import 'package:foodpanda/src/reuseable_widget/custom_text.dart';
@@ -5,6 +6,7 @@ import 'package:foodpanda/src/utils/colors/app_colors.dart';
 import 'package:foodpanda/src/utils/images/images.dart';
 import 'package:foodpanda/src/views/drawer/drawer_views/panda_pro/panda_pro_viewmodel.dart';
 import 'package:stacked/stacked.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../reuseable_widget/app_bar.dart';
 import 'widget/widget.dart';
 
@@ -244,15 +246,23 @@ class PandaProView extends StatelessWidget {
                         subTitle:
                             "You agree and acknowledge that, as part of foodpanda’s policy and/or whenever it is deemed necessary, foodpanda and/or any third party engaged by foodpanda, may conduct Background Checks on you on an ongoing basis, without further reference or notice to you.",
                       ),
-                      Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 30.0),
-                          child: CustomText.customSizedText(
-                            text: 'See all FAQs',
-                            size: 16,
-                            maxLine: 2,
-                            color: AppColors.primaryColor,
-                            fontWeight: FontWeight.w900,
+                      InkWell(
+                        onTap: () {
+                          launchUrl(
+                              Uri.parse(
+                                  "https://www.foodpanda.pk/contents/subscription-faq"),
+                              mode: LaunchMode.externalApplication);
+                        },
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 30.0),
+                            child: CustomText.customSizedText(
+                              text: 'See all FAQs',
+                              size: 16,
+                              maxLine: 2,
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
                         ),
                       ),
@@ -271,6 +281,13 @@ class PandaProView extends StatelessWidget {
                               style: TextStyle(color: AppColors.blackColor)),
                           TextSpan(
                             text: 'terms and conditions.',
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                launchUrl(
+                                    Uri.parse(
+                                        "https://www.foodpanda.pk/contents/terms-and-conditions.htm"),
+                                    mode: LaunchMode.externalApplication);
+                              },
                             style: TextStyle(
                               color: AppColors.primaryColor,
                             ),

@@ -40,7 +40,7 @@ class PandaRewardView extends StatelessWidget {
                     children: [
                       CustomText.customSizedText(
                           text: 'Points', color: Colors.black38),
-                      Padding(
+                      Padding( 
                         padding: const EdgeInsets.only(
                             right: 5.0, left: 5, bottom: 15),
                         child: Row(
@@ -74,7 +74,7 @@ class PandaRewardView extends StatelessWidget {
                     ],
                   ),
                 )),
-                expandedHeight: MediaQuery.sizeOf(context).height / 2.7,
+                expandedHeight: 325,
                 title: GestureDetector(
                   onTap: () => viewModel.navigateToBack(),
                   child: Container(
@@ -238,7 +238,7 @@ class PandaRewardView extends StatelessWidget {
                           ),
                         ),
                         appDivider(
-                            thickness: 1, color: AppColors.lightGreyColor),
+                            thickness: 10, color: AppColors.lightGreyColor),
                         const SizedBox(
                           height: 40,
                         ),
@@ -246,11 +246,14 @@ class PandaRewardView extends StatelessWidget {
                           child: Column(
                             children: [
                               Image.asset(AppImages.circlePanda),
-                              CustomText.customSizedText(
-                                text: 'Ready to win?',
-                                color: Colors.black54,
-                                fontWeight: FontWeight.w900,
-                                size: 16,
+                              Padding(
+                                padding: const EdgeInsets.only(top: 30),
+                                child: CustomText.customSizedText(
+                                  text: 'Ready to win?',
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.w900,
+                                  size: 16,
+                                ),
                               ),
                               CustomText.customSizedText(
                                   text: 'Turn point into your fave rewards',

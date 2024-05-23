@@ -13,8 +13,7 @@ Widget seeAllFound(CategoryViewModel viewModel) {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 10),
-              child: deliveryContainer(
-                  context, viewModel, index, viewModel.getResData!),
+              child: deliveryContainer(context, index, viewModel.getResData!),
             );
           },
         ),

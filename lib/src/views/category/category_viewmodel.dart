@@ -44,10 +44,6 @@ class CategoryViewModel extends BaseViewModel {
         resturantName: resturantName,
         deliveryTime: deliveryTime,
       ),
-      opaque: true,
-      duration: const Duration(milliseconds: 100),
-      transitionStyle: Transition.leftToRight,
-      curve: Curves.ease,
     );
   }
 

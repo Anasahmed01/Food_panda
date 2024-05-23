@@ -15,57 +15,59 @@ class FavouriteView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => FavouriteViewModel(),
+      onViewModelReady: (viewModel) => viewModel.getRes(),
       builder: (context, viewModel, child) {
         if (favourite.isEmpty) {
           return appScafold(
-               onBackTap: () => viewModel.navigateToBack(),
-              appBarTitle: 'Favourite',
-              body: SizedBox(
-                height: MediaQuery.sizeOf(context).height,
-                width: double.infinity,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      AppImages.emptyFavourite,
-                      height: MediaQuery.sizeOf(context).height * 0.2,
-                      width: 150,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
+            onBackTap: () => viewModel.navigateToBack(),
+            appBarTitle: 'Favourite',
+            body: SizedBox(
+              height: MediaQuery.sizeOf(context).height,
+              width: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    AppImages.emptyFavourite,
+                    height: MediaQuery.sizeOf(context).height * 0.2,
+                    width: 150,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: CustomText.customSizedText(
+                        text: 'No favourite saved',
+                        size: 24,
+                        fontWeight: FontWeight.w800),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 10.0, left: 20, right: 20),
+                    child: CustomText.customSizedText(
+                        text:
+                            "To make ordering even faster, you'll find all your faves here. Just look for the heart icon!",
+                        maxLine: 2,
+                        textAlign: TextAlign.center),
+                  ),
+                  GestureDetector(
+                    onTap: () => viewModel.navigateToHomeView(),
+                    child: Container(
+                      margin: const EdgeInsets.only(top: 15),
+                      decoration: BoxDecoration(
+                          color: AppColors.primaryColor,
+                          borderRadius: BorderRadius.circular(10)),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 10),
                       child: CustomText.customSizedText(
-                          text: 'No favourite saved',
-                          size: 24,
+                          text: "Let's find some favourite",
+                          color: AppColors.white,
+                          size: 14,
                           fontWeight: FontWeight.w800),
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(top: 10.0, left: 20, right: 20),
-                      child: CustomText.customSizedText(
-                          text:
-                              "To make ordering even faster, you'll find all your faves here. Just look for the heart icon!",
-                          maxLine: 2,
-                          textAlign: TextAlign.center),
-                    ),
-                    GestureDetector(
-                      onTap: () => viewModel.navigateToHomeView(),
-                      child: Container(
-                        margin: const EdgeInsets.only(top: 15),
-                        decoration: BoxDecoration(
-                            color: AppColors.primaryColor,
-                            borderRadius: BorderRadius.circular(10)),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 10),
-                        child: CustomText.customSizedText(
-                            text: "Let's find some favourite",          
-                            color: AppColors.white,
-                            size: 14,
-                            fontWeight: FontWeight.w800),
-                      ),
-                    )
-                  ],
-                ),
-              ));
+                  )
+                ],
+              ),
+            ),
+          );
         }
 
         return Scaffold(
@@ -102,7 +104,7 @@ class FavouriteView extends StatelessWidget {
               ),
             ],
           ),
-          body: favoriteFound(),
+          body: favoriteFound(viewModel: viewModel),
         );
       },
     );

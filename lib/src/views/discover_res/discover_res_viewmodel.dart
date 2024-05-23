@@ -1,13 +1,14 @@
+import 'package:foodpanda/src/app/app.locator.dart';
 import 'package:foodpanda/src/del_custom_model/popular_restaurants.dart';
 import 'package:foodpanda/src/models/popular_restaurant.dart';
-import 'package:foodpanda/src/views/cart/cart.dart';
+import 'package:foodpanda/src/views/home/home.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-import '../../app/app.locator.dart';
-import '../home/home.dart';
+
+import '../../utils/images/images.dart';
 import '../resturant_detail/resturant_detail.dart';
 
-class FavouriteViewModel extends BaseViewModel {
+class DiscoverRestaurantViewModel extends BaseViewModel {
   navigateToBack() {
     locator<NavigationService>().back();
   }
@@ -15,12 +16,6 @@ class FavouriteViewModel extends BaseViewModel {
   navigateToHomeView() {
     locator<NavigationService>().navigateWithTransition(
       const HomeView(),
-    );
-  }
-
-  navigateToCartView() {
-    locator<NavigationService>().navigateWithTransition(
-      const CartView(),
     );
   }
 
@@ -45,6 +40,12 @@ class FavouriteViewModel extends BaseViewModel {
       ),
     );
   }
+
+  List popularResImg = [
+    AppImages.popularRes3,
+    AppImages.popularRes2,
+    AppImages.popularRes1,
+  ];
 
   PopularRestDelModel? getResData;
   getRes() async {

@@ -126,13 +126,19 @@ class VoucherView extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  viewModel.dealImages[index],
+                            return InkWell(
+                              onTap: () =>
+                                  viewModel.navigateToDiscoverRestaurantView(
+                                productImage: viewModel.dealImages[index],
+                              ),
+                              child: Container(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    viewModel.dealImages[index],
+                                  ),
                                 ),
                               ),
                             );
@@ -158,13 +164,19 @@ class VoucherView extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  viewModel.dealImages[index],
+                            return InkWell(
+                              onTap: () =>
+                                  viewModel.navigateToDiscoverRestaurantView(
+                                productImage: viewModel.dealImages[index],
+                              ),
+                              child: Container(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    viewModel.dealImages[index],
+                                  ),
                                 ),
                               ),
                             );

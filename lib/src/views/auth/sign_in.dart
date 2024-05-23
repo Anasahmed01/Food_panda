@@ -107,32 +107,35 @@ class SignInView extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: AppColors.primaryColor),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 10.0, top: 8, bottom: 8),
-                              child: Icon(
-                                Icons.email_outlined,
-                                color: AppColors.primaryColor,
+                      InkWell(
+                        onTap: () => viewModel.navigateToHomeView(),
+                        child: Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: AppColors.primaryColor),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 10.0, top: 8, bottom: 8),
+                                child: Icon(
+                                  Icons.email_outlined,
+                                  color: AppColors.primaryColor,
+                                ),
                               ),
-                            ),
-                            CustomText.customSizedText(
-                                text: 'Continue With email',
-                                fontWeight: FontWeight.w900,
-                                color: Colors.black54),
-                            const SizedBox(
-                              width: 40,
-                            ),
-                          ],
+                              CustomText.customSizedText(
+                                  text: 'Continue With email',
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.black54),
+                              const SizedBox(
+                                width: 40,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],

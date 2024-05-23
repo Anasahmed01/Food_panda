@@ -1,3 +1,4 @@
+import 'package:foodpanda/src/views/auth/sign_in.dart';
 import 'package:foodpanda/src/views/drawer/drawer_views/help_center/help_center.dart';
 import 'package:foodpanda/src/views/drawer/drawer_views/orders/order.dart';
 import 'package:foodpanda/src/views/drawer/drawer_views/panda_pro/panda_pro.dart';
@@ -70,6 +71,12 @@ class DrawerViewModel extends BaseViewModel {
   navigateToTermCondView() {
     locator<NavigationService>().navigateWithTransition(
       const TermCondView(),
+    );
+  }
+
+  navigateToSignInView() {
+    locator<NavigationService>().navigateWithTransition(
+      const SignInView(),
     );
   }
 }
