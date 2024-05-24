@@ -20,7 +20,7 @@ class PandaProBottomSheet extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
           padding: const EdgeInsets.all(15),
-          height: MediaQuery.sizeOf(context).height / 2.25,
+          height: 370,
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
